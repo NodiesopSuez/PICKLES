@@ -1,0 +1,454 @@
+<template>
+    <div>
+        <section class="top_section">
+            <div class="catch">
+                <img class="catch_img_hand" src="../img/catch_img_hand.png">
+                <h1>PICKLES</h1>
+                <p>pick up for listening</p>
+            </div>
+            <div>
+                <input type="text" name="word" v-model="keyword" placeholder="Enter the words">
+                <br/>
+                <button type="submit" class="submit" @click="searchInfo()">Pick up</button>
+            </div>
+            
+            <div class="musical_notes">
+                <img src="../img/musical_notes_fortop.png">
+            </div>
+        </section>
+        <section id="result_section" ref="result_section" v-if="toggle">
+            <div class="back_search">
+                <button @click="scrollToTop()"></button>
+                <h3>Back to search</h3>
+            </div>
+            <div class="result">
+                <paginate name="paginate-items" tag="div" :list="result_list" :per="5">
+                    <div class="result_li" v-for="(n, index) in paginated('paginate-items')" :key="index">
+                        <img :src="n.img">
+                        <ul>
+                            <li v-if="n.type=='track'"> {{ n.track_title }}</li>
+                            <li> {{ n.album_title }} </li>
+                            <li> {{ n.artist }} </li>
+                            <li> {{ n.release }} </li>
+                        </ul>
+                    </div>
+                </paginate>
+                
+            </div>
+            <paginate-links for="paginate-items" 
+                            class="pagination" 
+                            :limit="5"
+                            :show-step-links="true">
+            </paginate-links>
+        </section>
+        <section class="modal_section" v-if="modal">
+            <div class="modal_back"></div>
+            <div class="modal_box">
+                <h2>ERROR!!</h2>
+                <p>キーワード：{{ keyword }}</p>
+                <p>検索結果が見つかりませんでした。<br/>
+                 他のキーワードで検索してください。</p>
+                <button @click="closeModal()">Close</button>
+            </div>
+        </section>
+    </div>
+</template>
+
+
+<script>
+import axios from 'axios'
+import Paginate from 'vue-paginate'
+import Vue from 'vue'
+
+Vue.use(Paginate);
+
+export default {
+    name: 'Top',
+    data: function(){
+        return{
+            /* musical_notes_img: '../img/musical_notes_fortop.png', */
+            text: '',
+            keyword: '',
+            access_token: '',
+            toggle: false,
+            modal: false,
+            albums_info: [],
+            tracks_info: [],
+            result_list: [],
+
+            paginate:['paginate-items'],
+
+        }
+    },
+    mounted: function(){
+        //アクセストークン取得
+        const grant_type = {'grant_type': 'client_credentials'};
+        const body = new URLSearchParams(grant_type);
+        const header = {headers: {
+                            'Authorization': 'Basic MjQ2M2FjMTIzYjU5NDcwOWE5OThhZDg5NWEyNzIxN2U6OTMyMGY3MWRmYTdmNDA0OGFkYzQzN2RkM2JmMDAyNTA=',
+                            'Content-Type' : 'application/x-www-form-urlencoded',
+                        }};
+        var self = this;
+        axios.post('https://accounts.spotify.com/api/token', body, header)
+            .then(function(token_res){
+                //デバッグ用にconsoleに出力
+                console.log(token_res.data.access_token);
+                self.access_token = token_res.data.access_token;
+            })
+            .catch(function(error){
+                //デバッグ用にconsoleに出力
+                console.log(error);
+                self.toggle = false;
+                self.modal = true;
+                return;
+            })
+    },
+    methods: {
+        searchInfo(){
+            self = this;
+             //デバッグ用にconsoleに出力
+            console.log(this.keyword);
+
+            //キーワードで検索
+            let search_type = 'album,track,artist';
+            let search_limit = '50';
+
+            axios.get(`https://api.spotify.com/v1/search?q=${this.keyword}&type=${search_type}&limit=${search_limit}`, 
+                {headers: {
+                        'Authorization': 'Bearer ' +  self.access_token,
+                }})
+                .then((search_res)=>{ 
+                    this.result_list = [];
+                    //デバッグ用にconsoleに出力
+                    console.log('search_res');
+                    console.log(search_res);
+                    console.log(search_res.data);
+
+                    //検索結果が0ならば
+                    let album_total = search_res.data.albums.total;
+                    let track_total = search_res.data.tracks.total;
+                    let artist_total = search_res.data.artists.total;
+
+                    console.log(album_total + track_total + artist_total);
+
+                    /* if((album_total === 0) && (track_total === 0) && (artist_total === 0)) */
+                    if((album_total + track_total + artist_total)===0){
+                        this.toggle = false;
+                        this.modal = true;
+                        return;
+                    }else{
+                        this.toggle = true;
+                    }
+
+                    /* アルバム情報取得 */
+                    let albums = search_res.data.albums.items;
+
+                    let album, album_info;
+                    for(let i = 0; i < albums.length; i ++){
+                        album = albums[i];
+                        album_info = {
+                            "type": 'album',
+                            "album_title": album.name,
+                            "artist": album.artists[0].name,
+                            "release": album.release_date,
+                            "img": album.images[1].url,
+                            "external_url": album.external_urls.spotify
+                        }
+                        this.albums_info.push(album_info);
+                        this.result_list.push(album_info);
+                    }
+                //デバッグ用にconsoleに出力
+                console.log('albums');
+                console.log(this.albums_info);
+
+                    /* トラック情報取得 */
+                    let tracks = search_res.data.tracks.items;
+                    
+                    let track, track_info;
+                    for(let i = 0; i < albums.length; i ++){
+                        track = tracks[i];
+                        track_info = {
+                            "type": 'track',
+                            "track_title": track.name,
+                            "album_title": track.album.name,
+                            "artist": track.artists[0].name,
+                            "release": track.album.release_date,
+                            "img": track.album.images[1].url,
+                            "external_url": track.external_urls.spotify
+                        }
+                        this.tracks_info.push(track_info);
+                        this.result_list.push(track_info);
+                    }
+                //デバッグ用にconsoleに出力  
+                console.log('tracks');
+                console.log(this.tracks_info);
+
+
+                })
+                .catch((error)=>{
+                    this.toggle = false;
+                    this.modal = true;
+                    return;
+                })
+                .finally(()=>{
+                    if(this.toggle){
+                        this.scrollToResultSection();
+                    }
+                    return;
+                })
+        },
+        scrollToTop(){
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+        },
+        scrollToResultSection(){
+            const result_section = this.$refs.result_section;
+            const result_section_rect = result_section.getBoundingClientRect();
+            var y_offset = window.pageYOffset + result_section_rect.top
+            console.log(result_section_rect);
+            window.scrollTo({
+                top: y_offset,
+                behavior: 'smooth',
+            })
+        },
+        closeModal(){
+            this.modal ? this.modal=!this.modal : this.modal
+        },
+    },
+}
+</script>
+
+<style>
+/* section */.top_section {
+    height: 550px;
+    background: linear-gradient(to bottom, #fff 50%, #FFFF99 50% 100%) ;
+}
+
+.catch,
+.musical_notes {
+    position: relative;
+    margin: auto;
+}
+
+.catch *,
+.musical_notes > img {
+    position: absolute;
+}
+
+.catch {
+    width: 409px;
+    height: 290px;
+    padding-top: 60px;
+}
+
+.catch_img_hand {
+    top: 45px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 200px;
+}
+
+.catch > h1,
+.catch > p {
+    color: var(--md-yellow);
+}
+
+.catch > h1 {
+    top: 115px;
+    font-size: 50px;
+}
+
+.catch > p {
+    top: 190px;
+    font-size: 20px;
+}
+
+.musical_notes {
+    height: 200px;
+}
+
+.musical_notes > img {
+    bottom:0;
+    right: 0; 
+    left: 0;
+    margin: auto;
+    width: 800px;
+}
+
+/* Form部分 --------------------------------------------------------- */
+input {
+    border: none;
+    outline: none;
+    text-align: center;
+}
+
+input[name="word"] {
+    margin-bottom: 10px;
+    width: 370px;
+    height: 24px;
+    line-height: 24px;
+    color: var(--hv-yellow);
+    font-size: 18px;
+    border-radius: 12px;
+    background: #fff;
+}
+
+::placeholder {
+    color: var(--md-yellow);
+    background: #fff;
+}
+
+.submit {
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    margin-top: 10px;
+    width: 80px;
+    height: 35px;
+    border-radius: 17.5px;
+    background: var(--md-yellow);
+    color: var(--hv-yellow);
+    font-size: 18px;   
+}
+
+/* Result部分 --------------------------------------------------------- */
+/* section */#result_section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding-top: 16px;
+    background-color: var(--lt-yellow);
+}
+
+.back_search button {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--md-yellow);
+}
+
+.back_search > button::after {
+    position: absolute;
+    content: '';
+    top: -2px;
+    right: 8px;
+    left: 6px;
+    margin: auto;
+    border-style: solid;
+    border-width: 7px 7px 14px 7px;
+    border-color: transparent transparent var(--hv-yellow) transparent;
+}
+
+.back_search h3 {
+    margin-top: 8px auto 16px auto;
+    color: var(--hv-yellow);
+}
+
+.result > div,
+.result_li,
+.pagination {
+    display: flex;
+    align-items: center;
+}
+
+.result > div {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 700px;
+    margin: auto;
+}
+
+.result_li {
+    width: 300px;
+    justify-content: flex-start;
+    margin: 20px 20px 20px 0px ;
+    text-align: start;
+}
+
+.result_li > img {
+    width: 130px;
+    height: 130px;
+    background: #ccc;
+    box-shadow: 5px 5px 2px var(--hv-yellow);
+}
+
+.result_li li:first-child{
+    font-size: 16px !important;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.result_li > ul {
+    font-size: 14px;
+}
+
+.pagination {
+    cursor: pointer;
+    margin: 20px auto 100px auto;
+}
+.pagination .number,
+.pagination .right-arrow,
+.pagination .left-arrow {
+    color: var(--hv-yellow);
+    margin: auto 6px;
+}
+.pagination .disabled {
+    opacity: 0;
+}
+.pagination .active {
+    width: 25px;
+    height: 22px;
+    color: #fff!important;
+    background: var(--hv-yellow);
+    padding-top: 4px;
+    border-radius: 50%;
+}
+
+/* modalt部分 --------------------------------------------------------- */
+.modal_back {
+    z-index: 20;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal_box {
+    z-index: 30;
+    position:absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    padding: 16px;
+    width: 328px;
+    height: 200px;
+    border-radius: 15px;
+    background: #ccc;
+}
+
+h2 {
+    margin: 8px auto;
+    color: red;
+}
+
+.modal_box > button {
+    width: 80px;
+    height: 35px;
+    border-radius: 17.5px;
+    font-size: 18px;
+    box-shadow: 3px 4px 0px #333;
+}
+</style>
