@@ -1,7 +1,7 @@
 <template>
     <div>
-
-       <router-link to="/example">To Example</router-link>
+       <!-- <router-link to="/example">To Example</router-link>
+       <br/> -->
         <section class="top_section">
             <div class="catch">
                 <img class="catch_img_hand" src="../img/catch_img_hand.png">
@@ -13,6 +13,10 @@
                 <br/>
                 <button type="submit" class="submit" @click="searchInfo()">Pick up</button>
             </div>
+            <button class="to_recommends">
+                <div><img src="../img/recommend_default.png"></div>
+                <div>Recommends</div>
+            </button>
             
             <div class="musical_notes">
                 <img src="../img/musical_notes_fortop.png">
@@ -223,9 +227,43 @@ export default {
 </script>
 
 <style>
+.to_recommends {
+    position: relative;
+    width: 156px;
+    height: 40px;
+    border-radius: 20px;
+    background: var(--md-green);
+    color: #fff;
+}
+
+.to_recommends > div {
+    position: absolute;
+    top: 0;
+}
+
+.to_recommends > div:first-child {
+    left: -0.5px;
+    padding: 7px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--icon-background);
+}
+
+.to_recommends > div:first-child img {
+    width: 24px;
+    margin: auto;
+}
+
+.to_recommends > div:nth-child(2) {
+    line-height: 40px;
+    right: 10px;
+}
+
+
 /* section */.top_section {
     height: 550px;
-    background: linear-gradient(to bottom, #fff 50%, #FFFF99 50% 100%) ;
+    background: linear-gradient(to bottom, #fff 50%, var(--for-background) 50% 100%) ;
 }
 
 .catch,
@@ -323,7 +361,7 @@ input[name="word"] {
     flex-direction: column;
     margin-top: 50px;
     padding-top: 16px;
-    background-color: var(--lt-yellow);
+    background-color: var(--for-background);
 }
 
 .back_search button {

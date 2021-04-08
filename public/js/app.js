@@ -2034,6 +2034,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -6653,7 +6657,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n:root {\r\n  --lt-yellow: #FFE959;\r\n  --md-yellow: #FFCD03;\r\n  --hv-yellow: #ff8000;\n}\n#app {\r\n  font-family: Avenir, Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\n#app button {\r\n  margin: auto;\r\n  border: none;\r\n  outline: none;\r\n  text-align: center;\n}\n#app li {\r\n  list-style: none;\n}\n#app button {\r\n  cursor: pointer;\r\n  box-shadow: 3px 4px 0px var(--hv-yellow);\r\n  transition: 0.1s;\n}\n#app button:active {\r\n  transform: translate(3px, 4px);\r\n  box-shadow: none;\n}\n.fade-enter-active, .fade-leave-active {\r\n  transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to {\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n:root {\r\n  --lt-yellow: #FFE959;\r\n  --md-yellow: #FFCD03;\r\n  --hv-yellow: #ff8000;\r\n  --for-background: #C8FFD3;\r\n  --icon-background: #FDD441;\r\n  --md-green: #00502E;\r\n  --shadow: #B4CF8F;\n}\n#app {\r\n  font-family: Avenir, Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\n#app button {\r\n  margin: auto;\r\n  border: none;\r\n  outline: none;\r\n  text-align: center;\n}\n#app li {\r\n  list-style: none;\n}\n#app button {\r\n  cursor: pointer;\r\n  box-shadow: 3px 4px 0px var(--hv-yellow);\r\n  transition: 0.1s;\n}\n#app button:active {\r\n  transform: translate(3px, 4px);\r\n  box-shadow: none;\n}\n.fade-enter-active, .fade-leave-active {\r\n  transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to {\r\n  opacity: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -6672,7 +6676,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* section */.top_section {\r\n    height: 550px;\r\n    background: linear-gradient(to bottom, #fff 50%, #FFFF99 50% 100%) ;\n}\n.catch,\r\n.musical_notes {\r\n    position: relative;\r\n    margin: auto;\n}\n.catch *,\r\n.musical_notes > img {\r\n    position: absolute;\n}\n.catch {\r\n    width: 409px;\r\n    height: 290px;\r\n    padding-top: 60px;\n}\n.catch_img_hand {\r\n    top: 45px;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 200px;\n}\n.catch > h1,\r\n.catch > p {\r\n    color: var(--md-yellow);\n}\n.catch > h1 {\r\n    top: 115px;\r\n    font-size: 50px;\n}\n.catch > p {\r\n    top: 190px;\r\n    font-size: 20px;\n}\n.musical_notes {\r\n    height: 200px;\n}\n.musical_notes > img {\r\n    bottom:0;\r\n    right: 0; \r\n    left: 0;\r\n    margin: auto;\r\n    width: 800px;\n}\r\n\r\n/* Form部分 --------------------------------------------------------- */\ninput {\r\n    border: none;\r\n    outline: none;\r\n    text-align: center;\n}\ninput[name=\"word\"] {\r\n    margin-bottom: 10px;\r\n    width: 370px;\r\n    height: 24px;\r\n    line-height: 24px;\r\n    color: var(--hv-yellow);\r\n    font-size: 18px;\r\n    border-radius: 12px;\r\n    background: #fff;\n}\n::-moz-placeholder {\r\n    color: var(--md-yellow);\r\n    background: #fff;\n}\n:-ms-input-placeholder {\r\n    color: var(--md-yellow);\r\n    background: #fff;\n}\n::placeholder {\r\n    color: var(--md-yellow);\r\n    background: #fff;\n}\n.submit {\r\n    position: absolute;\r\n    right: 0;\r\n    left: 0;\r\n    z-index: 10;\r\n    margin-top: 10px;\r\n    width: 80px;\r\n    height: 35px;\r\n    border-radius: 17.5px;\r\n    background: var(--md-yellow);\r\n    color: var(--hv-yellow);\r\n    font-size: 18px;\n}\r\n\r\n/* Result部分 --------------------------------------------------------- */\r\n/* section */#result_section {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 50px;\r\n    padding-top: 16px;\r\n    background-color: var(--lt-yellow);\n}\n.back_search button {\r\n    position: relative;\r\n    width: 25px;\r\n    height: 25px;\r\n    border-radius: 50%;\r\n    background: var(--md-yellow);\n}\n.back_search > button::after {\r\n    position: absolute;\r\n    content: '';\r\n    top: -2px;\r\n    right: 8px;\r\n    left: 6px;\r\n    margin: auto;\r\n    border-style: solid;\r\n    border-width: 7px 7px 14px 7px;\r\n    border-color: transparent transparent var(--hv-yellow) transparent;\n}\n.back_search h3 {\r\n    margin-top: 8px auto 16px auto;\r\n    color: var(--hv-yellow);\n}\n.result > div,\r\n.result_li,\r\n.pagination {\r\n    display: flex;\r\n    align-items: center;\n}\n.result > div {\r\n    flex-wrap: wrap;\r\n    justify-content: space-between;\r\n    width: 700px;\r\n    margin: auto;\n}\n.result_li {\r\n    width: 300px;\r\n    justify-content: flex-start;\r\n    margin: 20px 20px 20px 0px ;\r\n    text-align: start;\n}\n.result_li > img {\r\n    width: 130px;\r\n    height: 130px;\r\n    background: #ccc;\r\n    box-shadow: 5px 5px 2px var(--hv-yellow);\n}\n.result_li li:first-child{\r\n    font-size: 16px !important;\r\n    margin-bottom: 4px;\r\n    font-weight: bold;\n}\n.result_li > ul {\r\n    font-size: 14px;\n}\n.pagination {\r\n    cursor: pointer;\r\n    margin: 20px auto 100px auto;\n}\n.pagination .number,\r\n.pagination .right-arrow,\r\n.pagination .left-arrow {\r\n    color: var(--hv-yellow);\r\n    margin: auto 6px;\n}\n.pagination .disabled {\r\n    opacity: 0;\n}\n.pagination .active {\r\n    width: 25px;\r\n    height: 22px;\r\n    color: #fff!important;\r\n    background: var(--hv-yellow);\r\n    padding-top: 4px;\r\n    border-radius: 50%;\n}\r\n\r\n/* modalt部分 --------------------------------------------------------- */\n.modal_back {\r\n    z-index: 20;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #333;\r\n    opacity: 0.8;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\n}\n.modal_box {\r\n    z-index: 30;\r\n    position:absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    padding: 16px;\r\n    width: 328px;\r\n    height: 200px;\r\n    border-radius: 15px;\r\n    background: #ccc;\n}\nh2 {\r\n    margin: 8px auto;\r\n    color: red;\n}\n.modal_box > button {\r\n    width: 80px;\r\n    height: 35px;\r\n    border-radius: 17.5px;\r\n    font-size: 18px;\r\n    box-shadow: 3px 4px 0px #333;\n}\r\n", ""]);
+exports.push([module.i, "\n.to_recommends {\r\n    position: relative;\r\n    width: 156px;\r\n    height: 40px;\r\n    border-radius: 20px;\r\n    background: var(--md-green);\r\n    color: #fff;\n}\n.to_recommends > div {\r\n    position: absolute;\r\n    top: 0;\n}\n.to_recommends > div:first-child {\r\n    left: -0.5px;\r\n    padding: 7px;\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    background: var(--icon-background);\n}\n.to_recommends > div:first-child img {\r\n    width: 24px;\r\n    margin: auto;\n}\n.to_recommends > div:nth-child(2) {\r\n    line-height: 40px;\r\n    right: 10px;\n}\r\n\r\n\r\n/* section */.top_section {\r\n    height: 550px;\r\n    background: linear-gradient(to bottom, #fff 50%, var(--for-background) 50% 100%) ;\n}\n.catch,\r\n.musical_notes {\r\n    position: relative;\r\n    margin: auto;\n}\n.catch *,\r\n.musical_notes > img {\r\n    position: absolute;\n}\n.catch {\r\n    width: 409px;\r\n    height: 290px;\r\n    padding-top: 60px;\n}\n.catch_img_hand {\r\n    top: 45px;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 200px;\n}\n.catch > h1,\r\n.catch > p {\r\n    color: var(--md-yellow);\n}\n.catch > h1 {\r\n    top: 115px;\r\n    font-size: 50px;\n}\n.catch > p {\r\n    top: 190px;\r\n    font-size: 20px;\n}\n.musical_notes {\r\n    height: 200px;\n}\n.musical_notes > img {\r\n    bottom:0;\r\n    right: 0; \r\n    left: 0;\r\n    margin: auto;\r\n    width: 800px;\n}\r\n\r\n/* Form部分 --------------------------------------------------------- */\ninput {\r\n    border: none;\r\n    outline: none;\r\n    text-align: center;\n}\ninput[name=\"word\"] {\r\n    margin-bottom: 10px;\r\n    width: 370px;\r\n    height: 24px;\r\n    line-height: 24px;\r\n    color: var(--hv-yellow);\r\n    font-size: 18px;\r\n    border-radius: 12px;\r\n    background: #fff;\n}\n::-moz-placeholder {\r\n    color: var(--md-yellow);\r\n    background: #fff;\n}\n:-ms-input-placeholder {\r\n    color: var(--md-yellow);\r\n    background: #fff;\n}\n::placeholder {\r\n    color: var(--md-yellow);\r\n    background: #fff;\n}\n.submit {\r\n    position: absolute;\r\n    right: 0;\r\n    left: 0;\r\n    z-index: 10;\r\n    margin-top: 10px;\r\n    width: 80px;\r\n    height: 35px;\r\n    border-radius: 17.5px;\r\n    background: var(--md-yellow);\r\n    color: var(--hv-yellow);\r\n    font-size: 18px;\n}\r\n\r\n/* Result部分 --------------------------------------------------------- */\r\n/* section */#result_section {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 50px;\r\n    padding-top: 16px;\r\n    background-color: var(--for-background);\n}\n.back_search button {\r\n    position: relative;\r\n    width: 25px;\r\n    height: 25px;\r\n    border-radius: 50%;\r\n    background: var(--md-yellow);\n}\n.back_search > button::after {\r\n    position: absolute;\r\n    content: '';\r\n    top: -2px;\r\n    right: 8px;\r\n    left: 6px;\r\n    margin: auto;\r\n    border-style: solid;\r\n    border-width: 7px 7px 14px 7px;\r\n    border-color: transparent transparent var(--hv-yellow) transparent;\n}\n.back_search h3 {\r\n    margin-top: 8px auto 16px auto;\r\n    color: var(--hv-yellow);\n}\n.result > div,\r\n.result_li,\r\n.pagination {\r\n    display: flex;\r\n    align-items: center;\n}\n.result > div {\r\n    flex-wrap: wrap;\r\n    justify-content: space-between;\r\n    width: 700px;\r\n    margin: auto;\n}\n.result_li {\r\n    width: 300px;\r\n    justify-content: flex-start;\r\n    margin: 20px 20px 20px 0px ;\r\n    text-align: start;\n}\n.result_li > img {\r\n    width: 130px;\r\n    height: 130px;\r\n    background: #ccc;\r\n    box-shadow: 5px 5px 2px var(--hv-yellow);\n}\n.result_li li:first-child{\r\n    font-size: 16px !important;\r\n    margin-bottom: 4px;\r\n    font-weight: bold;\n}\n.result_li > ul {\r\n    font-size: 14px;\n}\n.pagination {\r\n    cursor: pointer;\r\n    margin: 20px auto 100px auto;\n}\n.pagination .number,\r\n.pagination .right-arrow,\r\n.pagination .left-arrow {\r\n    color: var(--hv-yellow);\r\n    margin: auto 6px;\n}\n.pagination .disabled {\r\n    opacity: 0;\n}\n.pagination .active {\r\n    width: 25px;\r\n    height: 22px;\r\n    color: #fff!important;\r\n    background: var(--hv-yellow);\r\n    padding-top: 4px;\r\n    border-radius: 50%;\n}\r\n\r\n/* modalt部分 --------------------------------------------------------- */\n.modal_back {\r\n    z-index: 20;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #333;\r\n    opacity: 0.8;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\n}\n.modal_box {\r\n    z-index: 30;\r\n    position:absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    padding: 16px;\r\n    width: 328px;\r\n    height: 200px;\r\n    border-radius: 15px;\r\n    background: #ccc;\n}\nh2 {\r\n    margin: 8px auto;\r\n    color: red;\n}\n.modal_box > button {\r\n    width: 80px;\r\n    height: 35px;\r\n    border-radius: 17.5px;\r\n    font-size: 18px;\r\n    box-shadow: 3px 4px 0px #333;\n}\r\n", ""]);
 
 // exports
 
@@ -38637,161 +38641,147 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("router-link", { attrs: { to: "/example" } }, [_vm._v("To Example")]),
+  return _c("div", [
+    _c("section", { staticClass: "top_section" }, [
+      _vm._m(0),
       _vm._v(" "),
-      _c("section", { staticClass: "top_section" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.keyword,
-                expression: "keyword"
+      _c("div", [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.keyword,
+              expression: "keyword"
+            }
+          ],
+          attrs: { type: "text", name: "word", placeholder: "Enter the words" },
+          domProps: { value: _vm.keyword },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
               }
-            ],
-            attrs: {
-              type: "text",
-              name: "word",
-              placeholder: "Enter the words"
-            },
-            domProps: { value: _vm.keyword },
+              _vm.keyword = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "submit",
+            attrs: { type: "submit" },
             on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.keyword = $event.target.value
+              click: function($event) {
+                return _vm.searchInfo()
               }
             }
-          }),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "submit",
-              attrs: { type: "submit" },
-              on: {
-                click: function($event) {
-                  return _vm.searchInfo()
-                }
-              }
-            },
-            [_vm._v("Pick up")]
-          )
-        ]),
-        _vm._v(" "),
-        _vm._m(1)
+          },
+          [_vm._v("Pick up")]
+        )
       ]),
       _vm._v(" "),
-      _vm.toggle
-        ? _c(
-            "section",
-            { ref: "result_section", attrs: { id: "result_section" } },
-            [
-              _c("div", { staticClass: "back_search" }, [
-                _c("button", {
-                  on: {
-                    click: function($event) {
-                      return _vm.scrollToTop()
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("h3", [_vm._v("Back to search")])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "result" },
-                [
-                  _c(
-                    "paginate",
-                    {
-                      attrs: {
-                        name: "paginate-items",
-                        tag: "div",
-                        list: _vm.result_list,
-                        per: 5
-                      }
-                    },
-                    _vm._l(_vm.paginated("paginate-items"), function(n, index) {
-                      return _c(
-                        "div",
-                        { key: index, staticClass: "result_li" },
-                        [
-                          _c("img", { attrs: { src: n.img } }),
-                          _vm._v(" "),
-                          _c("ul", [
-                            n.type == "track"
-                              ? _c("li", [_vm._v(" " + _vm._s(n.track_title))])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c("li", [
-                              _vm._v(" " + _vm._s(n.album_title) + " ")
-                            ]),
-                            _vm._v(" "),
-                            _c("li", [_vm._v(" " + _vm._s(n.artist) + " ")]),
-                            _vm._v(" "),
-                            _c("li", [_vm._v(" " + _vm._s(n.release) + " ")])
-                          ])
-                        ]
-                      )
-                    }),
-                    0
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("paginate-links", {
-                staticClass: "pagination",
-                attrs: {
-                  for: "paginate-items",
-                  limit: 5,
-                  "show-step-links": true
-                }
-              })
-            ],
-            1
-          )
-        : _vm._e(),
+      _vm._m(1),
       _vm._v(" "),
-      _vm.modal
-        ? _c("section", { staticClass: "modal_section" }, [
-            _c("div", { staticClass: "modal_back" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal_box" }, [
-              _c("h2", [_vm._v("ERROR!!")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("キーワード：" + _vm._s(_vm.keyword))]),
-              _vm._v(" "),
-              _vm._m(2),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  on: {
-                    click: function($event) {
-                      return _vm.closeModal()
-                    }
+      _vm._m(2)
+    ]),
+    _vm._v(" "),
+    _vm.toggle
+      ? _c(
+          "section",
+          { ref: "result_section", attrs: { id: "result_section" } },
+          [
+            _c("div", { staticClass: "back_search" }, [
+              _c("button", {
+                on: {
+                  click: function($event) {
+                    return _vm.scrollToTop()
                   }
-                },
-                [_vm._v("Close")]
-              )
-            ])
+                }
+              }),
+              _vm._v(" "),
+              _c("h3", [_vm._v("Back to search")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "result" },
+              [
+                _c(
+                  "paginate",
+                  {
+                    attrs: {
+                      name: "paginate-items",
+                      tag: "div",
+                      list: _vm.result_list,
+                      per: 5
+                    }
+                  },
+                  _vm._l(_vm.paginated("paginate-items"), function(n, index) {
+                    return _c("div", { key: index, staticClass: "result_li" }, [
+                      _c("img", { attrs: { src: n.img } }),
+                      _vm._v(" "),
+                      _c("ul", [
+                        n.type == "track"
+                          ? _c("li", [_vm._v(" " + _vm._s(n.track_title))])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("li", [_vm._v(" " + _vm._s(n.album_title) + " ")]),
+                        _vm._v(" "),
+                        _c("li", [_vm._v(" " + _vm._s(n.artist) + " ")]),
+                        _vm._v(" "),
+                        _c("li", [_vm._v(" " + _vm._s(n.release) + " ")])
+                      ])
+                    ])
+                  }),
+                  0
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("paginate-links", {
+              staticClass: "pagination",
+              attrs: {
+                for: "paginate-items",
+                limit: 5,
+                "show-step-links": true
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.modal
+      ? _c("section", { staticClass: "modal_section" }, [
+          _c("div", { staticClass: "modal_back" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal_box" }, [
+            _c("h2", [_vm._v("ERROR!!")]),
+            _vm._v(" "),
+            _c("p", [_vm._v("キーワード：" + _vm._s(_vm.keyword))]),
+            _vm._v(" "),
+            _vm._m(3),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.closeModal()
+                  }
+                }
+              },
+              [_vm._v("Close")]
+            )
           ])
-        : _vm._e()
-    ],
-    1
-  )
+        ])
+      : _vm._e()
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -38807,6 +38797,18 @@ var staticRenderFns = [
       _c("h1", [_vm._v("PICKLES")]),
       _vm._v(" "),
       _c("p", [_vm._v("pick up for listening")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", { staticClass: "to_recommends" }, [
+      _c("div", [
+        _c("img", { attrs: { src: __webpack_require__(/*! ../img/recommend_default.png */ "./resources/js/img/recommend_default.png") } })
+      ]),
+      _vm._v(" "),
+      _c("div", [_vm._v("Recommends")])
     ])
   },
   function() {
@@ -55081,6 +55083,17 @@ module.exports = "/images/catch_img_hand.png?99ce6178813faf7dcc32c60995a2d664";
 /***/ (function(module, exports) {
 
 module.exports = "/images/musical_notes_fortop.png?36ad83cc122adae3a0e9e2ca037e388f";
+
+/***/ }),
+
+/***/ "./resources/js/img/recommend_default.png":
+/*!************************************************!*\
+  !*** ./resources/js/img/recommend_default.png ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/recommend_default.png?2ed55fead9f25599ffb21e6b57a13e3f";
 
 /***/ }),
 
