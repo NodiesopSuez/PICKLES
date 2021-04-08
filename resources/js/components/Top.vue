@@ -13,8 +13,10 @@
                 <button type="submit" class="submit" @click="searchInfo()">Pick up</button>
             </div>
             <button class="to_recommends">
-                <div><img src="../img/recommend_default.png"></div>
-                <div>Recommends</div>
+                <router-link to="/recommends">
+                    <div><img src="../img/recommend_default.png"></div>
+                    <div>Recommends</div>
+                </router-link>
             </button>
             <img class="musical_notes" src="../img/musical_notes_fortop.png">
         </section>
@@ -247,12 +249,12 @@ export default {
     border-radius: 20px;
 }
 
-.to_recommends > div {
+.to_recommends div {
     position: absolute;
     top: 0;
 }
 
-.to_recommends > div:first-child {
+.to_recommends div:first-child {
     left: -0.5px;
     padding: 7px;
     width: 40px;
@@ -261,12 +263,12 @@ export default {
     background: var(--icon-background);
 }
 
-.to_recommends > div:first-child img {
+.to_recommends div:first-child img {
     width: 24px;
     margin: auto;
 }
 
-.to_recommends > div:nth-child(2) {
+.to_recommends div:nth-child(2) {
     line-height: 40px;
     right: 10px;
 }
