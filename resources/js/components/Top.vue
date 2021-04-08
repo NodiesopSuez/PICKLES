@@ -30,6 +30,7 @@
                         <ul>
                             <li v-if="n.type=='track'"> {{ n.track_title }}</li>
                             <li> {{ n.album_title }} </li>
+                            <li><button class="like"><img src="../img/like.png"></button></li>
                             <li> {{ n.artist }} </li>
                             <li> {{ n.release }} </li>
                         </ul>
@@ -223,6 +224,21 @@ export default {
 </script>
 
 <style>
+/* likeボタン */
+.like {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+}
+
+.like > img {
+    width: 18px;
+}
+
+/* Recommendsボタン */
 .to_recommends {
     display: block;
     position: relative;
