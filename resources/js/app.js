@@ -1,4 +1,5 @@
 
+import router from './router';
 
 require('./bootstrap');
 
@@ -9,6 +10,8 @@ Vue.component('App', require('./components/App.vue').default);
 
 
 
+
 const app = new Vue({
     el: '#app',
+    router,
 });

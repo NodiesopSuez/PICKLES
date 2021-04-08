@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- <div class="container"> -->
-      <Top />
+       <transition name="fade" mode="out-in"><router-view></router-view></transition>
     <!-- </div> -->
   </div>
 </template>
@@ -51,5 +51,12 @@ export default {
 #app button:active {
   transform: translate(3px, 4px);
   box-shadow: none; 
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>

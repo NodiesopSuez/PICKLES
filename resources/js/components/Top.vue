@@ -1,5 +1,7 @@
 <template>
     <div>
+
+       <router-link to="/example">To Example</router-link>
         <section class="top_section">
             <div class="catch">
                 <img class="catch_img_hand" src="../img/catch_img_hand.png">
