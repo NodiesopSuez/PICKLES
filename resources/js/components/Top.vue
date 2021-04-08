@@ -8,9 +8,8 @@
                 <h1>PICKLES</h1>
                 <p>pick up for listening</p>
             </div>
-            <div>
+            <div class="search_form">
                 <input type="text" name="word" v-model="keyword" placeholder="Enter the words">
-                <br/>
                 <button type="submit" class="submit" @click="searchInfo()">Pick up</button>
             </div>
             <button class="to_recommends">
@@ -278,7 +277,7 @@ export default {
 }
 
 .catch {
-    width: 409px;
+    width: 480px;
     height: 290px;
     padding-top: 60px;
 }
@@ -297,8 +296,9 @@ export default {
 }
 
 .catch > h1 {
-    top: 115px;
+    top: 140px;
     font-size: 50px;
+    font-weight: bold;
 }
 
 .catch > p {
@@ -319,20 +319,31 @@ export default {
 }
 
 /* Form部分 --------------------------------------------------------- */
+.search_form { 
+    display: flex;
+    justify-content: space-between;
+    margin: 30px auto;
+    width: 480px;
+}
+
 input {
     border: none;
     outline: none;
     text-align: center;
 }
 
+input[name="word"],
+.submit {
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+}
+
 input[name="word"] {
-    margin-bottom: 10px;
+    margin-top: 4px;
     width: 370px;
-    height: 24px;
-    line-height: 24px;
     color: var(--hv-yellow);
     font-size: 18px;
-    border-radius: 12px;
     background: #fff;
 }
 
@@ -342,14 +353,9 @@ input[name="word"] {
 }
 
 .submit {
-    position: absolute;
-    right: 0;
-    left: 0;
     z-index: 10;
-    margin-top: 10px;
+    margin-bottom: 4px!important;
     width: 80px;
-    height: 35px;
-    border-radius: 17.5px;
     background: var(--md-yellow);
     color: var(--hv-yellow);
     font-size: 18px;   

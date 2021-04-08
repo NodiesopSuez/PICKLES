@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div>
+  <!-- <div id="app"> -->
     <!-- <div class="container"> -->
        <transition name="fade" mode="out-in"><router-view></router-view></transition>
     <!-- </div> -->
@@ -27,6 +28,11 @@ export default {
   --md-green: #00502E;
   --shadow: #B4CF8F;
 }
+
+body { 
+  background: var(--for-background)!important;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
