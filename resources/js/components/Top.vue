@@ -16,15 +16,12 @@
                 <div><img src="../img/recommend_default.png"></div>
                 <div>Recommends</div>
             </button>
-            
-            <div class="musical_notes">
-                <img src="../img/musical_notes_fortop.png">
-            </div>
+            <img class="musical_notes" src="../img/musical_notes_fortop.png">
         </section>
         <section id="result_section" ref="result_section" v-if="toggle">
             <div class="back_search">
                 <button @click="scrollToTop()"></button>
-                <h3>Back to search</h3>
+                <h4>Back to search</h4>
             </div>
             <div class="result">
                 <paginate name="paginate-items" tag="div" :list="result_list" :per="5">
@@ -227,12 +224,11 @@ export default {
 
 <style>
 .to_recommends {
+    display: block;
     position: relative;
     width: 156px;
     height: 40px;
     border-radius: 20px;
-    background: var(--md-green);
-    color: #fff;
 }
 
 .to_recommends > div {
@@ -261,8 +257,14 @@ export default {
 
 
 /* section */.top_section {
-    height: 550px;
-    background: linear-gradient(to bottom, #fff 50%, var(--for-background) 50% 100%) ;
+    height: 600px;
+    background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ;
+}
+
+.top_section button {
+    font-size: 16px;
+    background: var(--md-green);
+    color: #fff;
 }
 
 .catch,
@@ -278,16 +280,15 @@ export default {
 
 .catch {
     width: 480px;
-    height: 290px;
-    padding-top: 60px;
+    height: 340px;
 }
 
 .catch_img_hand {
-    top: 45px;
+    bottom: 0;
     right: 0;
     left: 0;
     margin: auto;
-    width: 200px;
+    width: 240px;
 }
 
 .catch > h1,
@@ -296,26 +297,19 @@ export default {
 }
 
 .catch > h1 {
-    top: 140px;
+    bottom: 108px;
     font-size: 50px;
     font-weight: bold;
 }
 
 .catch > p {
-    top: 190px;
+    bottom: 80px;
     font-size: 20px;
 }
 
 .musical_notes {
-    height: 200px;
-}
-
-.musical_notes > img {
-    bottom:0;
-    right: 0; 
-    left: 0;
     margin: auto;
-    width: 800px;
+    width: 1000px;
 }
 
 /* Form部分 --------------------------------------------------------- */
@@ -342,13 +336,13 @@ input[name="word"],
 input[name="word"] {
     margin-top: 4px;
     width: 370px;
-    color: var(--hv-yellow);
+    color: var(--md-green);
     font-size: 18px;
     background: #fff;
 }
 
 ::placeholder {
-    color: var(--md-yellow);
+    color: #698966;
     background: #fff;
 }
 
@@ -356,9 +350,6 @@ input[name="word"] {
     z-index: 10;
     margin-bottom: 4px!important;
     width: 80px;
-    background: var(--md-yellow);
-    color: var(--hv-yellow);
-    font-size: 18px;   
 }
 
 /* Result部分 --------------------------------------------------------- */
@@ -375,7 +366,7 @@ input[name="word"] {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: var(--md-yellow);
+    background: #fff;
 }
 
 .back_search > button::after {
@@ -387,12 +378,12 @@ input[name="word"] {
     margin: auto;
     border-style: solid;
     border-width: 7px 7px 14px 7px;
-    border-color: transparent transparent var(--hv-yellow) transparent;
+    border-color: transparent transparent var(--md-green) transparent;
 }
 
-.back_search h3 {
+.back_search h4 {
     margin-top: 8px auto 16px auto;
-    color: var(--hv-yellow);
+    color: var(--md-green);
 }
 
 .result > div,
@@ -420,7 +411,7 @@ input[name="word"] {
     width: 130px;
     height: 130px;
     background: #ccc;
-    box-shadow: 5px 5px 2px var(--hv-yellow);
+    box-shadow: 5px 5px 2px var(--shadow);
 }
 
 .result_li li:first-child{
@@ -440,7 +431,7 @@ input[name="word"] {
 .pagination .number,
 .pagination .right-arrow,
 .pagination .left-arrow {
-    color: var(--hv-yellow);
+    color: var(--md-green);
     margin: auto 6px;
 }
 .pagination .disabled {
@@ -448,10 +439,10 @@ input[name="word"] {
 }
 .pagination .active {
     width: 25px;
-    height: 22px;
+    height: 25px;
     color: #fff!important;
-    background: var(--hv-yellow);
-    padding-top: 4px;
+    background: var(--md-green);
+    padding-top: 2px;
     border-radius: 50%;
 }
 

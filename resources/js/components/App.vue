@@ -54,7 +54,7 @@ body {
 
 #app button {
   cursor: pointer;
-  box-shadow: 3px 4px 0px var(--hv-yellow);
+  box-shadow: 4px 4px 0px var(--shadow);
   transition: 0.1s;
 }
 
