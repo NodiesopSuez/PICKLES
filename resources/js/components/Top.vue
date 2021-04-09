@@ -390,7 +390,7 @@ input[name="word"] {
     background: #fff;
 }
 
-.back_search > button::after {
+.back_search button::after {
     position: absolute;
     content: '';
     top: -2px;

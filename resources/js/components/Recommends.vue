@@ -3,7 +3,7 @@
         <div class="recommends_header">
             <h4>Recommends</h4>
             <div class="back_search">
-                <button @click="scrollToTop()"></button>
+                <router-link to="/"><button></button></router-link>
                 <h4>Back to search</h4>
             </div>
         </div>
@@ -192,7 +192,7 @@ h4 {
     width: 190px;
 }
 
-.back_search > button::after {
+.back_search button::after {
     top: 2px;
     left: 0;
     right: 10px;
