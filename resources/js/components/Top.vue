@@ -32,9 +32,8 @@
                         <ul>
                             <li v-if="n.type=='track'"> {{ n.track_title }}</li>
                             <li> {{ n.album_title }} </li>
-                            <li><button class="like"><img src="../img/like.png"></button></li>
                             <li> {{ n.artist }} </li>
-                            <li> {{ n.release }} </li>
+                            <li> {{ n.release }} <button class="like"><img src="../img/like.png"></button></li>
                         </ul>
                     </div>
                 </paginate>
@@ -227,7 +226,9 @@ export default {
 
 <style>
 /* likeボタン */
-.like {
+.like,
+.delete {
+    margin-left: 5px !important;
     padding: 0 0 4px 0;
     width: 26px;
     height: 26px;
@@ -235,9 +236,10 @@ export default {
     background: #fff;
 }
 
-.like > img {
+.like > img,
+.delete > img {
     width: 18px;
-    margin: auto;
+    margin: auto auto 6px auto;
 }
 
 /* Recommendsボタン */
@@ -381,6 +383,7 @@ input[name="word"] {
 
 .back_search button {
     position: relative;
+    margin: auto auto 4px auto !important;
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -400,7 +403,7 @@ input[name="word"] {
 }
 
 .back_search h4 {
-    margin-top: 8px auto 16px auto;
+    margin: 8px auto 16px auto;
     color: var(--md-green);
 }
 
@@ -414,12 +417,12 @@ input[name="word"] {
 .result > div {
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 700px;
+    width: 800px;
     margin: auto;
 }
 
 .result_li {
-    width: 300px;
+    width: 370px;
     justify-content: flex-start;
     margin: 20px 20px 20px 0px ;
     text-align: start;
@@ -436,6 +439,10 @@ input[name="word"] {
     font-size: 16px !important;
     margin-bottom: 4px;
     font-weight: bold;
+}
+
+.result_li li:last-child{
+    line-height: 30px;
 }
 
 .result_li > ul {
