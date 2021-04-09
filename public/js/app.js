@@ -1970,6 +1970,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_paginate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-paginate */ "./node_modules/vue-paginate/dist/vue-paginate.js");
+/* harmony import */ var vue_paginate__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_paginate__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_2__);
 //
 //
 //
@@ -1988,7 +1994,132 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MODULE_1___default.a);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Recommend',
+  data: function data() {
+    return {
+      toggle: true,
+      recommends_list: [{
+        "type": 'album',
+        "album_title": '834.194',
+        "artist": "サカナクション",
+        "release": "2021.04.09",
+        "img": "../img/like.png",
+        "external_url": "http://kokoko.com"
+      }, {
+        "type": 'album',
+        "album_title": 'BESTFICTION',
+        "artist": "安室奈美恵",
+        "release": "2021.04.09",
+        "img": "../img/like.png",
+        "external_url": "http://kokoko.com"
+      }, {
+        "type": 'track',
+        "track_title": "aoi",
+        "album_title": '834.194',
+        "artist": "サカナクション",
+        "release": "2021.04.09",
+        "img": "../img/like.png",
+        "external_url": "http://kokoko.com"
+      }, {
+        "type": 'album',
+        "album_title": '834.194',
+        "artist": "サカナクション",
+        "release": "2021.04.09",
+        "img": "../img/like.png",
+        "external_url": "http://kokoko.com"
+      }, {
+        "type": 'track',
+        "track_title": "aoi",
+        "album_title": '834.194',
+        "artist": "サカナクション",
+        "release": "2021.04.09",
+        "img": "../img/like.png",
+        "external_url": "http://kokoko.com"
+      }, {
+        "type": 'album',
+        "album_title": '834.194',
+        "artist": "サカナクション",
+        "release": "2021.04.09",
+        "img": "../img/like.png",
+        "external_url": "http://kokoko.com"
+      }, {
+        "type": 'album',
+        "album_title": '834.194',
+        "artist": "サカナクション",
+        "release": "2021.04.09",
+        "img": "../img/like.png",
+        "external_url": "http://kokoko.com"
+      }, {
+        "type": 'track',
+        "track_title": "aoi",
+        "album_title": '834.194',
+        "artist": "サカナクション",
+        "release": "2021.04.09",
+        "img": "../img/like.png",
+        "external_url": "http://kokoko.com"
+      }, {
+        "type": 'album',
+        "album_title": '834.194',
+        "artist": "サカナクション",
+        "release": "2021.04.09",
+        "img": "../img/like.png",
+        "external_url": "http://kokoko.com"
+      }, {
+        "type": 'album',
+        "album_title": '834.194',
+        "artist": "サカナクション",
+        "release": "2021.04.09",
+        "img": "../img/like.png",
+        "external_url": "http://kokoko.com"
+      }, {
+        "type": 'album',
+        "album_title": '834.194',
+        "artist": "サカナクション",
+        "release": "2021.04.09",
+        "img": "../img/like.png",
+        "external_url": "http://kokoko.com"
+      }, {
+        "type": 'album',
+        "album_title": '834.194',
+        "artist": "サカナクション",
+        "release": "2021.04.09",
+        "img": "../img/like.png",
+        "external_url": "http://kokoko.com"
+      }],
+      paginate: ['paginate-items']
+    };
+  }
+});
 
 /***/ }),
 
@@ -6707,7 +6838,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* likeボタン */\n.like[data-v-4f414062] {\r\n    margin: 2px !important;\r\n    pointer-events: none !important;\n}\r\n", ""]);
+exports.push([module.i, "\n.recommends_header[data-v-4f414062] { \r\n    display: flex;\r\n    justify-content: flex-start;\r\n    align-items: flex-end;\r\n    width: 800px;\r\n    height: 200px;\n}\n.recommends_header > h4[data-v-4f414062] {\r\n    position: relative;\r\n    width: 184px;\r\n    height: 58px;\r\n    line-height: 58px;\r\n    background: #fff;\n}\n.recommends_header > h4[data-v-4f414062]::after {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    content: '';\r\n    width: 159px;\r\n    height: 47px;\r\n    border: dashed 1px var(--md-green);\n}\r\n\r\n\r\n/* likeボタン */\n.like[data-v-4f414062] {\r\n    margin: 2px !important;\r\n    pointer-events: none !important;\n}\r\n", ""]);
 
 // exports
 
@@ -38722,7 +38853,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "recommends_header" }, [
-      _c("div", [_vm._v("Recommends")]),
+      _c("h4", [_vm._v("Recommends")]),
       _vm._v(" "),
       _c("div", { staticClass: "back_search" }, [
         _c("button", {
@@ -38734,10 +38865,73 @@ var render = function() {
         }),
         _vm._v(" "),
         _c("h4", [_vm._v("Back to search")])
-      ]),
-      _vm._v(" "),
-      _vm._m(0)
-    ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _vm.toggle
+      ? _c(
+          "section",
+          { ref: "result_section", attrs: { id: "result_section" } },
+          [
+            _c(
+              "div",
+              { staticClass: "result" },
+              [
+                _c(
+                  "paginate",
+                  {
+                    attrs: {
+                      name: "paginate-items",
+                      tag: "div",
+                      list: _vm.recommends_list,
+                      per: 5
+                    }
+                  },
+                  _vm._l(_vm.paginated("paginate-items"), function(n, index) {
+                    return _c("div", { key: index, staticClass: "result_li" }, [
+                      _c("img", { attrs: { src: n.img } }),
+                      _vm._v(" "),
+                      _c("ul", [
+                        n.type == "track"
+                          ? _c("li", [_vm._v(" " + _vm._s(n.track_title))])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("li", [_vm._v(" " + _vm._s(n.album_title) + " ")]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("button", { staticClass: "like" }, [
+                            _c("img", {
+                              attrs: { src: __webpack_require__(/*! ../img/delete.png */ "./resources/js/img/delete.png") }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [_vm._v(" " + _vm._s(n.artist) + " ")]),
+                        _vm._v(" "),
+                        _c("li", [_vm._v(" " + _vm._s(n.release) + " ")])
+                      ])
+                    ])
+                  }),
+                  0
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("paginate-links", {
+              staticClass: "pagination",
+              attrs: {
+                for: "paginate-items",
+                limit: 5,
+                "show-step-links": true
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -38746,18 +38940,23 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "no_list" }, [
-      _c("h3", [_vm._v("まだお気に入りが登録されていません。")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("オススメしたいコンテンツをみんなで共有しよう！")]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v("検索結果の"),
-        _c("button", { staticClass: "like", attrs: { disabled: "" } }, [
-          _c("img", { attrs: { src: __webpack_require__(/*! ../img/like.png */ "./resources/js/img/like.png") } })
-        ])
+      _c("div", { staticClass: "msg" }, [
+        _c("h3", [_vm._v("まだお気に入りが登録されていません。")]),
+        _vm._v(" "),
+        _c("p", [_vm._v("オススメしたいコンテンツをみんなで共有しよう！")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v("検索結果の"),
+          _c("button", { staticClass: "like", attrs: { disabled: "" } }, [
+            _c("img", { attrs: { src: __webpack_require__(/*! ../img/like.png */ "./resources/js/img/like.png") } })
+          ]),
+          _vm._v("をクリックして")
+        ]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Recommendsリストに追加しましょう！")])
       ]),
       _vm._v(" "),
-      _c("p")
+      _c("img", { attrs: { src: __webpack_require__(/*! ../img/for_recommends.png */ "./resources/js/img/for_recommends.png") } })
     ])
   }
 ]
@@ -55304,6 +55503,28 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 module.exports = "/images/catch_img_hand.png?99ce6178813faf7dcc32c60995a2d664";
+
+/***/ }),
+
+/***/ "./resources/js/img/delete.png":
+/*!*************************************!*\
+  !*** ./resources/js/img/delete.png ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/delete.png?b8f4e6d8c733b0bd6257191ec39ff703";
+
+/***/ }),
+
+/***/ "./resources/js/img/for_recommends.png":
+/*!*********************************************!*\
+  !*** ./resources/js/img/for_recommends.png ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/for_recommends.png?5ce372a81e43d9cbfc973838a9b0432c";
 
 /***/ }),
 
