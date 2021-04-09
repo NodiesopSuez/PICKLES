@@ -228,16 +228,16 @@ export default {
 <style>
 /* likeボタン */
 .like {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0 0 4px 0;
     width: 26px;
     height: 26px;
     border-radius: 50%;
+    background: #fff;
 }
 
 .like > img {
     width: 18px;
+    margin: auto;
 }
 
 /* Recommendsボタン */
