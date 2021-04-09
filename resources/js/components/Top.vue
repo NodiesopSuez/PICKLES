@@ -383,7 +383,7 @@ input[name="word"] {
 
 .back_search button {
     position: relative;
-    margin: auto auto 4px auto !important;
+    margin: auto 8px 4px auto !important;
     width: 25px;
     height: 25px;
     border-radius: 50%;

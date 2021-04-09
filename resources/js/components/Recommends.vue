@@ -14,8 +14,8 @@
                 <p>検索結果の<button class="like" disabled><img src="../img/like.png"></button>をクリックして</p>
                 <p>Recommendsリストに追加しましょう！</p>
                 <div class="back_search">
-                    <button @click="scrollToTop()"></button>
-                    <h4>Back to search</h4>
+                    <router-link to="/"><button></button></router-link>
+                    <h4>Let's search!!</h4>
                 </div>
             </div>
             <div class="recommends_img">
@@ -35,7 +35,6 @@
                         </ul>
                     </div>
                 </paginate>
-                
             </div>
             <paginate-links for="paginate-items" 
                             class="pagination" 
@@ -167,6 +166,7 @@ h4 {
 
 .recommends_header > h4 {
     position: relative;
+    margin-right: 16px;
     width: 184px;
     height: 58px;
     color: var(--md-green);
