@@ -256,7 +256,7 @@ export default {
 
 .to_recommends div:first-child {
     left: -0.5px;
-    padding: 7px;
+    padding: 4px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -264,7 +264,7 @@ export default {
 }
 
 .to_recommends div:first-child img {
-    width: 24px;
+    height: 32px;
     margin: auto;
 }
 
