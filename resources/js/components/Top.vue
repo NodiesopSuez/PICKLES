@@ -27,13 +27,13 @@
             </div>
             <div class="result">
                 <paginate name="paginate-items" tag="div" :list="result_list" :per="5">
-                    <div class="result_li" v-for="(n, index) in paginated('paginate-items')" :key="index">
-                        <img :src="n.img">
+                    <div class="result_li" v-for="(music, index) in paginated('paginate-items')" :key="index">
+                        <img :src="music.img">
                         <ul>
-                            <li v-if="n.type=='track'"> {{ n.track_title }}</li>
-                            <li> {{ n.album_title }} </li>
-                            <li> {{ n.artist }} </li>
-                            <li> {{ n.release }} <button class="like"><img src="../img/like.png"></button></li>
+                            <li v-if="music.type=='track'"> {{ music.track_title }}</li>
+                            <li> {{ music.album_title }} </li>
+                            <li> {{ music.artist }} </li>
+                            <li> {{ music.release }} <button class="like" @click="registerRecommends(music)"><img src="../img/like.png"></button></li>
                         </ul>
                     </div>
                 </paginate>
@@ -211,7 +211,6 @@ export default {
             const result_section = this.$refs.result_section;
             const result_section_rect = result_section.getBoundingClientRect();
             var y_offset = window.pageYOffset + result_section_rect.top
-            console.log(result_section_rect);
             window.scrollTo({
                 top: y_offset,
                 behavior: 'smooth',
@@ -219,6 +218,33 @@ export default {
         },
         closeModal(){
             this.modal ? this.modal=!this.modal : this.modal
+        },
+
+        //クリックされたLikeボタンの楽曲をRecommendsリストに追加
+        registerRecommends(music){
+            let type = music.type;
+            let track_title = (type === "track") ? music.track_title : null;
+            let album_title = music.album_title;
+            let artist = music.artist;
+            let artwork = music.img;
+            let end_url = music.external_url;
+            let release = music.release;
+
+            let post_data = {
+                'type'        : music.type,
+                'track_title' : music.track_title,
+                'album_title' : music.album_title,
+                'artist'      : music.artist,
+                'artwork'     : music.img,
+                'end_url'     : music.external_url,
+                'release'     : music.release,
+            }
+            //let body = new URLSearchParams('register_data',post_data);
+
+            axios.post(`./api/register`, post_data)
+            .then(response => {
+                console.log(response);
+            })
         },
     },
 }
