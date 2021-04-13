@@ -49,7 +49,7 @@
                 <p>エラーが発生しました。<br/>
                    申し訳ございませんが、<br/>
                    トップページへお戻りください。</p>
-                <router-link><button>トップページへ</button><router-link>
+                <router-link to="/"><button>トップページへ</button></router-link>
             </div>
         </section>
     </div>
@@ -209,5 +209,16 @@ h4 {
 .recommends_img > img {
     z-index: 20;
     width: 300px;
+}
+
+/* モーダル */
+.modal_back {
+    background: var(--for-background);
+    opacity: 1;
+}
+
+.modal_box button {
+    width: 120px;
+    font-size: 15px;
 }
 </style>

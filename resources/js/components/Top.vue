@@ -497,47 +497,4 @@ input[name="word"] {
     padding-top: 2px;
     border-radius: 50%;
 }
-
-/* modalt部分 --------------------------------------------------------- */
-.modal_back {
-    z-index: 20;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #333;
-    opacity: 0.8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal_box {
-    z-index: 30;
-    position:absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    padding: 16px;
-    width: 328px;
-    height: 200px;
-    border-radius: 15px;
-    background: #ccc;
-}
-
-h2 {
-    margin: 8px auto;
-    color: red;
-}
-
-.modal_box > button {
-    width: 80px;
-    height: 35px;
-    border-radius: 17.5px;
-    font-size: 18px;
-    box-shadow: 3px 4px 0px #333;
-}
 </style>

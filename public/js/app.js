@@ -2023,6 +2023,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2031,85 +2041,9 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
   name: 'Recommend',
   data: function data() {
     return {
+      modal: true,
       toggle: true,
-      recommends_list: [
-        /*     { "type": 'album',
-                        "album_title": '834.194',
-                        "artist": "サカナクション",
-                        "release": "2021.04.09",
-                        "img": "../img/like.png",
-                        "external_url": "http://kokoko.com"},
-            { "type": 'album',
-                        "album_title": 'BESTFICTION',
-                        "artist": "安室奈美恵",
-                        "release": "2021.04.09",
-                        "img": "../img/like.png",
-                        "external_url": "http://kokoko.com"},
-            { "type": 'track',
-                        "track_title": "aoi",
-                        "album_title": '834.194',
-                        "artist": "サカナクション",
-                        "release": "2021.04.09",
-                        "img": "../img/like.png",
-                        "external_url": "http://kokoko.com"},
-            { "type": 'album',
-                        "album_title": '834.194',
-                        "artist": "サカナクション",
-                        "release": "2021.04.09",
-                        "img": "../img/like.png",
-                        "external_url": "http://kokoko.com"},
-            { "type": 'track',
-                        "track_title": "aoi",
-                        "album_title": '834.194',
-                        "artist": "サカナクション",
-                        "release": "2021.04.09",
-                        "img": "../img/like.png",
-                        "external_url": "http://kokoko.com"},
-            { "type": 'album',
-                        "album_title": '834.194',
-                        "artist": "サカナクション",
-                        "release": "2021.04.09",
-                        "img": "../img/like.png",
-                        "external_url": "http://kokoko.com"},
-            { "type": 'album',
-                        "album_title": '834.194',
-                        "artist": "サカナクション",
-                        "release": "2021.04.09",
-                        "img": "../img/like.png",
-                        "external_url": "http://kokoko.com"},
-            { "type": 'track',
-                        "track_title": "aoi",
-                        "album_title": '834.194',
-                        "artist": "サカナクション",
-                        "release": "2021.04.09",
-                        "img": "../img/like.png",
-                        "external_url": "http://kokoko.com"},
-            { "type": 'album',
-                        "album_title": '834.194',
-                        "artist": "サカナクション",
-                        "release": "2021.04.09",
-                        "img": "../img/like.png",
-                        "external_url": "http://kokoko.com"},
-            { "type": 'album',
-                        "album_title": '834.194',
-                        "artist": "サカナクション",
-                        "release": "2021.04.09",
-                        "img": "../img/like.png",
-                        "external_url": "http://kokoko.com"},
-            { "type": 'album',
-                        "album_title": '834.194',
-                        "artist": "サカナクション",
-                        "release": "2021.04.09",
-                        "img": "../img/like.png",
-                        "external_url": "http://kokoko.com"},
-            { "type": 'album',
-                        "album_title": '834.194',
-                        "artist": "サカナクション",
-                        "release": "2021.04.09",
-                        "img": "../img/like.png",
-                        "external_url": "http://kokoko.com"},
-        */
-      ],
+      recommends_list: [],
       paginate: ['paginate-items']
     };
   },
@@ -2119,6 +2053,9 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('./api/get_recommends').then(function (response) {
       _this.recommends_list = response.data;
       console.log(response);
+    })["catch"](function (error) {
+      _this.modal = true;
+      return;
     });
   }
 });
@@ -6843,7 +6780,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n:root {\r\n  --lt-yellow: #FFE959;\r\n  --md-yellow: #FFCD03;\r\n  --hv-yellow: #ff8000;\r\n  --for-background: #C8FFD3;\r\n  --icon-background: #FDD441;\r\n  --md-green: #00502E;\r\n  --shadow: #B4CF8F;\n}\nbody { \r\n  background: var(--for-background)!important;\n}\n#app {\r\n  font-family: Avenir, Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\n#app button {\r\n  margin: auto;\r\n  border: none;\r\n  outline: none;\r\n  text-align: center;\n}\n#app li {\r\n  list-style: none;\n}\n#app button {\r\n  cursor: pointer;\r\n  box-shadow: 4px 4px 0px var(--shadow);\r\n  transition: 0.1s;\n}\n#app button:active {\r\n  transform: translate(3px, 4px);\r\n  box-shadow: none;\n}\n.fade-enter-active, .fade-leave-active {\r\n  transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to {\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n:root {\r\n  --lt-yellow: #FFE959;\r\n  --md-yellow: #FFCD03;\r\n  --hv-yellow: #ff8000;\r\n  --for-background: #C8FFD3;\r\n  --icon-background: #FDD441;\r\n  --md-green: #00502E;\r\n  --shadow: #B4CF8F;\n}\nbody { \r\n  background: var(--for-background)!important;\n}\n#app {\r\n  font-family: Avenir, Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\n#app button {\r\n  margin: auto;\r\n  border: none;\r\n  outline: none;\r\n  text-align: center;\n}\n#app li {\r\n  list-style: none;\n}\n#app button {\r\n  cursor: pointer;\r\n  box-shadow: 4px 4px 0px var(--shadow);\r\n  transition: 0.1s;\n}\n#app button:active {\r\n  transform: translate(3px, 4px);\r\n  box-shadow: none;\n}\n.fade-enter-active, .fade-leave-active {\r\n  transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to {\r\n  opacity: 0;\n}\r\n\r\n\r\n\r\n/* modalt部分 --------------------------------------------------------- */\n.modal_back {\r\n    z-index: 20;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #333;\r\n    opacity: 0.8;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\n}\n.modal_box {\r\n    z-index: 30;\r\n    position:absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    padding: 16px;\r\n    width: 328px;\r\n    height: 200px;\r\n    border-radius: 15px;\r\n    background: #ccc;\n}\nh2 {\r\n    margin: 8px auto;\r\n    color: red;\n}\n.modal_box button {\r\n    width: 80px;\r\n    height: 35px;\r\n    border-radius: 17.5px;\r\n    font-size: 18px;\r\n    box-shadow: 3px 4px 0px #333;\n}\r\n", ""]);
 
 // exports
 
@@ -6862,7 +6799,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.recommends[data-v-4f414062] {\r\n    width: 800px;\r\n    margin: auto;\n}\nh4[data-v-4f414062] {\r\n    margin: 0;\n}\n.recommends_header[data-v-4f414062],\r\n.back_search[data-v-4f414062],\r\n.no_list[data-v-4f414062] { \r\n    display: flex;\r\n    justify-content: flex-start;\n}\n.recommends_header[data-v-4f414062] {\r\n    align-items: flex-end;\r\n    height: 100px;\r\n    margin-bottom: 60px;\n}\n.recommends_header > h4[data-v-4f414062] {\r\n    position: relative;\r\n    margin-right: 16px;\r\n    width: 184px;\r\n    height: 58px;\r\n    color: var(--md-green);\r\n    line-height: 58px;\r\n    background: #fff;\n}\n.recommends_header > h4[data-v-4f414062]::after {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    content: '';\r\n    width: 159px;\r\n    height: 47px;\r\n    border: dashed 1px var(--md-green);\n}\n.back_search[data-v-4f414062] {\r\n    align-items: center;\r\n    width: 190px;\n}\n.back_search button[data-v-4f414062]::after {\r\n    top: 2px;\r\n    left: 0;\r\n    right: 10px;\r\n    transform: rotate(-90deg);\n}\n.no_list[data-v-4f414062] {\r\n    height: 400px;\n}\n.no_list > div[data-v-4f414062] {\r\n    width: 50%;\n}\n.msg[data-v-4f414062] {\r\n    text-align: start;\n}\n.msg > h4[data-v-4f414062] {\r\n    font-weight: bold;\n}\n.msg > p[data-v-4f414062] {\r\n    margin-bottom: 3px;\n}\n.msg > .back_search[data-v-4f414062] {\r\n    margin-top: 20px;\n}\n.msg > .back_search button[data-v-4f414062] {\r\n    margin: auto 8px auto 0px !important;\n}\r\n\r\n/* likeボタン */\n.like[data-v-4f414062] {\r\n    margin: 2px !important;\r\n    pointer-events: none !important;\n}\n.like img[data-v-4f414062] {\r\n    margin: 0 !important;\n}\n.recommends_img[data-v-4f414062] {\r\n    position: relative;\n}\n.recommends_img[data-v-4f414062]::after,\r\n.recommends_img > img[data-v-4f414062] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\n.recommends_img[data-v-4f414062]::after {\r\n    z-index: 10;\r\n    content: '';\r\n    width: 400px;\r\n    height: 400px;  \r\n    border-radius: 50%;\r\n    background: var(--icon-background);\n}\n.recommends_img > img[data-v-4f414062] {\r\n    z-index: 20;\r\n    width: 300px;\n}\r\n", ""]);
+exports.push([module.i, "\n.recommends[data-v-4f414062] {\r\n    width: 800px;\r\n    margin: auto;\n}\nh4[data-v-4f414062] {\r\n    margin: 0;\n}\n.recommends_header[data-v-4f414062],\r\n.back_search[data-v-4f414062],\r\n.no_list[data-v-4f414062] { \r\n    display: flex;\r\n    justify-content: flex-start;\n}\n.recommends_header[data-v-4f414062] {\r\n    align-items: flex-end;\r\n    height: 100px;\r\n    margin-bottom: 60px;\n}\n.recommends_header > h4[data-v-4f414062] {\r\n    position: relative;\r\n    margin-right: 16px;\r\n    width: 184px;\r\n    height: 58px;\r\n    color: var(--md-green);\r\n    line-height: 58px;\r\n    background: #fff;\n}\n.recommends_header > h4[data-v-4f414062]::after {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    content: '';\r\n    width: 159px;\r\n    height: 47px;\r\n    border: dashed 1px var(--md-green);\n}\n.back_search[data-v-4f414062] {\r\n    align-items: center;\r\n    width: 190px;\n}\n.back_search button[data-v-4f414062]::after {\r\n    top: 2px;\r\n    left: 0;\r\n    right: 10px;\r\n    transform: rotate(-90deg);\n}\n.no_list[data-v-4f414062] {\r\n    height: 400px;\n}\n.no_list > div[data-v-4f414062] {\r\n    width: 50%;\n}\n.msg[data-v-4f414062] {\r\n    text-align: start;\n}\n.msg > h4[data-v-4f414062] {\r\n    font-weight: bold;\n}\n.msg > p[data-v-4f414062] {\r\n    margin-bottom: 3px;\n}\n.msg > .back_search[data-v-4f414062] {\r\n    margin-top: 20px;\n}\n.msg > .back_search button[data-v-4f414062] {\r\n    margin: auto 8px auto 0px !important;\n}\r\n\r\n/* likeボタン */\n.like[data-v-4f414062] {\r\n    margin: 2px !important;\r\n    pointer-events: none !important;\n}\n.like img[data-v-4f414062] {\r\n    margin: 0 !important;\n}\n.recommends_img[data-v-4f414062] {\r\n    position: relative;\n}\n.recommends_img[data-v-4f414062]::after,\r\n.recommends_img > img[data-v-4f414062] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\n.recommends_img[data-v-4f414062]::after {\r\n    z-index: 10;\r\n    content: '';\r\n    width: 400px;\r\n    height: 400px;  \r\n    border-radius: 50%;\r\n    background: var(--icon-background);\n}\n.recommends_img > img[data-v-4f414062] {\r\n    z-index: 20;\r\n    width: 300px;\n}\r\n\r\n/* モーダル */\n.modal_back[data-v-4f414062] {\r\n    background: var(--for-background);\r\n    opacity: 1;\n}\n.modal_box button[data-v-4f414062] {\r\n    width: 120px;\r\n    font-size: 15px;\n}\r\n", ""]);
 
 // exports
 
@@ -6881,7 +6818,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* likeボタン */\n.like,\r\n.delete {\r\n    margin-left: 5px !important;\r\n    padding: 0 0 4px 0;\r\n    width: 26px;\r\n    height: 26px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.like > img,\r\n.delete > img {\r\n    width: 18px;\r\n    margin: auto auto 6px auto;\n}\r\n\r\n/* Recommendsボタン */\n.to_recommends {\r\n    display: block;\r\n    position: relative;\r\n    width: 156px;\r\n    height: 40px;\r\n    border-radius: 20px;\n}\n.to_recommends div {\r\n    position: absolute;\r\n    top: 0;\n}\n.to_recommends div:first-child {\r\n    left: -0.5px;\r\n    padding: 4px;\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    background: var(--icon-background);\n}\n.to_recommends div:first-child img {\r\n    height: 32px;\r\n    margin: auto;\n}\n.to_recommends div:nth-child(2) {\r\n    line-height: 40px;\r\n    right: 10px;\n}\r\n\r\n\r\n/* section */.top_section {\r\n    height: 600px;\r\n    background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ;\n}\n.top_section button {\r\n    font-size: 16px;\r\n    background: var(--md-green);\r\n    color: #fff;\n}\n.catch,\r\n.musical_notes {\r\n    position: relative;\r\n    margin: auto;\n}\n.catch *,\r\n.musical_notes > img {\r\n    position: absolute;\n}\n.catch {\r\n    width: 480px;\r\n    height: 340px;\n}\n.catch_img_hand {\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 240px;\n}\n.catch > h1,\r\n.catch > p {\r\n    color: var(--md-yellow);\n}\n.catch > h1 {\r\n    bottom: 108px;\r\n    font-size: 50px;\r\n    font-weight: bold;\n}\n.catch > p {\r\n    bottom: 80px;\r\n    font-size: 20px;\n}\n.musical_notes {\r\n    margin: auto;\r\n    width: 1000px;\n}\r\n\r\n/* Form部分 --------------------------------------------------------- */\n.search_form { \r\n    display: flex;\r\n    justify-content: space-between;\r\n    margin: 30px auto;\r\n    width: 480px;\n}\ninput {\r\n    border: none;\r\n    outline: none;\r\n    text-align: center;\n}\ninput[name=\"word\"],\r\n.submit {\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\n}\ninput[name=\"word\"] {\r\n    margin-top: 4px;\r\n    width: 370px;\r\n    color: var(--md-green);\r\n    font-size: 18px;\r\n    background: #fff;\n}\n::-moz-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n:-ms-input-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n::placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n.submit {\r\n    z-index: 10;\r\n    margin-bottom: 4px!important;\r\n    width: 80px;\n}\r\n\r\n/* Result部分 --------------------------------------------------------- */\r\n/* section */#result_section {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 50px;\r\n    padding-top: 16px;\r\n    background-color: var(--for-background);\n}\n.back_search button {\r\n    position: relative;\r\n    margin: auto 8px 4px auto !important;\r\n    width: 25px;\r\n    height: 25px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.back_search button::after {\r\n    position: absolute;\r\n    content: '';\r\n    top: -2px;\r\n    right: 8px;\r\n    left: 6px;\r\n    margin: auto;\r\n    border-style: solid;\r\n    border-width: 7px 7px 14px 7px;\r\n    border-color: transparent transparent var(--md-green) transparent;\n}\n.back_search h4 {\r\n    margin: 8px auto 16px auto;\r\n    color: var(--md-green);\n}\n.result > div,\r\n.result_li,\r\n.pagination {\r\n    display: flex;\r\n    align-items: center;\n}\n.result > div {\r\n    flex-wrap: wrap;\r\n    justify-content: space-between;\r\n    width: 800px;\r\n    margin: auto;\n}\n.result_li {\r\n    width: 370px;\r\n    justify-content: flex-start;\r\n    margin: 20px 20px 20px 0px ;\r\n    text-align: start;\n}\n.result_li > img {\r\n    width: 130px;\r\n    height: 130px;\r\n    background: #ccc;\r\n    box-shadow: 5px 5px 2px var(--shadow);\n}\n.result_li li:first-child{\r\n    font-size: 16px !important;\r\n    margin-bottom: 4px;\r\n    font-weight: bold;\n}\n.result_li li:last-child{\r\n    line-height: 30px;\n}\n.result_li > ul {\r\n    font-size: 14px;\n}\n.pagination {\r\n    cursor: pointer;\r\n    margin: 20px auto 100px auto;\n}\n.pagination .number,\r\n.pagination .right-arrow,\r\n.pagination .left-arrow {\r\n    color: var(--md-green);\r\n    margin: auto 6px;\n}\n.pagination .disabled {\r\n    opacity: 0;\n}\n.pagination .active {\r\n    width: 25px;\r\n    height: 25px;\r\n    color: #fff!important;\r\n    background: var(--md-green);\r\n    padding-top: 2px;\r\n    border-radius: 50%;\n}\r\n\r\n/* modalt部分 --------------------------------------------------------- */\n.modal_back {\r\n    z-index: 20;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #333;\r\n    opacity: 0.8;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\n}\n.modal_box {\r\n    z-index: 30;\r\n    position:absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    padding: 16px;\r\n    width: 328px;\r\n    height: 200px;\r\n    border-radius: 15px;\r\n    background: #ccc;\n}\nh2 {\r\n    margin: 8px auto;\r\n    color: red;\n}\n.modal_box > button {\r\n    width: 80px;\r\n    height: 35px;\r\n    border-radius: 17.5px;\r\n    font-size: 18px;\r\n    box-shadow: 3px 4px 0px #333;\n}\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* likeボタン */\n.like,\r\n.delete {\r\n    margin-left: 5px !important;\r\n    padding: 0 0 4px 0;\r\n    width: 26px;\r\n    height: 26px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.like > img,\r\n.delete > img {\r\n    width: 18px;\r\n    margin: auto auto 6px auto;\n}\r\n\r\n/* Recommendsボタン */\n.to_recommends {\r\n    display: block;\r\n    position: relative;\r\n    width: 156px;\r\n    height: 40px;\r\n    border-radius: 20px;\n}\n.to_recommends div {\r\n    position: absolute;\r\n    top: 0;\n}\n.to_recommends div:first-child {\r\n    left: -0.5px;\r\n    padding: 4px;\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    background: var(--icon-background);\n}\n.to_recommends div:first-child img {\r\n    height: 32px;\r\n    margin: auto;\n}\n.to_recommends div:nth-child(2) {\r\n    line-height: 40px;\r\n    right: 10px;\n}\r\n\r\n\r\n/* section */.top_section {\r\n    height: 600px;\r\n    background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ;\n}\n.top_section button {\r\n    font-size: 16px;\r\n    background: var(--md-green);\r\n    color: #fff;\n}\n.catch,\r\n.musical_notes {\r\n    position: relative;\r\n    margin: auto;\n}\n.catch *,\r\n.musical_notes > img {\r\n    position: absolute;\n}\n.catch {\r\n    width: 480px;\r\n    height: 340px;\n}\n.catch_img_hand {\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 240px;\n}\n.catch > h1,\r\n.catch > p {\r\n    color: var(--md-yellow);\n}\n.catch > h1 {\r\n    bottom: 108px;\r\n    font-size: 50px;\r\n    font-weight: bold;\n}\n.catch > p {\r\n    bottom: 80px;\r\n    font-size: 20px;\n}\n.musical_notes {\r\n    margin: auto;\r\n    width: 1000px;\n}\r\n\r\n/* Form部分 --------------------------------------------------------- */\n.search_form { \r\n    display: flex;\r\n    justify-content: space-between;\r\n    margin: 30px auto;\r\n    width: 480px;\n}\ninput {\r\n    border: none;\r\n    outline: none;\r\n    text-align: center;\n}\ninput[name=\"word\"],\r\n.submit {\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\n}\ninput[name=\"word\"] {\r\n    margin-top: 4px;\r\n    width: 370px;\r\n    color: var(--md-green);\r\n    font-size: 18px;\r\n    background: #fff;\n}\n::-moz-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n:-ms-input-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n::placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n.submit {\r\n    z-index: 10;\r\n    margin-bottom: 4px!important;\r\n    width: 80px;\n}\r\n\r\n/* Result部分 --------------------------------------------------------- */\r\n/* section */#result_section {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 50px;\r\n    padding-top: 16px;\r\n    background-color: var(--for-background);\n}\n.back_search button {\r\n    position: relative;\r\n    margin: auto 8px 4px auto !important;\r\n    width: 25px;\r\n    height: 25px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.back_search button::after {\r\n    position: absolute;\r\n    content: '';\r\n    top: -2px;\r\n    right: 8px;\r\n    left: 6px;\r\n    margin: auto;\r\n    border-style: solid;\r\n    border-width: 7px 7px 14px 7px;\r\n    border-color: transparent transparent var(--md-green) transparent;\n}\n.back_search h4 {\r\n    margin: 8px auto 16px auto;\r\n    color: var(--md-green);\n}\n.result > div,\r\n.result_li,\r\n.pagination {\r\n    display: flex;\r\n    align-items: center;\n}\n.result > div {\r\n    flex-wrap: wrap;\r\n    justify-content: space-between;\r\n    width: 800px;\r\n    margin: auto;\n}\n.result_li {\r\n    width: 370px;\r\n    justify-content: flex-start;\r\n    margin: 20px 20px 20px 0px ;\r\n    text-align: start;\n}\n.result_li > img {\r\n    width: 130px;\r\n    height: 130px;\r\n    background: #ccc;\r\n    box-shadow: 5px 5px 2px var(--shadow);\n}\n.result_li li:first-child{\r\n    font-size: 16px !important;\r\n    margin-bottom: 4px;\r\n    font-weight: bold;\n}\n.result_li li:last-child{\r\n    line-height: 30px;\n}\n.result_li > ul {\r\n    font-size: 14px;\n}\n.pagination {\r\n    cursor: pointer;\r\n    margin: 20px auto 100px auto;\n}\n.pagination .number,\r\n.pagination .right-arrow,\r\n.pagination .left-arrow {\r\n    color: var(--md-green);\r\n    margin: auto 6px;\n}\n.pagination .disabled {\r\n    opacity: 0;\n}\n.pagination .active {\r\n    width: 25px;\r\n    height: 25px;\r\n    color: #fff!important;\r\n    background: var(--md-green);\r\n    padding-top: 2px;\r\n    border-radius: 50%;\n}\r\n", ""]);
 
 // exports
 
@@ -38981,6 +38918,27 @@ var render = function() {
           ],
           1
         )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.modal
+      ? _c("section", { staticClass: "modal_section" }, [
+          _c("div", { staticClass: "modal_back" }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "modal_box" },
+            [
+              _c("h2", [_vm._v("ERROR!!")]),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: "/" } }, [
+                _c("button", [_vm._v("トップページへ")])
+              ])
+            ],
+            1
+          )
+        ])
       : _vm._e()
   ])
 }
@@ -39003,6 +38961,18 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "recommends_img" }, [
       _c("img", { attrs: { src: __webpack_require__(/*! ../img/for_recommends.png */ "./resources/js/img/for_recommends.png") } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("エラーが発生しました。"),
+      _c("br"),
+      _vm._v("\n               申し訳ございませんが、"),
+      _c("br"),
+      _vm._v("\n               トップページへお戻りください。")
     ])
   }
 ]
