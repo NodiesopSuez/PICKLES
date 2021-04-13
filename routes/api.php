@@ -19,6 +19,13 @@ Route::middleware('auth:api') -> get('/user', function (Request $request) {
     return $request -> user();
 });
 
+//favoritesテーブルの全レコード取得(デバック用)
+Route::get('/get_rec', function(){
+    $favorites = \App\Favorites::all();
+
+    return $favorites;
+});
+
 //Recommendsに表示するリスト(パブリック)
 Route::get('/get_recommends', function(){
     //user_id===nullで、album_title,track_title,artistでグループ化したリストを取得
@@ -26,13 +33,6 @@ Route::get('/get_recommends', function(){
                 -> groupBy(["album_title", "track_title", "artist"])
                 -> orderBy("id", "desc")
                 -> get();
-
-    return $favorites;
-});
-
-
-Route::get('/get_rec', function(){
-    $favorites = \App\Favorites::all();
 
     return $favorites;
 });

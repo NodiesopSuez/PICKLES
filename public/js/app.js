@@ -2072,6 +2072,8 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
   },
   methods: {
     deleteRecommends: function deleteRecommends(music) {
+      var _this2 = this;
+
       console.log(music);
       var id = music.id; //クリックされたコンテンツのid
       //クリックされたコンテンツの情報
@@ -2087,6 +2089,9 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
         console.log(response); //削除できたら/recommendsを表示し直し
 
         window.location.href = "/recommends";
+      })["catch"](function (error) {
+        _this2.modal = true;
+        return;
       });
     }
   }

@@ -76,19 +76,10 @@ export default {
     mounted: function(){
         axios.get('./api/get_recommends')
         .then((response) => {
-            console.log(response.data.length);
-
-            /* if(response.data.length === 0){
-                this.no_list = true;
-                this.toggle = false;
-            } else { 
-                this.no_list = false;
-                this.toggle = false;
-            } */
-            
             this.no_list = (response.data.length === 0) ? true : false ;
             this.toggle = (response.data.length === 0) ? false : true ;
             this.recommends_list = response.data;
+            //デバック用に出力
             console.log(this.recommends_list);
         })
         .catch((error)=>{
@@ -110,6 +101,7 @@ export default {
 
             axios.delete(`./api/delete_recommends/${id}`, {data : params})
             .then((response)=>{
+                //成功していたら'deleted'出力
                 console.log(response);
                 //削除できたら/recommendsを表示し直し
                 window.location.href="/recommends";
