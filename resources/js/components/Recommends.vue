@@ -31,7 +31,7 @@
                             <li v-if="music.type=='track'"> {{ music.track_title }}</li>
                             <li> {{ music.album_title }} </li>
                             <li> {{ music.artist }} </li>
-                            <li> {{ music.release }} <button class="delete"><img src="../img/delete.png"></button></li>
+                            <li> {{ music.release }} <button class="delete" @click="deleteRecommends(music)"><img src="../img/delete.png"></button></li>
                         </ul>
                     </div>
                 </paginate>
@@ -94,9 +94,33 @@ export default {
         .catch((error)=>{
             this.modal = true;
             return;
-        })
-        
-    }
+        }); 
+    },
+    methods: {
+        deleteRecommends(music){
+            console.log(music);
+            let id = music.id; //クリックされたコンテンツのid
+            
+            //クリックされたコンテンツの情報
+            let params = {
+                "album_title" : music.album_title,
+                "track_title" : music.track_title,
+                "artist"      : music.artist
+                }
+
+            axios.delete(`./api/delete_recommends/${id}`, {data : params})
+            .then((response)=>{
+                console.log(response);
+                //削除できたら/recommendsを表示し直し
+                window.location.href="/recommends";
+            })
+            .catch((error)=>{
+                this.modal = true;
+                return;
+            });
+
+        }
+    },
 }
 </script>
 

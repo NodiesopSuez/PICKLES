@@ -2069,6 +2069,26 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
       _this.modal = true;
       return;
     });
+  },
+  methods: {
+    deleteRecommends: function deleteRecommends(music) {
+      console.log(music);
+      var id = music.id; //クリックされたコンテンツのid
+      //クリックされたコンテンツの情報
+
+      var params = {
+        "album_title": music.album_title,
+        "track_title": music.track_title,
+        "artist": music.artist
+      };
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("./api/delete_recommends/".concat(id), {
+        data: params
+      }).then(function (response) {
+        console.log(response); //削除できたら/recommendsを表示し直し
+
+        window.location.href = "/recommends";
+      });
+    }
   }
 });
 
@@ -38908,11 +38928,22 @@ var render = function() {
                         _vm._v(" "),
                         _c("li", [
                           _vm._v(" " + _vm._s(music.release) + " "),
-                          _c("button", { staticClass: "delete" }, [
-                            _c("img", {
-                              attrs: { src: __webpack_require__(/*! ../img/delete.png */ "./resources/js/img/delete.png") }
-                            })
-                          ])
+                          _c(
+                            "button",
+                            {
+                              staticClass: "delete",
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteRecommends(music)
+                                }
+                              }
+                            },
+                            [
+                              _c("img", {
+                                attrs: { src: __webpack_require__(/*! ../img/delete.png */ "./resources/js/img/delete.png") }
+                              })
+                            ]
+                          )
                         ])
                       ])
                     ])
