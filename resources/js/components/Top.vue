@@ -223,8 +223,7 @@ export default {
         //クリックされたLikeボタンの楽曲をRecommendsリストに追加
         registerRecommends(music){
             let track_title = (music.type === "track") ? music.track_title : null;
-
-
+            
             let post_data = {
                 'type'        : music.type,
                 'track_title' : music.track_title,
@@ -234,11 +233,18 @@ export default {
                 'end_url'     : music.external_url,
                 'release'     : music.release,
             }
-            //let body = new URLSearchParams('register_data',post_data);
 
             axios.post(`./api/register`, post_data)
             .then(response => {
                 console.log(response);
+            })
+            .catch((error)=>{
+                    this.toggle = false;
+                    this.modal = true;
+                    return;
+            })
+            .finally(()=>{
+                return;
             })
         },
     },
