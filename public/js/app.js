@@ -2064,7 +2064,7 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
       _this.no_list = response.data.length === 0 ? true : false;
       _this.toggle = response.data.length === 0 ? false : true;
       _this.recommends_list = response.data;
-      console.log(response);
+      console.log(_this.recommends_list);
     })["catch"](function (error) {
       _this.modal = true;
       return;

@@ -89,7 +89,7 @@ export default {
             this.no_list = (response.data.length === 0) ? true : false ;
             this.toggle = (response.data.length === 0) ? false : true ;
             this.recommends_list = response.data;
-            console.log(response);
+            console.log(this.recommends_list);
         })
         .catch((error)=>{
             this.modal = true;
