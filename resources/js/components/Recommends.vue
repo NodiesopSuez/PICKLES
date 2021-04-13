@@ -42,6 +42,16 @@
                             :show-step-links="true">
             </paginate-links>
         </section>
+        <section class="modal_section" v-if="modal">
+            <div class="modal_back"></div>
+            <div class="modal_box">
+                <h2>ERROR!!</h2>
+                <p>エラーが発生しました。<br/>
+                   申し訳ございませんが、<br/>
+                   トップページへお戻りください。</p>
+                <router-link><button>トップページへ</button><router-link>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -56,85 +66,9 @@ export default {
     name: 'Recommend',
     data: function(){
         return {
+            modal: true,
             toggle: true,
-            recommends_list: [
-            /*     { "type": 'album',
-                            "album_title": '834.194',
-                            "artist": "サカナクション",
-                            "release": "2021.04.09",
-                            "img": "../img/like.png",
-                            "external_url": "http://kokoko.com"},
-                { "type": 'album',
-                            "album_title": 'BESTFICTION',
-                            "artist": "安室奈美恵",
-                            "release": "2021.04.09",
-                            "img": "../img/like.png",
-                            "external_url": "http://kokoko.com"},
-                { "type": 'track',
-                            "track_title": "aoi",
-                            "album_title": '834.194',
-                            "artist": "サカナクション",
-                            "release": "2021.04.09",
-                            "img": "../img/like.png",
-                            "external_url": "http://kokoko.com"},
-                { "type": 'album',
-                            "album_title": '834.194',
-                            "artist": "サカナクション",
-                            "release": "2021.04.09",
-                            "img": "../img/like.png",
-                            "external_url": "http://kokoko.com"},
-                { "type": 'track',
-                            "track_title": "aoi",
-                            "album_title": '834.194',
-                            "artist": "サカナクション",
-                            "release": "2021.04.09",
-                            "img": "../img/like.png",
-                            "external_url": "http://kokoko.com"},
-                { "type": 'album',
-                            "album_title": '834.194',
-                            "artist": "サカナクション",
-                            "release": "2021.04.09",
-                            "img": "../img/like.png",
-                            "external_url": "http://kokoko.com"},
-                { "type": 'album',
-                            "album_title": '834.194',
-                            "artist": "サカナクション",
-                            "release": "2021.04.09",
-                            "img": "../img/like.png",
-                            "external_url": "http://kokoko.com"},
-                { "type": 'track',
-                            "track_title": "aoi",
-                            "album_title": '834.194',
-                            "artist": "サカナクション",
-                            "release": "2021.04.09",
-                            "img": "../img/like.png",
-                            "external_url": "http://kokoko.com"},
-                { "type": 'album',
-                            "album_title": '834.194',
-                            "artist": "サカナクション",
-                            "release": "2021.04.09",
-                            "img": "../img/like.png",
-                            "external_url": "http://kokoko.com"},
-                { "type": 'album',
-                            "album_title": '834.194',
-                            "artist": "サカナクション",
-                            "release": "2021.04.09",
-                            "img": "../img/like.png",
-                            "external_url": "http://kokoko.com"},
-                { "type": 'album',
-                            "album_title": '834.194',
-                            "artist": "サカナクション",
-                            "release": "2021.04.09",
-                            "img": "../img/like.png",
-                            "external_url": "http://kokoko.com"},
-                { "type": 'album',
-                            "album_title": '834.194',
-                            "artist": "サカナクション",
-                            "release": "2021.04.09",
-                            "img": "../img/like.png",
-                            "external_url": "http://kokoko.com"},
- */
-            ],
+            recommends_list: [],
             paginate:['paginate-items'],
         };
     },
@@ -143,6 +77,10 @@ export default {
         .then((response) => {
             this.recommends_list = response.data;
             console.log(response);
+        })
+        .catch((error)=>{
+            this.modal = true;
+            return;
         })
         
     }
