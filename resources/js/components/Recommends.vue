@@ -2,12 +2,12 @@
     <div class="recommends">
         <div class="recommends_header">
             <h4>Recommends</h4>
-            <div class="back_search">
+            <div class="back_search" v-if="toggle">
                 <router-link to="/"><button></button></router-link>
                 <h4>Back to search</h4>
             </div>
         </div>
-        <div class="no_list">
+        <div class="no_list" v-if="no_list">
             <div class="msg">
                 <h4>まだお気に入りが登録されていません。</h4>
                 <p>オススメしたいコンテンツをみんなで共有しよう！</p> 
@@ -66,7 +66,8 @@ export default {
     name: 'Recommend',
     data: function(){
         return {
-            modal: true,
+            modal: false,
+            no_list: false,
             toggle: true,
             recommends_list: [],
             paginate:['paginate-items'],
@@ -75,6 +76,18 @@ export default {
     mounted: function(){
         axios.get('./api/get_recommends')
         .then((response) => {
+            console.log(response.data.length);
+
+            /* if(response.data.length === 0){
+                this.no_list = true;
+                this.toggle = false;
+            } else { 
+                this.no_list = false;
+                this.toggle = false;
+            } */
+            
+            this.no_list = (response.data.length === 0) ? true : false ;
+            this.toggle = (response.data.length === 0) ? false : true ;
             this.recommends_list = response.data;
             console.log(response);
         })

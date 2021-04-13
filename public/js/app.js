@@ -2041,7 +2041,8 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
   name: 'Recommend',
   data: function data() {
     return {
-      modal: true,
+      modal: false,
+      no_list: false,
       toggle: true,
       recommends_list: [],
       paginate: ['paginate-items']
@@ -2051,6 +2052,17 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
     var _this = this;
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('./api/get_recommends').then(function (response) {
+      console.log(response.data.length);
+      /* if(response.data.length === 0){
+          this.no_list = true;
+          this.toggle = false;
+      } else { 
+          this.no_list = false;
+          this.toggle = false;
+      } */
+
+      _this.no_list = response.data.length === 0 ? true : false;
+      _this.toggle = response.data.length === 0 ? false : true;
       _this.recommends_list = response.data;
       console.log(response);
     })["catch"](function (error) {
@@ -38816,42 +38828,46 @@ var render = function() {
     _c("div", { staticClass: "recommends_header" }, [
       _c("h4", [_vm._v("Recommends")]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "back_search" },
-        [
-          _c("router-link", { attrs: { to: "/" } }, [_c("button")]),
-          _vm._v(" "),
-          _c("h4", [_vm._v("Back to search")])
-        ],
-        1
-      )
+      _vm.toggle
+        ? _c(
+            "div",
+            { staticClass: "back_search" },
+            [
+              _c("router-link", { attrs: { to: "/" } }, [_c("button")]),
+              _vm._v(" "),
+              _c("h4", [_vm._v("Back to search")])
+            ],
+            1
+          )
+        : _vm._e()
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "no_list" }, [
-      _c("div", { staticClass: "msg" }, [
-        _c("h4", [_vm._v("まだお気に入りが登録されていません。")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("オススメしたいコンテンツをみんなで共有しよう！")]),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c("p", [_vm._v("Recommendsリストに追加しましょう！")]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "back_search" },
-          [
-            _c("router-link", { attrs: { to: "/" } }, [_c("button")]),
+    _vm.no_list
+      ? _c("div", { staticClass: "no_list" }, [
+          _c("div", { staticClass: "msg" }, [
+            _c("h4", [_vm._v("まだお気に入りが登録されていません。")]),
             _vm._v(" "),
-            _c("h4", [_vm._v("Let's search!!")])
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _vm._m(1)
-    ]),
+            _c("p", [_vm._v("オススメしたいコンテンツをみんなで共有しよう！")]),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c("p", [_vm._v("Recommendsリストに追加しましょう！")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "back_search" },
+              [
+                _c("router-link", { attrs: { to: "/" } }, [_c("button")]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Let's search!!")])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _vm.toggle
       ? _c(
