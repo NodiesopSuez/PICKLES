@@ -18,13 +18,13 @@ Route::middleware('auth:api') -> get('/user', function (Request $request) {
     return $request -> user();
 });
 
-Route::get('/getrecommends', function(){
+Route::get('/get_recommends', function(){
     $favorites = \App\Favorites::all();
 
     return $favorites;
 });
 
-Route::post('/register', function(){
+Route::post('/register_recommends', function(){
     $favorites = new \App\Favorites();
  
     $favorites -> type        = request()->get("type");
