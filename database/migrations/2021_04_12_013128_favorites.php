@@ -16,11 +16,11 @@ class Favorites extends Migration
         Schema::create('favorites', function (Blueprint $table) {
             $table -> bigIncrements('id');
             $table -> string('type', 10);
-            $table -> string('album_title')-> nullable();;
-            $table -> string('artist')-> nullable();;
-            $table -> string('artwork', 2100)-> nullable();;
-            $table -> string('end_url', 2100)-> nullable();;
-            $table -> string('release', 10)-> nullable();;
+            $table -> string('album_title');
+            $table -> string('artist');
+            $table -> string('img', 2100);
+            $table -> string('end_url', 2100);
+            $table -> string('release', 10);
             $table -> string('track_title') -> nullable();
             $table -> string('user_id') -> nullable();
             $table -> timestamps();

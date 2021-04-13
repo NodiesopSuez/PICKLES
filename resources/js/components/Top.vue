@@ -222,20 +222,15 @@ export default {
 
         //クリックされたLikeボタンの楽曲をRecommendsリストに追加
         registerRecommends(music){
-            let type = music.type;
-            let track_title = (type === "track") ? music.track_title : null;
-            let album_title = music.album_title;
-            let artist = music.artist;
-            let artwork = music.img;
-            let end_url = music.external_url;
-            let release = music.release;
+            let track_title = (music.type === "track") ? music.track_title : null;
+
 
             let post_data = {
                 'type'        : music.type,
                 'track_title' : music.track_title,
                 'album_title' : music.album_title,
                 'artist'      : music.artist,
-                'artwork'     : music.img,
+                'img'         : music.img,
                 'end_url'     : music.external_url,
                 'release'     : music.release,
             }
