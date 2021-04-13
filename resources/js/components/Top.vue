@@ -235,7 +235,7 @@ export default {
             }
 
             axios.post(`./api/register_recommends`, post_data)
-            .then(response => {
+            .then((response) => {
                 console.log(response);
             })
             .catch((error)=>{

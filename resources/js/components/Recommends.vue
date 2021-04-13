@@ -25,13 +25,13 @@
         <section id="result_section" ref="result_section" v-if="toggle">
             <div class="result">
                 <paginate name="paginate-items" tag="div" :list="recommends_list" :per="5">
-                    <div class="result_li" v-for="(n, index) in paginated('paginate-items')" :key="index">
-                        <img :src="n.img">
+                    <div class="result_li" v-for="(music, index) in paginated('paginate-items')" :key="index">
+                        <img :src="music.img">
                         <ul>
-                            <li v-if="n.type=='track'"> {{ n.track_title }}</li>
-                            <li> {{ n.album_title }} </li>
-                            <li> {{ n.artist }} </li>
-                            <li> {{ n.release }} <button class="delete"><img src="../img/delete.png"></button></li>
+                            <li v-if="music.type=='track'"> {{ music.track_title }}</li>
+                            <li> {{ music.album_title }} </li>
+                            <li> {{ music.artist }} </li>
+                            <li> {{ music.release }} <button class="delete"><img src="../img/delete.png"></button></li>
                         </ul>
                     </div>
                 </paginate>
@@ -58,7 +58,7 @@ export default {
         return {
             toggle: true,
             recommends_list: [
-                { "type": 'album',
+            /*     { "type": 'album',
                             "album_title": '834.194',
                             "artist": "サカナクション",
                             "release": "2021.04.09",
@@ -133,11 +133,19 @@ export default {
                             "release": "2021.04.09",
                             "img": "../img/like.png",
                             "external_url": "http://kokoko.com"},
-
+ */
             ],
             paginate:['paginate-items'],
         };
     },
+    mounted: function(){
+        axios.get('./api/get_recommends')
+        .then((response) => {
+            this.recommends_list = response.data;
+            console.log(response);
+        })
+        
+    }
 }
 </script>
 
