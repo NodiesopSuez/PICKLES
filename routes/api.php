@@ -24,6 +24,7 @@ Route::get('/get_recommends', function(){
     //user_id===nullで、album_title,track_title,artistでグループ化したリストを取得
     $favorites = \App\Favorites::where("user_id", null)
                 ->groupBy(["album_title", "track_title", "artist"])
+                ->orderBy("id", "desc")
                 ->get();
 
     return $favorites;
