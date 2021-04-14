@@ -23,20 +23,11 @@ Route::middleware('auth:api') -> get('/user', function (Request $request) {
 //favoritesテーブルの全レコード取得(デバック用)
 Route::get('/get_rec', 'FavoritesController@test');
 
-//Recommendsに表示するリスト(パブリック)
-/* Route::get('/get_recommends', function(){
-    //user_id===nullで、album_title,track_title,artistでグループ化したリストを取得
-    $favorites = \App\Favorites::where("user_id", null)
-                -> groupBy(["album_title", "track_title", "artist"])
-                -> orderBy("id", "desc")
-                -> get();
-
-    return $favorites;
-}); */
+//favoritesテーブルからRecommends表示用のリスト取得(パブリック)
 Route::get('/get_recommends', 'FavoritesController@index'); 
 
 //favoritesテーブルに登録(パブリック)
-Route::post('/register_recommends', function(){
+/* Route::post('/register_recommends', function(){
     $favorites = new \App\Favorites();
  
     $favorites -> type        = request() -> get("type");
@@ -53,7 +44,8 @@ Route::post('/register_recommends', function(){
 
     return 'OK';
     
-});
+}); */
+Route::post('/register_recommends', 'FavoritesController@store'); 
 
 Route::delete('/delete_recommends/{id}', function($id){
     $album_title = request() -> get("album_title");
