@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use \App\Http\Controllers\FavoritesController;
 use \App\Favorites;
 
 /*
@@ -27,7 +28,7 @@ Route::get('/get_rec', function(){
 });
 
 //Recommendsに表示するリスト(パブリック)
-Route::get('/get_recommends', function(){
+/* Route::get('/get_recommends', function(){
     //user_id===nullで、album_title,track_title,artistでグループ化したリストを取得
     $favorites = \App\Favorites::where("user_id", null)
                 -> groupBy(["album_title", "track_title", "artist"])
@@ -35,7 +36,8 @@ Route::get('/get_recommends', function(){
                 -> get();
 
     return $favorites;
-});
+}); */
+Route::get('/get_recommends', 'FavoritesController@index'); 
 
 //favoritesテーブルに登録(パブリック)
 Route::post('/register_recommends', function(){
