@@ -50,7 +50,7 @@ Route::post('/register_recommends', function(){
 
     $favorites -> track_title = request() -> get("track_title");
     $favorites -> user_id     = request() -> get("user_id");
-
+    
     $favorites -> save(); 
 
     return 'OK';

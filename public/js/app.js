@@ -2052,18 +2052,10 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
     var _this = this;
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('./api/get_recommends').then(function (response) {
-      console.log(response.data.length);
-      /* if(response.data.length === 0){
-          this.no_list = true;
-          this.toggle = false;
-      } else { 
-          this.no_list = false;
-          this.toggle = false;
-      } */
-
       _this.no_list = response.data.length === 0 ? true : false;
       _this.toggle = response.data.length === 0 ? false : true;
-      _this.recommends_list = response.data;
+      _this.recommends_list = response.data; //デバック用に出力
+
       console.log(_this.recommends_list);
     })["catch"](function (error) {
       _this.modal = true;
@@ -2086,6 +2078,7 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
       axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("./api/delete_recommends/".concat(id), {
         data: params
       }).then(function (response) {
+        //成功していたら'deleted'出力
         console.log(response); //削除できたら/recommendsを表示し直し
 
         window.location.href = "/recommends";
