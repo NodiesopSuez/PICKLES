@@ -21,11 +21,7 @@ Route::middleware('auth:api') -> get('/user', function (Request $request) {
 });
 
 //favoritesテーブルの全レコード取得(デバック用)
-Route::get('/get_rec', function(){
-    $favorites = \App\Favorites::all();
-
-    return $favorites;
-});
+Route::get('/get_rec', 'FavoritesController@test');
 
 //Recommendsに表示するリスト(パブリック)
 /* Route::get('/get_recommends', function(){
