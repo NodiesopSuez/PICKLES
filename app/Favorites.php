@@ -43,6 +43,15 @@ class Favorites extends Model {
         return 'OK';
     }
 
+    //favoritesテーブルからid指定でコンテンツを削除
+    public function deleteContentsFromFavoritesByUserId($id){
+        $favorites = $this;
+        $delete_contents = $favorites::find($id);
+        if($delete_contents){
+            $delete_contents -> delete();
+        }
+        return 'deleted';
+    }
 }
 
 

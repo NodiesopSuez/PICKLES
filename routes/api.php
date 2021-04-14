@@ -26,10 +26,12 @@ Route::get('/get_rec', 'FavoritesController@test');
 //favoritesテーブルからRecommends表示用のリスト取得(パブリック)
 Route::get('/get_recommends', 'FavoritesController@index'); 
 
-//favoritesテーブルに登録(パブリック)
+//favoritesテーブルにlikeボタンクリックしたコンテンツを登録
 Route::post('/register_recommends', 'FavoritesController@store'); 
 
-Route::delete('/delete_recommends/{id}', function($id){
+//favoritesテーブルからdeleteボタンクリックしたコンテンツを削除
+Route::delete('/delete_recommends/{id}', 'FavoritesController@destroy');
+/* Route::delete('/delete_recommends/{id}', function($id){
     $album_title = request() -> get("album_title");
     $track_title = request() -> get("track_title");
     $artist      = request() -> get("artist");
@@ -45,4 +47,4 @@ Route::delete('/delete_recommends/{id}', function($id){
         }
     }
     return 'deleted';
-});
+}); */

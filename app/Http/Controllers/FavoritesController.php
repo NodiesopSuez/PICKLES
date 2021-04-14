@@ -31,5 +31,12 @@ class FavoritesController extends Controller
         
         return 'OK';
     }
+
+    public function destroy($id){
+        $favorites = new Favorites;
+        $delete_contents_by_userid = $favorites -> deleteContentsFromFavoritesByUserId($id);
+        
+        return $delete_contents_by_userid;
+    }
     
 }
