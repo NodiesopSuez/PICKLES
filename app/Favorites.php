@@ -36,8 +36,8 @@ class Favorites extends Model {
         //コンテンツのtypeによって重複回避するカラムを分岐
         if($type === "track"){
             //重複したレコードがないか検索
-            $exist_track = $this::/* where("user_id", $user_id)
-                                -> */where("track_title", $track_title)            
+            $exist_track = $this::where("user_id", $user_id)
+                                ->where("track_title", $track_title)            
                                 ->where("artist", $artist)            
                                 ->get();
             
@@ -49,8 +49,8 @@ class Favorites extends Model {
             }
         }else{
             //重複したレコードがないか検索
-            $exist_album = $this::/* where("user_id", $user_id)
-                                -> */where("album_title", $album_title)            
+            $exist_album = $this::where("user_id", $user_id)
+                                ->where("album_title", $album_title)            
                                 ->where("artist", $artist)            
                                 ->get();
             

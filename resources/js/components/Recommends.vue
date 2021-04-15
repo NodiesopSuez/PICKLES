@@ -45,10 +45,8 @@
         <section class="modal_section" v-if="modal">
             <div class="modal_back"></div>
             <div class="modal_box">
-                <h2>ERROR!!</h2>
-                <p>エラーが発生しました。<br/>
-                   申し訳ございませんが、<br/>
-                   トップページへお戻りください。</p>
+                <h2>!! ERROR !!</h2>
+                <p v-html="error"></p>
                 <router-link to="/"><button>トップページへ</button></router-link>
             </div>
         </section>
@@ -71,6 +69,7 @@ export default {
             toggle: true,
             recommends_list: [],
             paginate:['paginate-items'],
+            error: 'エラーが発生しました。<br/>申し訳ございませんが、<br/>トップページへお戻りください。',
         };
     },
     mounted: function(){
@@ -241,9 +240,8 @@ h4 {
 }
 
 /* モーダル */
-.modal_back {
-    background: var(--for-background);
-    opacity: 1;
+.modal_box {
+    height: 220px;
 }
 
 .modal_box button {

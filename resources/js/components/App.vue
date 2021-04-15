@@ -80,8 +80,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #333;
-    opacity: 0.8;
+    background: #2e4a32;
+    opacity: 0.9;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,10 +96,10 @@ body {
     left: 0;
     margin: auto;
     padding: 16px;
-    width: 328px;
-    height: 200px;
+    width: 330px;
+    height: 228px;
     border-radius: 15px;
-    background: #ccc;
+    background: #d0e2d1;
 }
 
 h2 {

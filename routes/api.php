@@ -31,20 +31,3 @@ Route::post('/register_recommends', 'FavoritesController@store');
 
 //favoritesテーブルからdeleteボタンクリックしたコンテンツを削除
 Route::delete('/delete_recommends/{id}', 'FavoritesController@destroy');
-/* Route::delete('/delete_recommends/{id}', function($id){
-    $album_title = request() -> get("album_title");
-    $track_title = request() -> get("track_title");
-    $artist      = request() -> get("artist");
-
-    $delete_contents = \App\Favorites::where("user_id", null)
-                        -> where("album_title", $album_title)
-                        -> where("track_title", $track_title)
-                        -> where("artist", $artist)
-                        -> get();
-    if($delete_contents){
-        foreach($delete_contents as $content){
-            $content -> delete();
-        }
-    }
-    return 'deleted';
-}); */

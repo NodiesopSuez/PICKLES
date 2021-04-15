@@ -2031,8 +2031,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -2045,7 +2043,8 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
       no_list: false,
       toggle: true,
       recommends_list: [],
-      paginate: ['paginate-items']
+      paginate: ['paginate-items'],
+      error: 'エラーが発生しました。<br/>申し訳ございませんが、<br/>トップページへお戻りください。'
     };
   },
   mounted: function mounted() {
@@ -6810,7 +6809,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n:root {\r\n  --lt-yellow: #FFE959;\r\n  --md-yellow: #FFCD03;\r\n  --hv-yellow: #ff8000;\r\n  --for-background: #C8FFD3;\r\n  --icon-background: #FDD441;\r\n  --md-green: #00502E;\r\n  --shadow: #B4CF8F;\n}\nbody { \r\n  background: var(--for-background)!important;\n}\n#app {\r\n  font-family: Avenir, Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\n#app button {\r\n  margin: auto;\r\n  border: none;\r\n  outline: none;\r\n  text-align: center;\n}\n#app li {\r\n  list-style: none;\n}\n#app button {\r\n  cursor: pointer;\r\n  box-shadow: 4px 4px 0px var(--shadow);\r\n  transition: 0.1s;\n}\n#app button:active {\r\n  transform: translate(3px, 4px);\r\n  box-shadow: none;\n}\n.fade-enter-active, .fade-leave-active {\r\n  transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to {\r\n  opacity: 0;\n}\r\n\r\n\r\n\r\n/* modalt部分 --------------------------------------------------------- */\n.modal_back {\r\n    z-index: 20;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #333;\r\n    opacity: 0.8;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\n}\n.modal_box {\r\n    z-index: 30;\r\n    position:absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    padding: 16px;\r\n    width: 328px;\r\n    height: 200px;\r\n    border-radius: 15px;\r\n    background: #ccc;\n}\nh2 {\r\n    margin: 8px auto;\r\n    color: red;\n}\n.modal_box button {\r\n    width: 80px;\r\n    height: 35px;\r\n    border-radius: 17.5px;\r\n    font-size: 18px;\r\n    box-shadow: 3px 4px 0px #333;\n}\r\n", ""]);
+exports.push([module.i, "\n:root {\r\n  --lt-yellow: #FFE959;\r\n  --md-yellow: #FFCD03;\r\n  --hv-yellow: #ff8000;\r\n  --for-background: #C8FFD3;\r\n  --icon-background: #FDD441;\r\n  --md-green: #00502E;\r\n  --shadow: #B4CF8F;\n}\nbody { \r\n  background: var(--for-background)!important;\n}\n#app {\r\n  font-family: Avenir, Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\n#app button {\r\n  margin: auto;\r\n  border: none;\r\n  outline: none;\r\n  text-align: center;\n}\n#app li {\r\n  list-style: none;\n}\n#app button {\r\n  cursor: pointer;\r\n  box-shadow: 4px 4px 0px var(--shadow);\r\n  transition: 0.1s;\n}\n#app button:active {\r\n  transform: translate(3px, 4px);\r\n  box-shadow: none;\n}\n.fade-enter-active, .fade-leave-active {\r\n  transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to {\r\n  opacity: 0;\n}\r\n\r\n\r\n\r\n/* modalt部分 --------------------------------------------------------- */\n.modal_back {\r\n    z-index: 20;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background: #2e4a32;\r\n    opacity: 0.9;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\n}\n.modal_box {\r\n    z-index: 30;\r\n    position:absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    padding: 16px;\r\n    width: 330px;\r\n    height: 228px;\r\n    border-radius: 15px;\r\n    background: #d0e2d1;\n}\nh2 {\r\n    margin: 8px auto;\r\n    color: red;\n}\n.modal_box button {\r\n    width: 80px;\r\n    height: 35px;\r\n    border-radius: 17.5px;\r\n    font-size: 18px;\r\n    box-shadow: 3px 4px 0px #333;\n}\r\n", ""]);
 
 // exports
 
@@ -6829,7 +6828,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.recommends[data-v-4f414062] {\r\n    width: 800px;\r\n    margin: auto;\n}\nh4[data-v-4f414062] {\r\n    margin: 0;\n}\n.recommends_header[data-v-4f414062],\r\n.back_search[data-v-4f414062],\r\n.no_list[data-v-4f414062] { \r\n    display: flex;\r\n    justify-content: flex-start;\n}\n.recommends_header[data-v-4f414062] {\r\n    align-items: flex-end;\r\n    height: 100px;\r\n    margin-bottom: 60px;\n}\n.recommends_header > h4[data-v-4f414062] {\r\n    position: relative;\r\n    margin-right: 16px;\r\n    width: 184px;\r\n    height: 58px;\r\n    color: var(--md-green);\r\n    line-height: 58px;\r\n    background: #fff;\n}\n.recommends_header > h4[data-v-4f414062]::after {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    content: '';\r\n    width: 159px;\r\n    height: 47px;\r\n    border: dashed 1px var(--md-green);\n}\n.back_search[data-v-4f414062] {\r\n    align-items: center;\r\n    width: 190px;\n}\n.back_search button[data-v-4f414062]::after {\r\n    top: 2px;\r\n    left: 0;\r\n    right: 10px;\r\n    transform: rotate(-90deg);\n}\n.no_list[data-v-4f414062] {\r\n    height: 400px;\n}\n.no_list > div[data-v-4f414062] {\r\n    width: 50%;\n}\n.msg[data-v-4f414062] {\r\n    text-align: start;\n}\n.msg > h4[data-v-4f414062] {\r\n    font-weight: bold;\n}\n.msg > p[data-v-4f414062] {\r\n    margin-bottom: 3px;\n}\n.msg > .back_search[data-v-4f414062] {\r\n    margin-top: 20px;\n}\n.msg > .back_search button[data-v-4f414062] {\r\n    margin: auto 8px auto 0px !important;\n}\r\n\r\n/* likeボタン */\n.like[data-v-4f414062] {\r\n    margin: 2px !important;\r\n    pointer-events: none !important;\n}\n.like img[data-v-4f414062] {\r\n    margin: 0 !important;\n}\n.recommends_img[data-v-4f414062] {\r\n    position: relative;\n}\n.recommends_img[data-v-4f414062]::after,\r\n.recommends_img > img[data-v-4f414062] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\n.recommends_img[data-v-4f414062]::after {\r\n    z-index: 10;\r\n    content: '';\r\n    width: 400px;\r\n    height: 400px;  \r\n    border-radius: 50%;\r\n    background: var(--icon-background);\n}\n.recommends_img > img[data-v-4f414062] {\r\n    z-index: 20;\r\n    width: 300px;\n}\r\n\r\n/* モーダル */\n.modal_back[data-v-4f414062] {\r\n    background: var(--for-background);\r\n    opacity: 1;\n}\n.modal_box button[data-v-4f414062] {\r\n    width: 120px;\r\n    font-size: 15px;\n}\r\n", ""]);
+exports.push([module.i, "\n.recommends[data-v-4f414062] {\r\n    width: 800px;\r\n    margin: auto;\n}\nh4[data-v-4f414062] {\r\n    margin: 0;\n}\n.recommends_header[data-v-4f414062],\r\n.back_search[data-v-4f414062],\r\n.no_list[data-v-4f414062] { \r\n    display: flex;\r\n    justify-content: flex-start;\n}\n.recommends_header[data-v-4f414062] {\r\n    align-items: flex-end;\r\n    height: 100px;\r\n    margin-bottom: 60px;\n}\n.recommends_header > h4[data-v-4f414062] {\r\n    position: relative;\r\n    margin-right: 16px;\r\n    width: 184px;\r\n    height: 58px;\r\n    color: var(--md-green);\r\n    line-height: 58px;\r\n    background: #fff;\n}\n.recommends_header > h4[data-v-4f414062]::after {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    content: '';\r\n    width: 159px;\r\n    height: 47px;\r\n    border: dashed 1px var(--md-green);\n}\n.back_search[data-v-4f414062] {\r\n    align-items: center;\r\n    width: 190px;\n}\n.back_search button[data-v-4f414062]::after {\r\n    top: 2px;\r\n    left: 0;\r\n    right: 10px;\r\n    transform: rotate(-90deg);\n}\n.no_list[data-v-4f414062] {\r\n    height: 400px;\n}\n.no_list > div[data-v-4f414062] {\r\n    width: 50%;\n}\n.msg[data-v-4f414062] {\r\n    text-align: start;\n}\n.msg > h4[data-v-4f414062] {\r\n    font-weight: bold;\n}\n.msg > p[data-v-4f414062] {\r\n    margin-bottom: 3px;\n}\n.msg > .back_search[data-v-4f414062] {\r\n    margin-top: 20px;\n}\n.msg > .back_search button[data-v-4f414062] {\r\n    margin: auto 8px auto 0px !important;\n}\r\n\r\n/* likeボタン */\n.like[data-v-4f414062] {\r\n    margin: 2px !important;\r\n    pointer-events: none !important;\n}\n.like img[data-v-4f414062] {\r\n    margin: 0 !important;\n}\n.recommends_img[data-v-4f414062] {\r\n    position: relative;\n}\n.recommends_img[data-v-4f414062]::after,\r\n.recommends_img > img[data-v-4f414062] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\n.recommends_img[data-v-4f414062]::after {\r\n    z-index: 10;\r\n    content: '';\r\n    width: 400px;\r\n    height: 400px;  \r\n    border-radius: 50%;\r\n    background: var(--icon-background);\n}\n.recommends_img > img[data-v-4f414062] {\r\n    z-index: 20;\r\n    width: 300px;\n}\r\n\r\n/* モーダル */\n.modal_box[data-v-4f414062] {\r\n    height: 220px;\n}\n.modal_box button[data-v-4f414062] {\r\n    width: 120px;\r\n    font-size: 15px;\n}\r\n", ""]);
 
 // exports
 
@@ -38973,9 +38972,9 @@ var render = function() {
             "div",
             { staticClass: "modal_box" },
             [
-              _c("h2", [_vm._v("ERROR!!")]),
+              _c("h2", [_vm._v("!! ERROR !!")]),
               _vm._v(" "),
-              _vm._m(2),
+              _c("p", { domProps: { innerHTML: _vm._s(_vm.error) } }),
               _vm._v(" "),
               _c("router-link", { attrs: { to: "/" } }, [
                 _c("button", [_vm._v("トップページへ")])
@@ -39006,18 +39005,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "recommends_img" }, [
       _c("img", { attrs: { src: __webpack_require__(/*! ../img/for_recommends.png */ "./resources/js/img/for_recommends.png") } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _vm._v("エラーが発生しました。"),
-      _c("br"),
-      _vm._v("\n               申し訳ございませんが、"),
-      _c("br"),
-      _vm._v("\n               トップページへお戻りください。")
     ])
   }
 ]
