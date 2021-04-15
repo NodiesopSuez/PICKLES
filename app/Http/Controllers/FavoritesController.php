@@ -29,7 +29,7 @@ class FavoritesController extends Controller
         $favorites = new Favorites;
         $register_favorite_contents = $favorites -> registerContentsWithFavorites($request);
         
-        return 'OK';
+        return $register_favorite_contents;
     }
 
     public function destroy($id){
