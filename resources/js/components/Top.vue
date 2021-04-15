@@ -45,13 +45,13 @@
                             :show-step-links="true">
             </paginate-links>
         </section>
-        <section class="modal_section" v-if="modal">
-            <div class="modal_back"></div>
-            <div class="modal_box">
-                <h2>ERROR!!</h2>
-                <p>キーワード：{{ keyword }}</p>
-                <p>検索結果が見つかりませんでした。<br/>
-                 他のキーワードで検索してください。</p>
+        <section class="modal_section" v-if="modal" :class="status">
+            <div class="modal_back"  :class="status+'_back'"></div>
+            <div class="modal_box" :class="status+'_box'">
+                <div v-if="status=='error'" v-html="error_msg"></div>
+                <div v-else-if="status=='no_result'" v-html="no_result_msg"></div>
+                <div v-else-if="status=='duplicate'" v-html="duplicate_msg"></div>
+                <div v-else-if="status=='registered'" v-html="registered_msg"></div>
                 <button @click="closeModal()">Close</button>
             </div>
         </section>
@@ -70,7 +70,6 @@ export default {
     name: 'Top',
     data: function(){
         return{
-            /* musical_notes_img: '../img/musical_notes_fortop.png', */
             text: '',
             keyword: '',
             access_token: '',
@@ -79,9 +78,12 @@ export default {
             albums_info: [],
             tracks_info: [],
             result_list: [],
-
             paginate:['paginate-items'],
-
+            status: '',
+            error_msg: `<h2>!! ERROR !!</h2><p>エラーが発生いたしました。</p><p>申し訳ございませんが、<br/>再度トップページよりお進みください。</p>`,
+            no_result_msg: ``,
+            registered_msg: `<h2>Registered!</h2><p>Recommendsリストに登録されました！</p>`,
+            duplicate_msg: `<h2>!! ERROR !!</h2><p>選ばれたコンテンツは<br/>既に登録されています。<br/>他のコンテンツをお選びください。`,
         }
     },
     mounted: function(){
@@ -104,14 +106,25 @@ export default {
                 console.log(error);
                 self.toggle = false;
                 self.modal = true;
+                self.status = 'error';
                 return;
             })
     },
     methods: {
         searchInfo(){
+            //検索結果0の時のメッセージ
+            this.no_result_msg = `<h2>ERROR!!</h2><p>キーワード：${this.keyword} </p><p>検索結果が見つかりませんでした。<br/>他のキーワードで検索してください。</p>`;
+            
+            //キーワードが入力されてなければ、エラーモーダル表示    
+            if(this.keyword==""){
+                this.toggle = false;
+                this.modal = true;
+                this.status = 'no_result';
+                return;
+            }
+
+
             self = this;
-             //デバッグ用にconsoleに出力
-            console.log(this.keyword);
 
             //キーワードで検索
             let search_type = 'album,track,artist';
@@ -128,17 +141,15 @@ export default {
                     console.log(search_res);
                     console.log(search_res.data);
 
-                    //検索結果が0ならば
+                    //検索結果が0ならば、エラーモーダル表示
                     let album_total = search_res.data.albums.total;
                     let track_total = search_res.data.tracks.total;
                     let artist_total = search_res.data.artists.total;
-
-                    console.log(album_total + track_total + artist_total);
-
                     /* if((album_total === 0) && (track_total === 0) && (artist_total === 0)) */
                     if((album_total + track_total + artist_total)===0){
                         this.toggle = false;
                         this.modal = true;
+                        this.status = 'no_result';
                         return;
                     }else{
                         this.toggle = true;
@@ -186,12 +197,11 @@ export default {
                 //デバッグ用にconsoleに出力  
                 console.log('tracks');
                 console.log(this.tracks_info);
-
-
                 })
                 .catch((error)=>{
                     this.toggle = false;
                     this.modal = true;
+                    this.status = 'error';
                     return;
                 })
                 .finally(()=>{
@@ -236,14 +246,25 @@ export default {
 
             axios.post(`./api/register_recommends`, post_data)
             .then((response) => {
+                //デバッグ用にconsole出力
                 console.log(response);
+
+                if(response === 'OK'){
+                    this.status = 'registered';
+                }else if(response === 'duplicate'){
+                    this.status = 'duplicate';
+                }else{
+                    this.status = 'error';
+                }
             })
             .catch((error)=>{
-                    this.toggle = false;
+                this.toggle = false;
                     this.modal = true;
+                    this.status = 'error';
                     return;
             })
             .finally(()=>{
+                this.modal = true;
                 return;
             })
         },

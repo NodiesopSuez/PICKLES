@@ -80,7 +80,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #2e4a32;
     opacity: 0.9;
     display: flex;
     align-items: center;
@@ -97,9 +96,8 @@ body {
     margin: auto;
     padding: 16px;
     width: 330px;
-    height: 228px;
+    height: 250px;
     border-radius: 15px;
-    background: #d0e2d1;
 }
 
 h2 {
@@ -113,5 +111,23 @@ h2 {
     border-radius: 17.5px;
     font-size: 18px;
     box-shadow: 3px 4px 0px #333;
+}
+
+/* エラーの時 */
+.error_back
+.no_result_back {
+    background: #2e4a32;
+}
+.error_box, 
+.no_result_box {
+    background: #d0e2d1;
+}
+/* 登録完了の時 */
+.registered_back {
+    background: var(--for-background);
+}
+.registered_box {
+    background: var(--md-green);
+    color: #fff!important;
 }
 </style>

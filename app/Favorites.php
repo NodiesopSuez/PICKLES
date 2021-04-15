@@ -45,7 +45,7 @@ class Favorites extends Model {
             if($exist_track->isEmpty()){
                 $register_contents = self::registerContents($request);
             }else{
-                return 'トラックNG';
+                return 'duplicate';
             }
         }else{
             //重複したレコードがないか検索
@@ -58,10 +58,10 @@ class Favorites extends Model {
             if($exist_album->isEmpty()){
                 $register_contents = self::registerContents($request);
             }else{
-                return 'アルバムNG';
+                return 'duplicate';
             }
         } 
-        return 'OK';
+        return $register_contents;
     }
     
     
@@ -80,7 +80,7 @@ class Favorites extends Model {
         
         $favorites -> save(); 
     
-        return [];
+        return 'OK';
         
     } 
     
