@@ -2351,7 +2351,7 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
         'album_title': music.album_title,
         'artist': music.artist,
         'img': music.img,
-        'end_url': music.external_url,
+        'external_url': music.external_url,
         'release': music.release
       };
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("./api/register_recommends", post_data).then(function (response) {

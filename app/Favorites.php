@@ -68,15 +68,15 @@ class Favorites extends Model {
     public function registerContents($request) {
         $favorites = $this;
 
-        $favorites -> type        = $request -> get("type");
-        $favorites -> album_title = $request -> get("album_title");
-        $favorites -> artist      = $request -> get("artist");
-        $favorites -> img         = $request -> get("img");
-        $favorites -> end_url     = $request -> get("end_url");
-        $favorites -> release     = $request -> get("release");
+        $favorites -> type         = $request -> get("type");
+        $favorites -> album_title  = $request -> get("album_title");
+        $favorites -> artist       = $request -> get("artist");
+        $favorites -> img          = $request -> get("img");
+        $favorites -> external_url = $request -> get("external_url");
+        $favorites -> release      = $request -> get("release");
         
-        $favorites -> track_title = $request -> get("track_title");
-        $favorites -> user_id     = $request -> get("user_id");
+        $favorites -> track_title  = $request -> get("track_title");
+        $favorites -> user_id      = $request -> get("user_id");
         
         $favorites -> save(); 
     

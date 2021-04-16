@@ -235,13 +235,13 @@ export default {
             let track_title = (music.type === "track") ? music.track_title : null;
 
             let post_data = {
-                'type'        : music.type,
-                'track_title' : music.track_title,
-                'album_title' : music.album_title,
-                'artist'      : music.artist,
-                'img'         : music.img,
-                'end_url'     : music.external_url,
-                'release'     : music.release,
+                'type'         : music.type,
+                'track_title'  : music.track_title,
+                'album_title'  : music.album_title,
+                'artist'       : music.artist,
+                'img'          : music.img,
+                'external_url' : music.external_url,
+                'release'      : music.release,
             }
 
             axios.post(`./api/register_recommends`, post_data)
