@@ -63,10 +63,12 @@ body {
   box-shadow: none; 
 }
 
-.fade-enter-active, .fade-leave-active {
+#app .fade-enter-active, 
+#app .fade-leave-active {
   transition: opacity .5s;
 }
-.fade-enter, .fade-leave-to {
+#app .fade-enter, 
+#app .fade-leave-to {
   opacity: 0;
 }
 
@@ -96,13 +98,12 @@ body {
     margin: auto;
     padding: 16px;
     width: 330px;
-    height: 250px;
     border-radius: 15px;
 }
 
 h2 {
     margin: 8px auto;
-    color: red;
+    font-weight: bold;
 }
 
 .modal_box button {
@@ -113,21 +114,54 @@ h2 {
     box-shadow: 3px 4px 0px #333;
 }
 
-/* エラーの時 */
-.error_back
-.no_result_back {
+/* statusによってモーダルの高さを分岐 */
+.no_result > .modal_box {
+  height: 230px;
+}
+.error > .modal_box,
+.duplicate > .modal_box {
+  height: 205px;
+}
+.registered > .modal_box {
+  height: 168px;
+}
+
+/* モーダルの位置 */
+.duplicate > .modal_box,
+.registered > .modal_box {
+  top: 1400px;
+}
+ 
+/* 配色：エラーの時 */
+.error > .modal_back,
+.no_result > .modal_back,
+.duplicate > .modal_back {
     background: #2e4a32;
 }
-.error_box, 
-.no_result_box {
+.error > .modal_box, 
+.no_result > .modal_box,
+.duplicate > .modal_box {
     background: #d0e2d1;
 }
-/* 登録完了の時 */
-.registered_back {
+.error h2, 
+.no_result h2,
+.duplicate h2 {
+    color: rgb(196, 0, 0);
+}
+.no_result .keyword {
+  overflow: hidden;
+  height: 24px;
+}
+
+/* 配色：登録完了の時 */
+.registered > .modal_back {
     background: var(--for-background);
 }
-.registered_box {
+.registered > .modal_box {
     background: var(--md-green);
     color: #fff!important;
+}
+.registered h2 {
+  color:#fff!important;
 }
 </style>

@@ -26,7 +26,7 @@
             <div class="result">
                 <paginate name="paginate-items" tag="div" :list="recommends_list" :per="5">
                     <div class="result_li" v-for="(music, index) in paginated('paginate-items')" :key="index">
-                        <img :src="music.img">
+                        <a target="_blank" rel="noopener" :href="music.external_url"><img :src="music.img"></a>
                         <ul>
                             <li v-if="music.type=='track'"> {{ music.track_title }}</li>
                             <li> {{ music.album_title }} </li>

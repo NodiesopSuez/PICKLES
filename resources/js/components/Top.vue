@@ -28,7 +28,7 @@
             <div class="result">
                 <paginate name="paginate-items" tag="div" :list="result_list" :per="5">
                     <div class="result_li" v-for="(music, index) in paginated('paginate-items')" :key="index">
-                        <img :src="music.img">
+                        <a target="_blank" rel="noopener" :href="music.external_url"><img :src="music.img"></a>
                         <ul>
                             <li v-if="music.type=='track'"> {{ music.track_title }}</li>
                             <li> {{ music.album_title }} </li>
@@ -46,8 +46,8 @@
             </paginate-links>
         </section>
         <section class="modal_section" v-if="modal" :class="status">
-            <div class="modal_back"  :class="status+'_back'"></div>
-            <div class="modal_box" :class="status+'_box'">
+            <div class="modal_back"></div>
+            <div class="modal_box">
                 <div v-if="status=='error'" v-html="error_msg"></div>
                 <div v-else-if="status=='no_result'" v-html="no_result_msg"></div>
                 <div v-else-if="status=='duplicate'" v-html="duplicate_msg"></div>
@@ -113,7 +113,7 @@ export default {
     methods: {
         searchInfo(){
             //検索結果0の時のメッセージ
-            this.no_result_msg = `<h2>ERROR!!</h2><p>キーワード：${this.keyword} </p><p>検索結果が見つかりませんでした。<br/>他のキーワードで検索してください。</p>`;
+            this.no_result_msg = `<h2>ERROR!!</h2><p class="keyword">キーワード：${this.keyword} </p><p>検索結果が見つかりませんでした。<br/>他のキーワードで検索してください。</p>`;
             
             //キーワードが入力されてなければ、エラーモーダル表示    
             if(this.keyword==""){
@@ -249,18 +249,21 @@ export default {
                 //デバッグ用にconsole出力
                 console.log(response);
 
-                if(response === 'OK'){
+                //登録できてたら'OK' / 重複したレコードあれば'duplicate'
+                if(response.data === 'OK'){
                     this.status = 'registered';
-                }else if(response === 'duplicate'){
+                }else if(response.data === 'duplicate'){
                     this.status = 'duplicate';
                 }else{
                     this.status = 'error';
+                    this.scrollToTop();
                 }
             })
             .catch((error)=>{
                 this.toggle = false;
                     this.modal = true;
                     this.status = 'error';
+                    this.scrollToTop();
                     return;
             })
             .finally(()=>{
@@ -302,6 +305,7 @@ export default {
 .to_recommends div {
     position: absolute;
     top: 0;
+    color: #fff;
 }
 
 .to_recommends div:first-child {
@@ -476,7 +480,7 @@ input[name="word"] {
     text-align: start;
 }
 
-.result_li > img {
+.result_li a > img {
     width: 130px;
     height: 130px;
     background: #ccc;

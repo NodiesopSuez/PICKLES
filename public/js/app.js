@@ -2222,7 +2222,7 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
       var _this = this;
 
       //検索結果0の時のメッセージ
-      this.no_result_msg = "<h2>ERROR!!</h2><p>\u30AD\u30FC\u30EF\u30FC\u30C9\uFF1A".concat(this.keyword, " </p><p>\u691C\u7D22\u7D50\u679C\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3067\u3057\u305F\u3002<br/>\u4ED6\u306E\u30AD\u30FC\u30EF\u30FC\u30C9\u3067\u691C\u7D22\u3057\u3066\u304F\u3060\u3055\u3044\u3002</p>"); //キーワードが入力されてなければ、エラーモーダル表示    
+      this.no_result_msg = "<h2>ERROR!!</h2><p class=\"keyword\">\u30AD\u30FC\u30EF\u30FC\u30C9\uFF1A".concat(this.keyword, " </p><p>\u691C\u7D22\u7D50\u679C\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3067\u3057\u305F\u3002<br/>\u4ED6\u306E\u30AD\u30FC\u30EF\u30FC\u30C9\u3067\u691C\u7D22\u3057\u3066\u304F\u3060\u3055\u3044\u3002</p>"); //キーワードが入力されてなければ、エラーモーダル表示    
 
       if (this.keyword == "") {
         this.toggle = false;
@@ -2356,19 +2356,24 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
       };
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("./api/register_recommends", post_data).then(function (response) {
         //デバッグ用にconsole出力
-        console.log(response);
+        console.log(response); //登録できてたら'OK' / 重複したレコードあれば'duplicate'
 
-        if (response === 'OK') {
+        if (response.data === 'OK') {
           _this2.status = 'registered';
-        } else if (response === 'duplicate') {
+        } else if (response.data === 'duplicate') {
           _this2.status = 'duplicate';
         } else {
           _this2.status = 'error';
+
+          _this2.scrollToTop();
         }
       })["catch"](function (error) {
         _this2.toggle = false;
         _this2.modal = true;
         _this2.status = 'error';
+
+        _this2.scrollToTop();
+
         return;
       })["finally"](function () {
         _this2.modal = true;
@@ -6834,7 +6839,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n:root {\r\n  --lt-yellow: #FFE959;\r\n  --md-yellow: #FFCD03;\r\n  --hv-yellow: #ff8000;\r\n  --for-background: #C8FFD3;\r\n  --icon-background: #FDD441;\r\n  --md-green: #00502E;\r\n  --shadow: #B4CF8F;\n}\nbody { \r\n  background: var(--for-background)!important;\n}\n#app {\r\n  font-family: Avenir, Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\n#app button {\r\n  margin: auto;\r\n  border: none;\r\n  outline: none;\r\n  text-align: center;\n}\n#app li {\r\n  list-style: none;\n}\n#app button {\r\n  cursor: pointer;\r\n  box-shadow: 4px 4px 0px var(--shadow);\r\n  transition: 0.1s;\n}\n#app button:active {\r\n  transform: translate(3px, 4px);\r\n  box-shadow: none;\n}\n.fade-enter-active, .fade-leave-active {\r\n  transition: opacity .5s;\n}\n.fade-enter, .fade-leave-to {\r\n  opacity: 0;\n}\r\n\r\n\r\n\r\n/* modalt部分 --------------------------------------------------------- */\n.modal_back {\r\n    z-index: 20;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    opacity: 0.9;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\n}\n.modal_box {\r\n    z-index: 30;\r\n    position:absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    padding: 16px;\r\n    width: 330px;\r\n    height: 250px;\r\n    border-radius: 15px;\n}\nh2 {\r\n    margin: 8px auto;\r\n    color: red;\n}\n.modal_box button {\r\n    width: 80px;\r\n    height: 35px;\r\n    border-radius: 17.5px;\r\n    font-size: 18px;\r\n    box-shadow: 3px 4px 0px #333;\n}\r\n\r\n/* エラーの時 */\n.error_back\r\n.no_result_back {\r\n    background: #2e4a32;\n}\n.error_box, \r\n.no_result_box {\r\n    background: #d0e2d1;\n}\r\n/* 登録完了の時 */\n.registered_back {\r\n    background: var(--for-background);\n}\n.registered_box {\r\n    background: var(--md-green);\r\n    color: #fff!important;\n}\r\n", ""]);
+exports.push([module.i, "\n:root {\r\n  --lt-yellow: #FFE959;\r\n  --md-yellow: #FFCD03;\r\n  --hv-yellow: #ff8000;\r\n  --for-background: #C8FFD3;\r\n  --icon-background: #FDD441;\r\n  --md-green: #00502E;\r\n  --shadow: #B4CF8F;\n}\nbody { \r\n  background: var(--for-background)!important;\n}\n#app {\r\n  font-family: Avenir, Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\n#app button {\r\n  margin: auto;\r\n  border: none;\r\n  outline: none;\r\n  text-align: center;\n}\n#app li {\r\n  list-style: none;\n}\n#app button {\r\n  cursor: pointer;\r\n  box-shadow: 4px 4px 0px var(--shadow);\r\n  transition: 0.1s;\n}\n#app button:active {\r\n  transform: translate(3px, 4px);\r\n  box-shadow: none;\n}\n#app .fade-enter-active, \r\n#app .fade-leave-active {\r\n  transition: opacity .5s;\n}\n#app .fade-enter, \r\n#app .fade-leave-to {\r\n  opacity: 0;\n}\r\n\r\n\r\n\r\n/* modalt部分 --------------------------------------------------------- */\n.modal_back {\r\n    z-index: 20;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    opacity: 0.9;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\n}\n.modal_box {\r\n    z-index: 30;\r\n    position:absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    padding: 16px;\r\n    width: 330px;\r\n    border-radius: 15px;\n}\nh2 {\r\n    margin: 8px auto;\r\n    font-weight: bold;\n}\n.modal_box button {\r\n    width: 80px;\r\n    height: 35px;\r\n    border-radius: 17.5px;\r\n    font-size: 18px;\r\n    box-shadow: 3px 4px 0px #333;\n}\r\n\r\n/* statusによってモーダルの高さを分岐 */\n.no_result > .modal_box {\r\n  height: 230px;\n}\n.error > .modal_box,\r\n.duplicate > .modal_box {\r\n  height: 205px;\n}\n.registered > .modal_box {\r\n  height: 168px;\n}\r\n\r\n/* モーダルの位置 */\n.duplicate > .modal_box,\r\n.registered > .modal_box {\r\n  top: 1400px;\n}\r\n \r\n/* 配色：エラーの時 */\n.error > .modal_back,\r\n.no_result > .modal_back,\r\n.duplicate > .modal_back {\r\n    background: #2e4a32;\n}\n.error > .modal_box, \r\n.no_result > .modal_box,\r\n.duplicate > .modal_box {\r\n    background: #d0e2d1;\n}\n.error h2, \r\n.no_result h2,\r\n.duplicate h2 {\r\n    color: rgb(196, 0, 0);\n}\n.no_result .keyword {\r\n  overflow: hidden;\r\n  height: 24px;\n}\r\n\r\n/* 配色：登録完了の時 */\n.registered > .modal_back {\r\n    background: var(--for-background);\n}\n.registered > .modal_box {\r\n    background: var(--md-green);\r\n    color: #fff!important;\n}\n.registered h2 {\r\n  color:#fff!important;\n}\r\n", ""]);
 
 // exports
 
@@ -6872,7 +6877,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* likeボタン */\n.like,\r\n.delete {\r\n    margin-left: 5px !important;\r\n    padding: 0 0 4px 0;\r\n    width: 26px;\r\n    height: 26px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.like > img,\r\n.delete > img {\r\n    width: 18px;\r\n    margin: auto auto 6px auto;\n}\r\n\r\n/* Recommendsボタン */\n.to_recommends {\r\n    display: block;\r\n    position: relative;\r\n    width: 156px;\r\n    height: 40px;\r\n    border-radius: 20px;\n}\n.to_recommends div {\r\n    position: absolute;\r\n    top: 0;\n}\n.to_recommends div:first-child {\r\n    left: -0.5px;\r\n    padding: 4px;\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    background: var(--icon-background);\n}\n.to_recommends div:first-child img {\r\n    height: 32px;\r\n    margin: auto;\n}\n.to_recommends div:nth-child(2) {\r\n    line-height: 40px;\r\n    right: 10px;\n}\r\n\r\n\r\n/* section */.top_section {\r\n    height: 600px;\r\n    background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ;\n}\n.top_section button {\r\n    font-size: 16px;\r\n    background: var(--md-green);\r\n    color: #fff;\n}\n.catch,\r\n.musical_notes {\r\n    position: relative;\r\n    margin: auto;\n}\n.catch *,\r\n.musical_notes > img {\r\n    position: absolute;\n}\n.catch {\r\n    width: 480px;\r\n    height: 340px;\n}\n.catch_img_hand {\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 240px;\n}\n.catch > h1,\r\n.catch > p {\r\n    color: var(--md-yellow);\n}\n.catch > h1 {\r\n    bottom: 108px;\r\n    font-size: 50px;\r\n    font-weight: bold;\n}\n.catch > p {\r\n    bottom: 80px;\r\n    font-size: 20px;\n}\n.musical_notes {\r\n    margin: auto;\r\n    width: 1000px;\n}\r\n\r\n/* Form部分 --------------------------------------------------------- */\n.search_form { \r\n    display: flex;\r\n    justify-content: space-between;\r\n    margin: 30px auto;\r\n    width: 480px;\n}\ninput {\r\n    border: none;\r\n    outline: none;\r\n    text-align: center;\n}\ninput[name=\"word\"],\r\n.submit {\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\n}\ninput[name=\"word\"] {\r\n    margin-top: 4px;\r\n    width: 370px;\r\n    color: var(--md-green);\r\n    font-size: 18px;\r\n    background: #fff;\n}\n::-moz-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n:-ms-input-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n::placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n.submit {\r\n    z-index: 10;\r\n    margin-bottom: 4px!important;\r\n    width: 80px;\n}\r\n\r\n/* Result部分 --------------------------------------------------------- */\r\n/* section */#result_section {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 50px;\r\n    padding-top: 16px;\r\n    background-color: var(--for-background);\n}\n.back_search button {\r\n    position: relative;\r\n    margin: auto 8px 4px auto !important;\r\n    width: 25px;\r\n    height: 25px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.back_search button::after {\r\n    position: absolute;\r\n    content: '';\r\n    top: -2px;\r\n    right: 8px;\r\n    left: 6px;\r\n    margin: auto;\r\n    border-style: solid;\r\n    border-width: 7px 7px 14px 7px;\r\n    border-color: transparent transparent var(--md-green) transparent;\n}\n.back_search h4 {\r\n    margin: 8px auto 16px auto;\r\n    color: var(--md-green);\n}\n.result > div,\r\n.result_li,\r\n.pagination {\r\n    display: flex;\r\n    align-items: center;\n}\n.result > div {\r\n    flex-wrap: wrap;\r\n    justify-content: space-between;\r\n    width: 800px;\r\n    margin: auto;\n}\n.result_li {\r\n    width: 370px;\r\n    justify-content: flex-start;\r\n    margin: 20px 20px 20px 0px ;\r\n    text-align: start;\n}\n.result_li > img {\r\n    width: 130px;\r\n    height: 130px;\r\n    background: #ccc;\r\n    box-shadow: 5px 5px 2px var(--shadow);\n}\n.result_li li:first-child{\r\n    font-size: 16px !important;\r\n    margin-bottom: 4px;\r\n    font-weight: bold;\n}\n.result_li li:last-child{\r\n    line-height: 30px;\n}\n.result_li > ul {\r\n    font-size: 14px;\n}\n.pagination {\r\n    cursor: pointer;\r\n    margin: 20px auto 100px auto;\n}\n.pagination .number,\r\n.pagination .right-arrow,\r\n.pagination .left-arrow {\r\n    color: var(--md-green);\r\n    margin: auto 6px;\n}\n.pagination .disabled {\r\n    opacity: 0;\n}\n.pagination .active {\r\n    width: 25px;\r\n    height: 25px;\r\n    color: #fff!important;\r\n    background: var(--md-green);\r\n    padding-top: 2px;\r\n    border-radius: 50%;\n}\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* likeボタン */\n.like,\r\n.delete {\r\n    margin-left: 5px !important;\r\n    padding: 0 0 4px 0;\r\n    width: 26px;\r\n    height: 26px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.like > img,\r\n.delete > img {\r\n    width: 18px;\r\n    margin: auto auto 6px auto;\n}\r\n\r\n/* Recommendsボタン */\n.to_recommends {\r\n    display: block;\r\n    position: relative;\r\n    width: 156px;\r\n    height: 40px;\r\n    border-radius: 20px;\n}\n.to_recommends div {\r\n    position: absolute;\r\n    top: 0;\r\n    color: #fff;\n}\n.to_recommends div:first-child {\r\n    left: -0.5px;\r\n    padding: 4px;\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    background: var(--icon-background);\n}\n.to_recommends div:first-child img {\r\n    height: 32px;\r\n    margin: auto;\n}\n.to_recommends div:nth-child(2) {\r\n    line-height: 40px;\r\n    right: 10px;\n}\r\n\r\n\r\n/* section */.top_section {\r\n    height: 600px;\r\n    background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ;\n}\n.top_section button {\r\n    font-size: 16px;\r\n    background: var(--md-green);\r\n    color: #fff;\n}\n.catch,\r\n.musical_notes {\r\n    position: relative;\r\n    margin: auto;\n}\n.catch *,\r\n.musical_notes > img {\r\n    position: absolute;\n}\n.catch {\r\n    width: 480px;\r\n    height: 340px;\n}\n.catch_img_hand {\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 240px;\n}\n.catch > h1,\r\n.catch > p {\r\n    color: var(--md-yellow);\n}\n.catch > h1 {\r\n    bottom: 108px;\r\n    font-size: 50px;\r\n    font-weight: bold;\n}\n.catch > p {\r\n    bottom: 80px;\r\n    font-size: 20px;\n}\n.musical_notes {\r\n    margin: auto;\r\n    width: 1000px;\n}\r\n\r\n/* Form部分 --------------------------------------------------------- */\n.search_form { \r\n    display: flex;\r\n    justify-content: space-between;\r\n    margin: 30px auto;\r\n    width: 480px;\n}\ninput {\r\n    border: none;\r\n    outline: none;\r\n    text-align: center;\n}\ninput[name=\"word\"],\r\n.submit {\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\n}\ninput[name=\"word\"] {\r\n    margin-top: 4px;\r\n    width: 370px;\r\n    color: var(--md-green);\r\n    font-size: 18px;\r\n    background: #fff;\n}\n::-moz-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n:-ms-input-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n::placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n.submit {\r\n    z-index: 10;\r\n    margin-bottom: 4px!important;\r\n    width: 80px;\n}\r\n\r\n/* Result部分 --------------------------------------------------------- */\r\n/* section */#result_section {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 50px;\r\n    padding-top: 16px;\r\n    background-color: var(--for-background);\n}\n.back_search button {\r\n    position: relative;\r\n    margin: auto 8px 4px auto !important;\r\n    width: 25px;\r\n    height: 25px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.back_search button::after {\r\n    position: absolute;\r\n    content: '';\r\n    top: -2px;\r\n    right: 8px;\r\n    left: 6px;\r\n    margin: auto;\r\n    border-style: solid;\r\n    border-width: 7px 7px 14px 7px;\r\n    border-color: transparent transparent var(--md-green) transparent;\n}\n.back_search h4 {\r\n    margin: 8px auto 16px auto;\r\n    color: var(--md-green);\n}\n.result > div,\r\n.result_li,\r\n.pagination {\r\n    display: flex;\r\n    align-items: center;\n}\n.result > div {\r\n    flex-wrap: wrap;\r\n    justify-content: space-between;\r\n    width: 800px;\r\n    margin: auto;\n}\n.result_li {\r\n    width: 370px;\r\n    justify-content: flex-start;\r\n    margin: 20px 20px 20px 0px ;\r\n    text-align: start;\n}\n.result_li a > img {\r\n    width: 130px;\r\n    height: 130px;\r\n    background: #ccc;\r\n    box-shadow: 5px 5px 2px var(--shadow);\n}\n.result_li li:first-child{\r\n    font-size: 16px !important;\r\n    margin-bottom: 4px;\r\n    font-weight: bold;\n}\n.result_li li:last-child{\r\n    line-height: 30px;\n}\n.result_li > ul {\r\n    font-size: 14px;\n}\n.pagination {\r\n    cursor: pointer;\r\n    margin: 20px auto 100px auto;\n}\n.pagination .number,\r\n.pagination .right-arrow,\r\n.pagination .left-arrow {\r\n    color: var(--md-green);\r\n    margin: auto 6px;\n}\n.pagination .disabled {\r\n    opacity: 0;\n}\n.pagination .active {\r\n    width: 25px;\r\n    height: 25px;\r\n    color: #fff!important;\r\n    background: var(--md-green);\r\n    padding-top: 2px;\r\n    border-radius: 50%;\n}\r\n", ""]);
 
 // exports
 
@@ -38935,7 +38940,17 @@ var render = function() {
                     index
                   ) {
                     return _c("div", { key: index, staticClass: "result_li" }, [
-                      _c("img", { attrs: { src: music.img } }),
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            target: "_blank",
+                            rel: "noopener",
+                            href: music.external_url
+                          }
+                        },
+                        [_c("img", { attrs: { src: music.img } })]
+                      ),
                       _vm._v(" "),
                       _c("ul", [
                         music.type == "track"
@@ -39154,7 +39169,17 @@ var render = function() {
                     index
                   ) {
                     return _c("div", { key: index, staticClass: "result_li" }, [
-                      _c("img", { attrs: { src: music.img } }),
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            target: "_blank",
+                            rel: "noopener",
+                            href: music.external_url
+                          }
+                        },
+                        [_c("img", { attrs: { src: music.img } })]
+                      ),
                       _vm._v(" "),
                       _c("ul", [
                         music.type == "track"
@@ -39210,9 +39235,9 @@ var render = function() {
     _vm._v(" "),
     _vm.modal
       ? _c("section", { staticClass: "modal_section", class: _vm.status }, [
-          _c("div", { staticClass: "modal_back", class: _vm.status + "_back" }),
+          _c("div", { staticClass: "modal_back" }),
           _vm._v(" "),
-          _c("div", { staticClass: "modal_box", class: _vm.status + "_box" }, [
+          _c("div", { staticClass: "modal_box" }, [
             _vm.status == "error"
               ? _c("div", { domProps: { innerHTML: _vm._s(_vm.error_msg) } })
               : _vm.status == "no_result"

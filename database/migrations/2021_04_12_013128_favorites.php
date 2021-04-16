@@ -19,7 +19,7 @@ class Favorites extends Migration
             $table -> string('album_title');
             $table -> string('artist');
             $table -> string('img', 2100);
-            $table -> string('end_url', 2100);
+            $table -> string('external_url', 2100);
             $table -> string('release', 10);
             $table -> string('track_title') -> nullable();
             $table -> string('user_id') -> nullable();
