@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Top from './components/Top.vue'
 import Example from './components/ExampleComponent.vue'
 import Recommends from './components/Recommends.vue'
+import SignUp from './components/SignUp.vue'
+import Login from './components/Login.vue'
 
 Vue.use(VueRouter);
 
