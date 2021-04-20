@@ -40308,7 +40308,7 @@ var render = function() {
                   _c(
                     "tbody",
                     _vm._l(_vm.tokens, function(token) {
-                      return _c("tr", [
+                      return _c("tr", { key: token.id }, [
                         _c(
                           "td",
                           { staticStyle: { "vertical-align": "middle" } },
@@ -40461,7 +40461,7 @@ var render = function() {
                 _c(
                   "tbody",
                   _vm._l(_vm.clients, function(client) {
-                    return _c("tr", [
+                    return _c("tr", { key: client.id }, [
                       _c(
                         "td",
                         { staticStyle: { "vertical-align": "middle" } },
@@ -40573,7 +40573,7 @@ var render = function() {
                     _c(
                       "ul",
                       _vm._l(_vm.createForm.errors, function(error) {
-                        return _c("li", [
+                        return _c("li", { key: error.id }, [
                           _vm._v(
                             "\n                                " +
                               _vm._s(error) +
@@ -40810,7 +40810,7 @@ var render = function() {
                     _c(
                       "ul",
                       _vm._l(_vm.editForm.errors, function(error) {
-                        return _c("li", [
+                        return _c("li", { key: error.id }, [
                           _vm._v(
                             "\n                                " +
                               _vm._s(error) +
@@ -41208,7 +41208,7 @@ var render = function() {
                   _c(
                     "tbody",
                     _vm._l(_vm.tokens, function(token) {
-                      return _c("tr", [
+                      return _c("tr", { key: token.id }, [
                         _c(
                           "td",
                           { staticStyle: { "vertical-align": "middle" } },
@@ -41275,7 +41275,7 @@ var render = function() {
                     _c(
                       "ul",
                       _vm._l(_vm.form.errors, function(error) {
-                        return _c("li", [
+                        return _c("li", { key: error.id }, [
                           _vm._v(
                             "\n                                " +
                               _vm._s(error) +
@@ -41346,7 +41346,7 @@ var render = function() {
                           "div",
                           { staticClass: "col-md-6" },
                           _vm._l(_vm.scopes, function(scope) {
-                            return _c("div", [
+                            return _c("div", { key: scope.id }, [
                               _c("div", { staticClass: "checkbox" }, [
                                 _c("label", [
                                   _c("input", {
@@ -41424,11 +41424,27 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c(
-                "textarea",
-                { staticClass: "form-control", attrs: { rows: "10" } },
-                [_vm._v(_vm._s(_vm.accessToken))]
-              )
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.accessToken,
+                    expression: "accessToken"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { rows: "10" },
+                domProps: { value: _vm.accessToken },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.accessToken = $event.target.value
+                  }
+                }
+              })
             ]),
             _vm._v(" "),
             _vm._m(4)
