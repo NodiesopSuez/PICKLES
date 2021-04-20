@@ -3,6 +3,14 @@
        <!-- <router-link to="/example">To Example</router-link>
        <br/> -->
         <section class="top_section">
+            <div class="nav">
+                <nav>
+                    <ul>
+                        <li><router-link to="login">Login</router-link></li>
+                        <li><router-link to="signup">Sign up</router-link></li>
+                    </ul>
+                </nav>
+            </div>
             <div class="catch">
                 <img class="catch_img_hand" src="../img/catch_img_hand.png">
                 <h1>PICKLES</h1>

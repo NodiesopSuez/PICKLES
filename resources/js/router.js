@@ -13,5 +13,7 @@ export default new VueRouter({
         { path:'/', component:Top },
         { path:'/example', component:Example },
         { path:'/recommends', component:Recommends },
+        { path:'/signup', component:SignUp },
+        { path:'/login', component:Login },
     ]
 });
