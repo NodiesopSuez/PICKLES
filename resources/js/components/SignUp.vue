@@ -9,6 +9,10 @@
         <div class="login">
             <div class="rid"></div>
             <form class="bin">
+                <div>
+                    <img src="../img/like.png">
+                    <h3>Sign up</h3>
+                </div>
                 <div class="form-group">
                     <p>name</p>
                     <input id="name" name="name" type="text">
@@ -21,6 +25,7 @@
                     <p>password</p>
                     <input id="password" name="password" type="password">
                 </div>
+                <button type="submit" class="submit" >Sign up</button>
            </form>
         </div>
     </div>
@@ -36,6 +41,7 @@ export default {
 /* to_topボタン */
 .to_top {
     float: right;
+    margin: 16px;
 }
 .to_top button {
     position: relative;
@@ -66,31 +72,87 @@ export default {
     transform: rotate(-45deg) !important;
 }
 
+/* ログインフォーム */
 .login {
-    margin: 100px auto;
+    position: relative;
+    margin: auto auto 80px auto;
+    padding: 50px 0 0 0;
     width: 450px;
-    height: 500px;
+    height: 560px;
 }
 
+.rid,
 .bin {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/* ふた部分 */
+.rid {
+    z-index: 10;
+    top: 32px;
+    width: 392px;
+    height: 45px;
+    border-radius: 10px;
+    background: var(--icon-background);
+}
+
+/* びん部分 */
+.bin {
+    bottom: 0;
+    padding: 32px 48px;
     width: 400px;
-    height: 500px;
+    height: 496px;
     background: #EDFFF0;
+    border-radius: 30px;
     border-style: solid;
     border-width: 3px;
     border-color: #fff;
 }
 
-/* ふた部分 */
-.rid {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 450px;
+.bin > div:first-of-type {
+    margin: auto auto 24px auto;
+}
+
+.bin img {
+    width: 106px;
+    margin: auto auto 8px auto;
+}
+
+.bin h3,
+.submit {
+    color: #573100; 
+}
+
+.form-group,
+.form-group * {
+    text-align: start;
+    background: transparent;
+}
+
+.form-group > p {
+    margin: 0;
+}
+
+.form-group > input {
+    width: 280px;
+    font-size: 18px;
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: #b0c5da;
+}
+
+.submit {
+    z-index: 10;
+    margin: 8px !important;
+    width: 80px;
     height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
     background: var(--icon-background);
+    font-size: 16px;
 }
 
 </style>
