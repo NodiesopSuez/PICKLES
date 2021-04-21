@@ -15,15 +15,15 @@
                 </div>
                 <div class="form-group">
                     <p>name</p>
-                    <input id="name" name="name" type="text">
+                    <input id="name" name="name" v-model="name" type="text">
                 </div>
                 <div class="form-group">
                     <p>email</p>
-                    <input id="email" name="email" type="text">
+                    <input id="email" name="email" v-model="email" type="text">
                 </div>
                 <div class="form-group">
-                    <p>password</p>
-                    <input id="password" name="password" type="password">
+                    <p>password</p> 
+                    <input id="password" name="password" v-model="password" type="password">
                 </div>
                 <button type="submit" class="submit" >Sign up</button>
            </form>
@@ -33,6 +33,14 @@
 
 <script>
 export default {
+    name: 'SignUp',
+    data: function(){
+        return {
+            name: '',
+            email: '',
+            password: '',
+        }
+    }
     
 }
 </script>

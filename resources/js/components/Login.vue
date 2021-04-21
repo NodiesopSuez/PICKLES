@@ -15,11 +15,11 @@
                 </div>
                 <div class="form-group">
                     <p>email</p>
-                    <input id="email" name="email" type="text">
+                    <input id="email" name="email" v-model="email" type="text">
                 </div>
                 <div class="form-group">
                     <p>password</p>
-                    <input id="password" name="password" type="password">
+                    <input id="password" name="password" v-model="password" type="password">
                 </div>
                 <button type="submit" class="submit" >Login</button>
            </form>
@@ -29,6 +29,13 @@
 
 <script>
 export default {
+    name: 'Login',
+    data: function(){
+        return {
+            email: '',
+            password: '',
+        }
+    }
     
 }
 </script>
