@@ -2141,6 +2141,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -7776,7 +7782,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.login[data-v-2573bf63] {\r\n    margin: 100px auto;\r\n    width: 450px;\r\n    height: 500px;\n}\n.bin[data-v-2573bf63] {\r\n    position: relative;\r\n    width: 400px;\r\n    height: 500px;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-2573bf63] {\r\n    position: absolute;\r\n    content: '';\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\r\n    width: 450px;\r\n    height: 30px;\r\n    background: var(--icon-background);\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.to_top[data-v-2573bf63] {\r\n    float: right;\n}\n.to_top button[data-v-2573bf63] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-2573bf63] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-2573bf63]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-2573bf63]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\n.login[data-v-2573bf63] {\r\n    margin: 100px auto;\r\n    width: 450px;\r\n    height: 500px;\n}\n.bin[data-v-2573bf63] {\r\n    width: 400px;\r\n    height: 500px;\r\n    background: #EDFFF0;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-2573bf63] {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\r\n    width: 450px;\r\n    height: 30px;\r\n    background: var(--icon-background);\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -40188,7 +40194,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    [
+      _c("router-link", { staticClass: "to_top", attrs: { to: "/" } }, [
+        _c("button", [_c("div"), _vm._v(" "), _c("div")])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -40196,29 +40212,27 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "login" }, [
-      _c("div", { staticClass: "bin" }, [
-        _c("div", { staticClass: "rid" }),
+      _c("div", { staticClass: "rid" }),
+      _vm._v(" "),
+      _c("form", { staticClass: "bin" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("p", [_vm._v("name")]),
+          _vm._v(" "),
+          _c("input", { attrs: { id: "name", name: "name", type: "text" } })
+        ]),
         _vm._v(" "),
-        _c("form", [
-          _c("div", { staticClass: "form-group" }, [
-            _c("p", [_vm._v("name")]),
-            _vm._v(" "),
-            _c("input", { attrs: { id: "name", name: "name", type: "text" } })
-          ]),
+        _c("div", { staticClass: "form-group" }, [
+          _c("p", [_vm._v("email")]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("p", [_vm._v("email")]),
-            _vm._v(" "),
-            _c("input", { attrs: { id: "email", name: "email", type: "text" } })
-          ]),
+          _c("input", { attrs: { id: "email", name: "email", type: "text" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("p", [_vm._v("password")]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("p", [_vm._v("password")]),
-            _vm._v(" "),
-            _c("input", {
-              attrs: { id: "password", name: "password", type: "password" }
-            })
-          ])
+          _c("input", {
+            attrs: { id: "password", name: "password", type: "password" }
+          })
         ])
       ])
     ])

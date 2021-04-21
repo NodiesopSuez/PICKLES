@@ -1,8 +1,14 @@
 <template>
-    <div class="login">
-        <div class="bin">
-        <div class="rid"></div>
-            <form>
+    <div>
+        <router-link class="to_top" to="/">
+            <button>
+                <div></div>
+                <div></div>
+            </button>
+        </router-link>
+        <div class="login">
+            <div class="rid"></div>
+            <form class="bin">
                 <div class="form-group">
                     <p>name</p>
                     <input id="name" name="name" type="text">
@@ -15,7 +21,7 @@
                     <p>password</p>
                     <input id="password" name="password" type="password">
                 </div>
-            </form>
+           </form>
         </div>
     </div>
 </template>
@@ -27,6 +33,39 @@ export default {
 </script>
 
 <style scoped>
+/* to_topボタン */
+.to_top {
+    float: right;
+}
+.to_top button {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    box-shadow: none !important;
+    transition: unset !important;
+    background: transparent !important;
+}
+
+.to_top button > div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 25px;
+    height: 5px;
+    background: #303030;
+}
+
+.to_top button > div:first-of-type {
+    transform: rotate(45deg) !important;
+}
+
+.to_top button > div:last-of-type {
+    transform: rotate(-45deg) !important;
+}
+
 .login {
     margin: 100px auto;
     width: 450px;
@@ -34,15 +73,17 @@ export default {
 }
 
 .bin {
-    position: relative;
     width: 400px;
     height: 500px;
+    background: #EDFFF0;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #fff;
 }
 
 /* ふた部分 */
 .rid {
     position: absolute;
-    content: '';
     top: 0;
     left: 0;
     right: 0;
