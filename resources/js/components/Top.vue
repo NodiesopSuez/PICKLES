@@ -3,11 +3,12 @@
        <!-- <router-link to="/example">To Example</router-link>
        <br/> -->
         <section class="top_section">
-            <div class="nav">
+            <div class="menu">
                 <nav>
                     <ul>
                         <li><router-link to="login">Login</router-link></li>
                         <li><router-link to="signup">Sign up</router-link></li>
+                        <li><img :src="icon_img"></li>
                     </ul>
                 </nav>
             </div>
@@ -87,6 +88,7 @@ export default {
             tracks_info: [],
             result_list: [],
             paginate:['paginate-items'],
+            icon_img: require('../img/not_login.png'),
             status: '',
             error_msg: `<h2>!! ERROR !!</h2><p>エラーが発生いたしました。</p><p>申し訳ございませんが、<br/>再度トップページよりお進みください。</p>`,
             no_result_msg: ``,
@@ -335,7 +337,6 @@ export default {
     right: 10px;
 }
 
-
 /* section */.top_section {
     height: 600px;
     background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ;
@@ -360,7 +361,7 @@ export default {
 
 .catch {
     width: 480px;
-    height: 340px;
+    height: 286px;
 }
 
 .catch_img_hand {
@@ -391,6 +392,37 @@ export default {
     margin: auto;
     width: 1000px;
 }
+
+/* menu部分---------------------------------------------------------- */
+.menu > nav {
+    padding: 16px 24px 0 0;
+}
+
+.menu ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 264px;
+    margin: auto 0 auto auto;
+}
+
+.menu li {
+    margin: auto 0  0 16px;
+}
+
+.menu li > a {
+    color: #FFE669;
+}
+
+.menu li > a:hover {
+    color: #573100;
+    text-decoration: none;
+}
+
+.menu li > img {
+    width: 40px;
+}
+
 
 /* Form部分 --------------------------------------------------------- */
 .search_form { 
