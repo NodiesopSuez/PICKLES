@@ -40211,7 +40211,7 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
-            _c("p", { attrs: { for: "passwod" } }, [_vm._v("password")]),
+            _c("p", [_vm._v("password")]),
             _vm._v(" "),
             _c("input", {
               attrs: { id: "password", name: "password", type: "password" }

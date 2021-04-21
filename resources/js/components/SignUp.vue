@@ -12,7 +12,7 @@
                     <input id="email" name="email" type="text">
                 </div>
                 <div class="form-group">
-                    <p for="passwod">password</p>
+                    <p>password</p>
                     <input id="password" name="password" type="password">
                 </div>
             </form>
