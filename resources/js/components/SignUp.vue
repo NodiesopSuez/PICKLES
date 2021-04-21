@@ -6,7 +6,7 @@
                 <div></div>
             </button>
         </router-link>
-        <div class="login">
+        <div class="signup">
             <div class="rid"></div>
             <form class="bin">
                 <div>
@@ -73,7 +73,7 @@ export default {
 }
 
 /* ログインフォーム */
-.login {
+.signup {
     position: relative;
     margin: auto auto 80px auto;
     padding: 50px 0 0 0;
