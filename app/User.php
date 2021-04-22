@@ -37,4 +37,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    protected $table = "users";
+    public function getUsersList(){
+        $users_list = $this::all();
+        return $users_list;
+    }
 }

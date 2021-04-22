@@ -25,7 +25,7 @@
                     <p>password</p> 
                     <input id="password" name="password" v-model="password" type="password">
                 </div>
-                <button type="submit" class="submit" >Sign up</button>
+                <button type="submit" class="submit" @click="registerUser()">Sign up</button>
            </form>
         </div>
         <section class="modal_section" v-if="modal" :class="status">
@@ -49,6 +49,25 @@ export default {
             modal: false,
             status: '',
             error_msg: `<h2>!! ERROR !!</h2><p>エラーが発生いたしました。</p><p>申し訳ございませんが、<br/>再度トップページよりお進みください。</p>`,
+        }
+    },
+    methods: {
+        registerUser(){
+            console.log(this.name);
+            console.log(this.email);
+            console.log(this.password);
+
+            let params = {
+                "name"    : this.name,
+                "email"   : this.email,
+                "password": this.password,
+            };
+
+            axios.post('./api/register_user', { data: params })
+            .then((response) => {
+                console.log(response);
+                return;
+            })
         }
     }
     
