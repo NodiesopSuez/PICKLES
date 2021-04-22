@@ -42,7 +42,7 @@ export default {
         return {
             email: '',
             password: '',
-            status: 'error',
+            status: 'registered',
             modal: true,
             error_msg:  `<h2>!! ERROR !!</h2><p>エラーが発生いたしました。</p><p>申し訳ございませんが、<br/>再度トップページよりお進みください。</p>`,
             registered_msg: `<h2>Registered!</h2><p>ユーザー登録が完了しました！</p>`,
@@ -168,6 +168,10 @@ export default {
     font-size: 16px;
     color: #fff;
     background: var(--md-green);
+}
+
+.registered > .modal_box {
+    top: 0 !important;
 }
 
 </style>
