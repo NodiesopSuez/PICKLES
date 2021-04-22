@@ -115,10 +115,10 @@ h2 {
 }
 
 /* statusによってモーダルの高さを分岐 */
+.error > .modal_box,
 .no_result > .modal_box {
   height: 230px;
 }
-.error > .modal_box,
 .duplicate > .modal_box {
   height: 205px;
 }
