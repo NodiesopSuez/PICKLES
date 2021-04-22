@@ -1999,7 +1999,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Login',
+  data: function data() {
+    return {
+      email: '',
+      password: ''
+    };
+  }
+});
 
 /***/ }),
 
@@ -2175,7 +2183,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'SignUp',
+  data: function data() {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      modal: false,
+      status: '',
+      error_msg: "<h2>!! ERROR !!</h2><p>\u30A8\u30E9\u30FC\u304C\u767A\u751F\u3044\u305F\u3057\u307E\u3057\u305F\u3002</p><p>\u7533\u3057\u8A33\u3054\u3056\u3044\u307E\u305B\u3093\u304C\u3001<br/>\u518D\u5EA6\u30C8\u30C3\u30D7\u30DA\u30FC\u30B8\u3088\u308A\u304A\u9032\u307F\u304F\u3060\u3055\u3044\u3002</p>"
+    };
+  }
+});
 
 /***/ }),
 
@@ -7791,7 +7818,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-6bdc8b8e] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-6bdc8b8e] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-6bdc8b8e] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-6bdc8b8e]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-6bdc8b8e]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* ログインフォーム */\n.login[data-v-6bdc8b8e] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 528px;\n}\n.rid[data-v-6bdc8b8e],\r\n.bin[data-v-6bdc8b8e] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-6bdc8b8e] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--md-green);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-6bdc8b8e] {\r\n    bottom: 0;\r\n    padding: 56px 48px;\r\n    width: 400px;\r\n    height: 464px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-6bdc8b8e]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-6bdc8b8e] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-6bdc8b8e] {\r\n    color: var(--md-green);\n}\n.form-group[data-v-6bdc8b8e],\r\n.form-group *[data-v-6bdc8b8e] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-6bdc8b8e] {\r\n    margin: 0;\n}\n.form-group > input[data-v-6bdc8b8e] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-6bdc8b8e] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    color: #fff;\r\n    background: var(--md-green);\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-6bdc8b8e] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-6bdc8b8e] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-6bdc8b8e] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-6bdc8b8e]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-6bdc8b8e]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* ログインフォーム */\n.login[data-v-6bdc8b8e] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 528px;\n}\n.rid[data-v-6bdc8b8e],\r\n.bin[data-v-6bdc8b8e] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-6bdc8b8e] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--md-green);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-6bdc8b8e] {\r\n    bottom: 0;\r\n    padding: 56px 48px;\r\n    width: 400px;\r\n    height: 464px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-6bdc8b8e]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-6bdc8b8e] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-6bdc8b8e] {\r\n    color: var(--md-green);\n}\n.form-group[data-v-6bdc8b8e],\r\n.form-group *[data-v-6bdc8b8e] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-6bdc8b8e] {\r\n    margin: 0;\n}\n.form-group > input[data-v-6bdc8b8e] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-6bdc8b8e] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    color: #fff;\r\n    background: var(--md-green);\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -7829,7 +7856,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-2573bf63] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-2573bf63] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-2573bf63] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-2573bf63]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-2573bf63]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* ログインフォーム */\n.signup[data-v-2573bf63] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 560px;\n}\n.rid[data-v-2573bf63],\r\n.bin[data-v-2573bf63] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-2573bf63] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--icon-background);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-2573bf63] {\r\n    bottom: 0;\r\n    padding: 32px 48px;\r\n    width: 400px;\r\n    height: 496px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-2573bf63]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-2573bf63] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-2573bf63],\r\n.submit[data-v-2573bf63] {\r\n    color: #573100;\n}\n.form-group[data-v-2573bf63],\r\n.form-group *[data-v-2573bf63] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-2573bf63] {\r\n    margin: 0;\n}\n.form-group > input[data-v-2573bf63] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-2573bf63] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    background: var(--icon-background);\r\n    font-size: 16px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-2573bf63] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-2573bf63] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-2573bf63] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-2573bf63]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-2573bf63]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* ログインフォーム */\n.signup[data-v-2573bf63] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 560px;\n}\n.rid[data-v-2573bf63],\r\n.bin[data-v-2573bf63] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-2573bf63] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--icon-background);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-2573bf63] {\r\n    bottom: 0;\r\n    padding: 32px 48px;\r\n    width: 400px;\r\n    height: 496px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-2573bf63]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-2573bf63] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-2573bf63],\r\n.submit[data-v-2573bf63] {\r\n    color: #573100;\n}\n.form-group[data-v-2573bf63],\r\n.form-group *[data-v-2573bf63] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-2573bf63] {\r\n    margin: 0;\n}\n.form-group > input[data-v-2573bf63] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-2573bf63] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    background: var(--icon-background);\r\n    font-size: 16px;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -40056,7 +40083,67 @@ var render = function() {
         _c("button", [_c("div"), _vm._v(" "), _c("div")])
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "login" }, [
+        _c("div", { staticClass: "rid" }),
+        _vm._v(" "),
+        _c("form", { staticClass: "bin" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("p", [_vm._v("email")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.email,
+                  expression: "email"
+                }
+              ],
+              attrs: { id: "email", name: "email", type: "text" },
+              domProps: { value: _vm.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.email = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("p", [_vm._v("password")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.password,
+                  expression: "password"
+                }
+              ],
+              attrs: { id: "password", name: "password", type: "password" },
+              domProps: { value: _vm.password },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.password = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("button", { staticClass: "submit", attrs: { type: "submit" } }, [
+            _vm._v("Login")
+          ])
+        ])
+      ])
     ],
     1
   )
@@ -40066,34 +40153,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "login" }, [
-      _c("div", { staticClass: "rid" }),
+    return _c("div", [
+      _c("img", { attrs: { src: __webpack_require__(/*! ../img/like.png */ "./resources/js/img/like.png") } }),
       _vm._v(" "),
-      _c("form", { staticClass: "bin" }, [
-        _c("div", [
-          _c("img", { attrs: { src: __webpack_require__(/*! ../img/like.png */ "./resources/js/img/like.png") } }),
-          _vm._v(" "),
-          _c("h3", [_vm._v("Login")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("p", [_vm._v("email")]),
-          _vm._v(" "),
-          _c("input", { attrs: { id: "email", name: "email", type: "text" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("p", [_vm._v("password")]),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { id: "password", name: "password", type: "password" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "submit", attrs: { type: "submit" } }, [
-          _vm._v("Login")
-        ])
-      ])
+      _c("h3", [_vm._v("Login")])
     ])
   }
 ]
@@ -40323,7 +40386,116 @@ var render = function() {
         _c("button", [_c("div"), _vm._v(" "), _c("div")])
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "signup" }, [
+        _c("div", { staticClass: "rid" }),
+        _vm._v(" "),
+        _c("form", { staticClass: "bin" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("p", [_vm._v("name")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.name,
+                  expression: "name"
+                }
+              ],
+              attrs: { id: "name", name: "name", type: "text" },
+              domProps: { value: _vm.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.name = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("p", [_vm._v("email")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.email,
+                  expression: "email"
+                }
+              ],
+              attrs: { id: "email", name: "email", type: "text" },
+              domProps: { value: _vm.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.email = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("p", [_vm._v("password")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.password,
+                  expression: "password"
+                }
+              ],
+              attrs: { id: "password", name: "password", type: "password" },
+              domProps: { value: _vm.password },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.password = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("button", { staticClass: "submit", attrs: { type: "submit" } }, [
+            _vm._v("Sign up")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm.modal
+        ? _c("section", { staticClass: "modal_section", class: _vm.status }, [
+            _c("div", { staticClass: "modal_back" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal_box" }, [
+              _vm.status == "error"
+                ? _c("div", { domProps: { innerHTML: _vm._s(_vm.error_msg) } })
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      return _vm.closeModal()
+                    }
+                  }
+                },
+                [_vm._v("Close")]
+              )
+            ])
+          ])
+        : _vm._e()
     ],
     1
   )
@@ -40333,40 +40505,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "signup" }, [
-      _c("div", { staticClass: "rid" }),
+    return _c("div", [
+      _c("img", { attrs: { src: __webpack_require__(/*! ../img/like.png */ "./resources/js/img/like.png") } }),
       _vm._v(" "),
-      _c("form", { staticClass: "bin" }, [
-        _c("div", [
-          _c("img", { attrs: { src: __webpack_require__(/*! ../img/like.png */ "./resources/js/img/like.png") } }),
-          _vm._v(" "),
-          _c("h3", [_vm._v("Sign up")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("p", [_vm._v("name")]),
-          _vm._v(" "),
-          _c("input", { attrs: { id: "name", name: "name", type: "text" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("p", [_vm._v("email")]),
-          _vm._v(" "),
-          _c("input", { attrs: { id: "email", name: "email", type: "text" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("p", [_vm._v("password")]),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { id: "password", name: "password", type: "password" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "submit", attrs: { type: "submit" } }, [
-          _vm._v("Sign up")
-        ])
-      ])
+      _c("h3", [_vm._v("Sign up")])
     ])
   }
 ]
