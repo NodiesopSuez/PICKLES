@@ -28,7 +28,7 @@
             <div class="modal_back"></div>
             <div class="modal_box">
                 <div v-if="status=='error'" v-html="error_msg"></div>
-                <div v-else-if="status=='registered'" v-html="registered_msg"></div>
+                <div v-else-if="status=='success'" v-html="success_msg"></div>
                 <button @click="closeModal()">Close</button>
             </div>
         </section>
@@ -42,10 +42,10 @@ export default {
         return {
             email: '',
             password: '',
-            status: 'registered',
-            modal: true,
+            status: '',
+            modal: false,
             error_msg:  `<h2>!! ERROR !!</h2><p>エラーが発生いたしました。</p><p>申し訳ございませんが、<br/>再度トップページよりお進みください。</p>`,
-            registered_msg: `<h2>Registered!</h2><p>ユーザー登録が完了しました！</p>`,
+            success_msg: `<h2>Registered!</h2><p>ユーザー登録が完了しました！</p>`,
         }
     }
     
@@ -170,7 +170,7 @@ export default {
     background: var(--md-green);
 }
 
-.registered > .modal_box {
+.success > .modal_box {
     top: 0 !important;
 }
 

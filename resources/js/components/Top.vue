@@ -54,13 +54,13 @@
                             :show-step-links="true">
             </paginate-links>
         </section>
-        <section class="modal_section" v-if="modal" :class="status">
+        <section class="modal_section" v-if="modal" :class="[status, {logged_in: loggedIn}]">
             <div class="modal_back"></div>
             <div class="modal_box">
                 <div v-if="status=='error'" v-html="error_msg"></div>
                 <div v-else-if="status=='no_result'" v-html="no_result_msg"></div>
                 <div v-else-if="status=='duplicate'" v-html="duplicate_msg"></div>
-                <div v-else-if="status=='registered'" v-html="registered_msg"></div>
+                <div v-else-if="status=='success'" v-html="success_msg"></div>
                 <button @click="closeModal()">Close</button>
             </div>
         </section>
@@ -83,17 +83,20 @@ export default {
             keyword: '',
             access_token: '',
             toggle: false,
-            modal: false,
+            modal: true,
             albums_info: [],
             tracks_info: [],
             result_list: [],
             paginate:['paginate-items'],
             icon_img: require('../img/not_login.png'),
-            status: '',
+            status: 'success',
             error_msg: `<h2>!! ERROR !!</h2><p>エラーが発生いたしました。</p><p>申し訳ございませんが、<br/>再度トップページよりお進みください。</p>`,
             no_result_msg: ``,
-            registered_msg: `<h2>Registered!</h2><p>Recommendsリストに登録されました！</p>`,
+            success_msg: ``,
+            //Recommendsに追加出来た時： success_msg: `<h2>Registered!</h2><p>Recommendsリストに登録されました！</p>`,
+            //ログイン出来た時：`<h2>HI!userさん！</h2><p>ログインできました！</p>`,
             duplicate_msg: `<h2>!! ERROR !!</h2><p>選ばれたコンテンツは<br/>既に登録されています。<br/>他のコンテンツをお選びください。`,
+            loggedIn: false,
         }
     },
     mounted: function(){
@@ -261,7 +264,8 @@ export default {
 
                 //登録できてたら'OK' / 重複したレコードあれば'duplicate'
                 if(response.data === 'OK'){
-                    this.status = 'registered';
+                    this.status = 'success';
+                    this.success_msg = `<h2>Registered!</h2><p>Recommendsリストに登録されました！</p>`;
                 }else if(response.data === 'duplicate'){
                     this.status = 'duplicate';
                 }else{

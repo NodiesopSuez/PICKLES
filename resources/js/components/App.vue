@@ -122,14 +122,18 @@ h2 {
 .duplicate > .modal_box {
   height: 205px;
 }
-.registered > .modal_box {
+.success > .modal_box {
   height: 168px;
 }
 
 /* モーダルの位置 */
 .duplicate > .modal_box,
-.registered > .modal_box {
+.success > .modal_box {
   top: 1400px;
+}
+
+.logged_in > .modal_box {
+  top: 0px !important;
 }
  
 /* 配色：エラーの時 */
@@ -154,14 +158,14 @@ h2 {
 }
 
 /* 配色：登録完了の時 */
-.registered > .modal_back {
+.success > .modal_back {
     background: var(--for-background);
 }
-.registered > .modal_box {
+.success > .modal_box {
     background: var(--md-green);
     color: #fff!important;
 }
-.registered h2 {
+.success h2 {
   color:#fff!important;
 }
 </style>
