@@ -47,8 +47,7 @@ export default {
             error_msg:  `<h2>!! ERROR !!</h2><p>エラーが発生いたしました。</p><p>申し訳ございませんが、<br/>再度トップページよりお進みください。</p>`,
             success_msg: `<h2>Registered!</h2><p>ユーザー登録が完了しました！</p>`,
         }
-    }
-    
+    },
 }
 </script>
 
