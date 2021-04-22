@@ -9,6 +9,9 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Http\JsonResponse;
+
+
 class RegisterController extends Controller
 {
     /*
@@ -50,9 +53,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => ['required', ['string', 'max:255'],],
+            'email' => ['required', ['string', 'email', 'max:255', 'unique:users'],],
+            'password' => ['required', ['string', 'min:8', 'confirmed']],
         ]);
     }
 
@@ -69,6 +72,19 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+
+    //バリデーションしてUsersテーブルにユーザ情報登録
+    public function store(Request $request){
+        $validate = $this -> validator($request::all());
+
+        if($validate -> fails()){
+            return new JSONResponse($validate -> errors());
+        } else {
+            $register = $this -> create($request::all());
+            return 'ok';
+        }
     }
 
 }

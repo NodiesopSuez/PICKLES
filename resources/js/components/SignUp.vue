@@ -8,7 +8,7 @@
         </router-link>
         <div class="signup">
             <div class="rid"></div>
-            <form class="bin">
+            <div class="bin">
                 <div>
                     <img src="../img/like.png">
                     <h3>Sign up</h3>
@@ -26,7 +26,7 @@
                     <input id="password" name="password" v-model="password" type="password">
                 </div>
                 <button type="submit" class="submit" @click="registerUser()">Sign up</button>
-           </form>
+           </div>
         </div>
         <section class="modal_section" v-if="modal" :class="status">
             <div class="modal_back"></div>
@@ -53,21 +53,19 @@ export default {
     },
     methods: {
         registerUser(){
-            console.log(this.name);
-            console.log(this.email);
-            console.log(this.password);
-
+            
             let params = {
                 "name"    : this.name,
                 "email"   : this.email,
                 "password": this.password,
             };
 
-            axios.post('./api/register_user', { data: params })
+            console.log(params);
+            /* axios.post('./api/register_user', { data: params })
             .then((response) => {
                 console.log(response);
                 return;
-            })
+            }) */
         }
     }
     

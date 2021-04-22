@@ -24,7 +24,7 @@ Route::middleware('auth:api') -> get('/user', function (Request $request) {
 Route::get('/get_users_data', 'GetUserController@get');
 
 //SignUpからユーザー登録
-Route::post('/register_user', 'RegisterController@register');
+Route::post('/register_user', 'RegisterController@store');
 
 //favoritesテーブルの全レコード取得(デバック用)
 Route::get('/get_rec', 'FavoritesController@test');
