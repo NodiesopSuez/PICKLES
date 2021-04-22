@@ -24,6 +24,14 @@
                 <button type="submit" class="submit" >Login</button>
            </form>
         </div>
+        <section class="modal_section" v-if="modal" :class="status">
+            <div class="modal_back"></div>
+            <div class="modal_box">
+                <div v-if="status=='error'" v-html="error_msg"></div>
+                <div v-else-if="status=='registered'" v-html="registered_msg"></div>
+                <button @click="closeModal()">Close</button>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -34,6 +42,10 @@ export default {
         return {
             email: '',
             password: '',
+            status: 'error',
+            modal: true,
+            error_msg:  `<h2>!! ERROR !!</h2><p>エラーが発生いたしました。</p><p>申し訳ございませんが、<br/>再度トップページよりお進みください。</p>`,
+            registered_msg: `<h2>Registered!</h2><p>ユーザー登録が完了しました！</p>`,
         }
     }
     
