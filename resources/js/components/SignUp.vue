@@ -67,9 +67,7 @@ export default {
             axios.post('./api/register_user', params)
             .then((response) => {
                 //登録できたら
-                console.log('ここは通貨');
                 console.log(response.data);
-
 
                 
 
@@ -81,20 +79,19 @@ export default {
                 let messages = error.response.data.errors.detail;
                 console.log(messages);
 
-                console.log(messages.name);
-
                 this.error_msg = [];  //既に入っているメッセージを削除
+                //入ってるメッセージをdata.error_msgに追加
                 messages.name     ? this.error_msg.push(messages.name[0])    : null;
                 messages.email    ? this.error_msg.push(messages.email[0])   : null;
                 messages.password ? this.error_msg.push(messages.password[0]): null;
 
-                let self = this;
-                console.log('エラーだって');
                 this.status = 'error';
-                this.modal  = true;
-                console.log(this.error_msg);     
+                this.modal  = true;   
             })
-        }
+        },
+        closeModal(){
+            this.modal ? this.modal=!this.modal : this.modal
+        },
     }
     
 }
