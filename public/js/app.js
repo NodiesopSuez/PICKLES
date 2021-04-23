@@ -2218,8 +2218,8 @@ __webpack_require__.r(__webpack_exports__);
     registerUser: function registerUser() {
       var params = {
         "name": this.name,
-        "email": this.email // "password": this.password,
-
+        "email": this.email,
+        "password": this.password
       };
       console.log(params);
       var body = new URLSearchParams(params);
