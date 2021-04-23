@@ -147,6 +147,7 @@ return [
 
     'attributes' => [
         'user_id' => 'ユーザーID',
+        'name' => 'ユーザー名',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
     ],
