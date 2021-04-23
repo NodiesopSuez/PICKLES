@@ -95,7 +95,7 @@ return [
     'password' => 'パスワードに誤りがあります。',
     'present' => ':attributeには現在時刻を指定してください。',
     'regex' => ':attributeの形式が無効です。',
-    'required' => ':attributeは必須です。',
+    'required' => ':attributeを入力してください。',
     'required_if' => ':otherが:valueの時は、:attributeは必須です。',
     'required_unless' => ':otherが:values以外の時は、:attributeは必須です。',
     'required_with' => ':valuesのうちいずれかが指定された時は、:attributeは必須です。',

@@ -2202,6 +2202,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SignUp',
   data: function data() {
@@ -2211,23 +2214,40 @@ __webpack_require__.r(__webpack_exports__);
       password: '',
       modal: false,
       status: '',
-      error_msg: "<h2>!! ERROR !!</h2><p>\u30A8\u30E9\u30FC\u304C\u767A\u751F\u3044\u305F\u3057\u307E\u3057\u305F\u3002</p><p>\u7533\u3057\u8A33\u3054\u3056\u3044\u307E\u305B\u3093\u304C\u3001<br/>\u518D\u5EA6\u30C8\u30C3\u30D7\u30DA\u30FC\u30B8\u3088\u308A\u304A\u9032\u307F\u304F\u3060\u3055\u3044\u3002</p>"
+      error_msg: ['エラーが発生いたしました。', '申し訳ございませんが', '再度トップページよりお進みください']
     };
   },
   methods: {
     registerUser: function registerUser() {
+      var _this = this;
+
+      //入力された情報
       var params = {
         "name": this.name,
         "email": this.email,
         "password": this.password
       };
-      console.log(params);
-      var body = new URLSearchParams(params);
       axios.post('./api/register_user', params).then(function (response) {
-        console.log(response);
+        //登録できたら
+        console.log('ここは通貨');
+        console.log(response.data);
         return;
       })["catch"](function (error) {
-        console.log(error.response.data.errors.detail);
+        //エラー発生したら
+        console.log(error);
+        var messages = error.response.data.errors.detail;
+        console.log(messages);
+        console.log(messages.name);
+        _this.error_msg = []; //既に入っているメッセージを削除
+
+        messages.name ? _this.error_msg.push(messages.name[0]) : null;
+        messages.email ? _this.error_msg.push(messages.email[0]) : null;
+        messages.password ? _this.error_msg.push(messages.password[0]) : null;
+        var self = _this;
+        console.log('エラーだって');
+        _this.status = 'error';
+        _this.modal = true;
+        console.log(_this.error_msg);
       });
     }
   }
@@ -7832,7 +7852,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n:root {\r\n  --lt-yellow: #FFE959;\r\n  --md-yellow: #FFCD03;\r\n  --hv-yellow: #ff8000;\r\n  --for-background: #C8FFD3;\r\n  --icon-background: #FDD441;\r\n  --md-green: #00502E;\r\n  --shadow: #B4CF8F;\n}\nbody { \r\n  background: var(--for-background)!important;\n}\n#app {\r\n  font-family: Avenir, Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\n#app button {\r\n  margin: auto;\r\n  border: none;\r\n  outline: none;\r\n  text-align: center;\n}\n#app li {\r\n  list-style: none;\n}\n#app button {\r\n  cursor: pointer;\r\n  box-shadow: 4px 4px 0px var(--shadow);\r\n  transition: 0.1s;\n}\n#app button:active {\r\n  transform: translate(3px, 4px);\r\n  box-shadow: none;\n}\n#app .fade-enter-active, \r\n#app .fade-leave-active {\r\n  transition: opacity .5s;\n}\n#app .fade-enter, \r\n#app .fade-leave-to {\r\n  opacity: 0;\n}\r\n\r\n\r\n\r\n/* modalt部分 --------------------------------------------------------- */\n.modal_back {\r\n    z-index: 20;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    opacity: 0.9;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\n}\n.modal_box {\r\n    z-index: 30;\r\n    position:absolute;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    padding: 16px;\r\n    width: 330px;\r\n    border-radius: 15px;\n}\nh2 {\r\n    margin: 8px auto;\r\n    font-weight: bold;\n}\n.modal_box button {\r\n    width: 80px;\r\n    height: 35px;\r\n    border-radius: 17.5px;\r\n    font-size: 18px;\r\n    box-shadow: 3px 4px 0px #333;\n}\r\n\r\n/* statusによってモーダルの高さを分岐 */\n.error > .modal_box,\r\n.no_result > .modal_box {\r\n  height: 230px;\n}\n.duplicate > .modal_box {\r\n  height: 205px;\n}\n.success > .modal_box {\r\n  height: 168px;\n}\r\n\r\n/* モーダルの位置 */\n.duplicate > .modal_box,\r\n.success > .modal_box {\r\n  top: 1400px;\n}\n.logged_in > .modal_box {\r\n  top: 0px !important;\n}\r\n \r\n/* 配色：エラーの時 */\n.error > .modal_back,\r\n.no_result > .modal_back,\r\n.duplicate > .modal_back {\r\n    background: #2e4a32;\n}\n.error > .modal_box, \r\n.no_result > .modal_box,\r\n.duplicate > .modal_box {\r\n    background: #d0e2d1;\n}\n.error h2, \r\n.no_result h2,\r\n.duplicate h2 {\r\n    color: rgb(196, 0, 0);\n}\n.no_result .keyword {\r\n  overflow: hidden;\r\n  height: 24px;\n}\r\n\r\n/* 配色：登録完了の時 */\n.success > .modal_back {\r\n    background: var(--for-background);\n}\n.success > .modal_box {\r\n    background: var(--md-green);\r\n    color: #fff!important;\n}\n.success h2 {\r\n  color:#fff!important;\n}\r\n", ""]);
+exports.push([module.i, "\n:root {\r\n  --lt-yellow: #FFE959;\r\n  --md-yellow: #FFCD03;\r\n  --hv-yellow: #ff8000;\r\n  --for-background: #C8FFD3;\r\n  --icon-background: #FDD441;\r\n  --md-green: #00502E;\r\n  --shadow: #B4CF8F;\n}\nbody { \r\n  background: var(--for-background)!important;\n}\n#app {\r\n  font-family: Avenir, Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\n}\n#app button {\r\n  margin: auto;\r\n  border: none;\r\n  outline: none;\r\n  text-align: center;\n}\n#app li {\r\n  list-style: none;\n}\n#app button {\r\n  cursor: pointer;\r\n  box-shadow: 4px 4px 0px var(--shadow);\r\n  transition: 0.1s;\n}\n#app button:active {\r\n  transform: translate(3px, 4px);\r\n  box-shadow: none;\n}\n#app .fade-enter-active, \r\n#app .fade-leave-active {\r\n  transition: opacity .5s;\n}\n#app .fade-enter, \r\n#app .fade-leave-to {\r\n  opacity: 0;\n}\r\n\r\n\r\n\r\n/* modalt部分 --------------------------------------------------------- */\n.modal_back {\r\n  z-index: 20;\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  opacity: 0.9;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\n}\n.modal_box {\r\n  z-index: 30;\r\n  position:absolute;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  margin: auto;\r\n  padding: 16px;\r\n  width: 330px;\r\n  border-radius: 15px;\n}\nh2 {\r\n  margin: 8px auto;\r\n  font-weight: bold;\n}\n.modal_box button {\r\n  width: 80px;\r\n  height: 35px;\r\n  border-radius: 17.5px;\r\n  font-size: 18px;\r\n  box-shadow: 3px 4px 0px #333;\n}\n.modal_box p {\r\n  margin-bottom: 0;\n}\r\n\r\n/* statusによってモーダルの高さを分岐 */\n.error > .modal_box,\r\n.no_result > .modal_box {\r\n  height: 230px;\n}\n.duplicate > .modal_box {\r\n  height: 205px;\n}\n.success > .modal_box {\r\n  height: 168px;\n}\r\n\r\n/* モーダルの位置 */\n.duplicate > .modal_box,\r\n.success > .modal_box {\r\n  top: 1400px;\n}\n.logged_in > .modal_box {\r\n  top: 0px !important;\n}\r\n \r\n/* 配色：エラーの時 */\n.error > .modal_back,\r\n.no_result > .modal_back,\r\n.duplicate > .modal_back {\r\n    background: #2e4a32;\n}\n.error > .modal_box, \r\n.no_result > .modal_box,\r\n.duplicate > .modal_box {\r\n    background: #d0e2d1;\n}\n.error h2, \r\n.no_result h2,\r\n.duplicate h2 {\r\n    color: rgb(196, 0, 0);\n}\n.no_result .keyword {\r\n  overflow: hidden;\r\n  height: 24px;\n}\r\n\r\n/* 配色：登録完了の時 */\n.success > .modal_back {\r\n    background: var(--for-background);\n}\n.success > .modal_box {\r\n    background: var(--md-green);\r\n    color: #fff!important;\n}\n.success h2 {\r\n  color:#fff!important;\n}\r\n", ""]);
 
 // exports
 
@@ -7889,7 +7909,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-2573bf63] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-2573bf63] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-2573bf63] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-2573bf63]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-2573bf63]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* ログインフォーム */\n.signup[data-v-2573bf63] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 560px;\n}\n.rid[data-v-2573bf63],\r\n.bin[data-v-2573bf63] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-2573bf63] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--icon-background);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-2573bf63] {\r\n    bottom: 0;\r\n    padding: 32px 48px;\r\n    width: 400px;\r\n    height: 496px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-2573bf63]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-2573bf63] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-2573bf63],\r\n.submit[data-v-2573bf63] {\r\n    color: #573100;\n}\n.form-group[data-v-2573bf63],\r\n.form-group *[data-v-2573bf63] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-2573bf63] {\r\n    margin: 0;\n}\n.form-group > input[data-v-2573bf63] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-2573bf63] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    background: var(--icon-background);\r\n    font-size: 16px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-2573bf63] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-2573bf63] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-2573bf63] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-2573bf63]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-2573bf63]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* ログインフォーム */\n.signup[data-v-2573bf63] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 560px;\n}\n.rid[data-v-2573bf63],\r\n.bin[data-v-2573bf63] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-2573bf63] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--icon-background);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-2573bf63] {\r\n    bottom: 0;\r\n    padding: 32px 48px;\r\n    width: 400px;\r\n    height: 496px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-2573bf63]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-2573bf63] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-2573bf63],\r\n.submit[data-v-2573bf63] {\r\n    color: #573100;\n}\n.form-group[data-v-2573bf63],\r\n.form-group *[data-v-2573bf63] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-2573bf63] {\r\n    margin: 0;\n}\n.form-group > input[data-v-2573bf63] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-2573bf63] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    background: var(--icon-background);\r\n    font-size: 16px;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -40550,7 +40570,17 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "modal_box" }, [
               _vm.status == "error"
-                ? _c("div", { domProps: { innerHTML: _vm._s(_vm.error_msg) } })
+                ? _c(
+                    "div",
+                    [
+                      _c("h2", [_vm._v("!! ERROR !!")]),
+                      _vm._v(" "),
+                      _vm._l(_vm.error_msg, function(msg, index) {
+                        return _c("p", { key: index }, [_vm._v(_vm._s(msg))])
+                      })
+                    ],
+                    2
+                  )
                 : _vm._e(),
               _vm._v(" "),
               _c(

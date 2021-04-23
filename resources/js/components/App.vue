@@ -76,42 +76,46 @@ body {
 
 /* modalt部分 --------------------------------------------------------- */
 .modal_back {
-    z-index: 20;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal_box {
-    z-index: 30;
-    position:absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    padding: 16px;
-    width: 330px;
-    border-radius: 15px;
+  z-index: 30;
+  position:absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  padding: 16px;
+  width: 330px;
+  border-radius: 15px;
 }
 
 h2 {
-    margin: 8px auto;
-    font-weight: bold;
+  margin: 8px auto;
+  font-weight: bold;
 }
 
 .modal_box button {
-    width: 80px;
-    height: 35px;
-    border-radius: 17.5px;
-    font-size: 18px;
-    box-shadow: 3px 4px 0px #333;
+  width: 80px;
+  height: 35px;
+  border-radius: 17.5px;
+  font-size: 18px;
+  box-shadow: 3px 4px 0px #333;
+}
+
+.modal_box p {
+  margin-bottom: 0;
 }
 
 /* statusによってモーダルの高さを分岐 */

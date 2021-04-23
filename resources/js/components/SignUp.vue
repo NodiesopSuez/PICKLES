@@ -31,7 +31,10 @@
         <section class="modal_section" v-if="modal" :class="status">
             <div class="modal_back"></div>
             <div class="modal_box">
-                <div v-if="status=='error'" v-html="error_msg"></div>
+                <div v-if="status=='error'">
+                    <h2>!! ERROR !!</h2>
+                    <p v-for="(msg, index) in error_msg" :key="index">{{ msg }}</p>
+                </div>
                 <button @click="closeModal()">Close</button>
             </div>
         </section>
@@ -48,27 +51,48 @@ export default {
             password: '',
             modal: false,
             status: '',
-            error_msg: `<h2>!! ERROR !!</h2><p>エラーが発生いたしました。</p><p>申し訳ございませんが、<br/>再度トップページよりお進みください。</p>`,
+            error_msg: ['エラーが発生いたしました。', '申し訳ございませんが', '再度トップページよりお進みください'],
         }
     },
     methods: {
         registerUser(){
-            
+            //入力された情報
             let params = {
                 "name"    : this.name,
                 "email"   : this.email,
                 "password": this.password,
             };
 
-            console.log(params);
-            const body = new URLSearchParams(params);
+            
             axios.post('./api/register_user', params)
             .then((response) => {
-                console.log(response);
+                //登録できたら
+                console.log('ここは通貨');
+                console.log(response.data);
+
+
+                
+
                 return;
             })
             .catch((error)=>{
-                console.log(error.response.data.errors.detail);
+                //エラー発生したら
+                console.log(error);
+                let messages = error.response.data.errors.detail;
+                console.log(messages);
+
+                console.log(messages.name);
+
+                this.error_msg = [];  //既に入っているメッセージを削除
+                messages.name     ? this.error_msg.push(messages.name[0])    : null;
+                messages.email    ? this.error_msg.push(messages.email[0])   : null;
+                messages.password ? this.error_msg.push(messages.password[0]): null;
+
+                let self = this;
+                console.log('エラーだって');
+                this.status = 'error';
+                this.modal  = true;
+                console.log(this.error_msg);     
             })
         }
     }
