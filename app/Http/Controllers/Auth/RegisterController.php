@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 use Illuminate\Http\JsonResponse;
 
@@ -77,13 +78,19 @@ class RegisterController extends Controller
 
     //バリデーションしてUsersテーブルにユーザ情報登録
     public function store(Request $request){
-        $validate = $this -> validator($request::all());
-
+        $validate = $this -> validator($request->all());
+    
         if($validate -> fails()){
-            return new JSONResponse($validate -> errors());
-        } else {
-            $register = $this -> create($request::all());
-            return 'ok';
+            return response()->json([
+                'errors' => [
+                    'code' => 404,
+                    'title' => 'Vital Not Found',
+                    'detail' => $validate -> errors(),
+                ]
+            ], 404);
+        }else{
+            $register = $this -> create($request->all());
+            return $register;
         }
     }
 

@@ -61,11 +61,15 @@ export default {
             };
 
             console.log(params);
-            /* axios.post('./api/register_user', { data: params })
+            const body = new URLSearchParams(params);
+            axios.post('./api/register_user', params)
             .then((response) => {
                 console.log(response);
                 return;
-            }) */
+            })
+            .catch((error)=>{
+                console.log(error.response.data.errors.detail);
+            })
         }
     }
     
