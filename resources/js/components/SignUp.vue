@@ -69,6 +69,20 @@ export default {
                 //登録できたら
                 console.log(response.data);
 
+                let body = {
+                    'grant_type'   : 'password',
+                    'client_id'    : '2',
+                    'client_secret': 'SUXRbo9FyNmaSTAfYsBbaUCb5rEwmBw9SMtJTuyh',
+                    'username'     : this.email,
+                    'password'     : this.password,
+                    'scope'        : '',
+                }
+
+                axios.post('/oauth/token', body)
+                .then((token)=>{
+                    console.log(token.data);
+                })
+
                 
 
                 return;
