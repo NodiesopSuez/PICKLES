@@ -17,5 +17,6 @@ export default new VueRouter({
         { path:'/recommends', component:Recommends },
         { path:'/signup', component:SignUp },
         { path:'/login', component:Login },
+        { path:`/user/:user_id`, component:Top}
     ]
 });

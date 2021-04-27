@@ -90,9 +90,13 @@ export default {
                     }};
 
                     axios.get('/api/user', header)
-                    .then((res) => {
+                    .then((user_data) => {
                         //ログイン出来たら、Top.vueを表示
-                        console.log(res);
+                        console.log(user_data.data);
+                        let user_id = user_data.data.id;
+                        console.log(user_id);
+                        this.$router.push({ path: `/user/${user_id}` });
+                        
                     });
                 })
 

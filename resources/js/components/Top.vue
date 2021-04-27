@@ -5,11 +5,16 @@
         <section class="top_section">
             <div class="menu">
                 <nav>
-                    <ul>
+                    <ul v-if="login_status==true">
+                        <li><router-link to="logout">Logout</router-link></li>
+                        <li><img :src="icon_img"><p>{{ user_name }}</p></li>
+                    </ul>
+                    <ul v-else>
                         <li><router-link to="login">Login</router-link></li>
                         <li><router-link to="signup">Sign up</router-link></li>
                         <li><img :src="icon_img"></li>
                     </ul>
+                    
                 </nav>
             </div>
             <div class="catch">
@@ -73,6 +78,8 @@ import axios from 'axios'
 import Paginate from 'vue-paginate'
 import Vue from 'vue'
 
+import SignUp from './SignUp.vue'
+
 Vue.use(Paginate);
 
 export default {
@@ -89,12 +96,15 @@ export default {
             result_list: [],
             paginate:['paginate-items'],
             icon_img: require('../img/not_login.png'),
+            login_status: false,
+            user_name: '',
             status: '',
             error_msg: `<h2>!! ERROR !!</h2><p>エラーが発生いたしました。</p><p>申し訳ございませんが、<br/>再度トップページよりお進みください。</p>`,
             no_result_msg: ``,
             success_msg: ``,
             //Recommendsに追加出来た時： success_msg: `<h2>Registered!</h2><p>Recommendsリストに登録されました！</p>`,
             //ログイン出来た時：`<h2>HI!userさん！</h2><p>ログインできました！</p>`,
+            //ユーザー登録出来た時：<h2>Registered!</h2><p>ユーザー登録できました！</p>
             duplicate_msg: `<h2>!! ERROR !!</h2><p>選ばれたコンテンツは<br/>既に登録されています。<br/>他のコンテンツをお選びください。`,
             loggedIn: false,
         }
@@ -285,6 +295,13 @@ export default {
                 return;
             })
         },
+        //ログインしているかジャッジする
+        switchStatusLogin(){
+            this.status = 'success';
+            this.success_msg = `<h2>Registered!</h2><p>ユーザー登録できました！</p>`;
+            this.modal = true;
+            this.login_status = true;
+        }
     },
 }
 </script>
