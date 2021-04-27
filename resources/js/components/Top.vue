@@ -2,6 +2,7 @@
     <div>
        <!-- <router-link to="/example">To Example</router-link>
        <br/> -->
+       <!-- トップ -->
         <section class="top_section">
             <div class="menu">
                 <nav>
@@ -34,6 +35,7 @@
             </button>
             <img class="musical_notes" src="../img/musical_notes_fortop.png">
         </section>
+        <!-- 検索結果リスト -->
         <section id="result_section" ref="result_section" v-if="toggle">
             <div class="back_search">
                 <button @click="scrollToTop()"></button>
@@ -59,6 +61,7 @@
                             :show-step-links="true">
             </paginate-links>
         </section>
+        <!-- モーダル部分 -->
         <section class="modal_section" v-if="modal" :class="[status, {logged_in: loggedIn}]">
             <div class="modal_back"></div>
             <div class="modal_box">
@@ -303,6 +306,7 @@ export default {
 
         //クリックされたLikeボタンの楽曲をRecommendsリストに追加
         registerRecommends(music){
+            this.loggedIn = false; //モーダルの位置変える
             let track_title = (music.type === "track") ? music.track_title : null;
 
             let post_data = {

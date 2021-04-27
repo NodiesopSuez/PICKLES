@@ -72,7 +72,7 @@ export default {
                 let body = {
                     'grant_type'   : 'password',
                     'client_id'    : '2',
-                    'client_secret': 'SUXRbo9FyNmaSTAfYsBbaUCb5rEwmBw9SMtJTuyh',
+                    'client_secret': 'lF5CSpUbRHYqqRw7InsLqDiMqsBw9xZPA6aLhZSJ',
                     'username'     : this.email,
                     'password'     : this.password,
                     'scope'        : '',
@@ -96,31 +96,26 @@ export default {
                         let user_id = user_data.data.id;
 
                         this.$router.push({ 
-                            name: 'user',
+                            name: 'user_page',
                             params: { 
                                 user_access_token: access_token, 
                                 login_status: true,
                                 register_or_logind: 1,
                         }});
-                        return;
                     })
                     .catch((error)=>{
                         //エラーキャッチしたら
                         this.switchStatusError(error);
-                        return;
                     });
                 })
                 .catch((error)=>{
                     //エラーキャッチしたら
                     this.switchStatusError(error);
-                    return;
                 });
-                return;
             })
             .catch((error)=>{
                 //エラーキャッチしたら
                 this.switchStatusError(error);
-                return;
             });
         },
         //axiosでエラーキャッチした時
@@ -183,7 +178,7 @@ export default {
     transform: rotate(-45deg) !important;
 }
 
-/* ログインフォーム */
+/* 登録フォーム */
 .signup {
     position: relative;
     margin: auto auto 80px auto;

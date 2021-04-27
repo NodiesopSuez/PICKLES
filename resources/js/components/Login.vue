@@ -8,7 +8,7 @@
         </router-link>
         <div class="login">
             <div class="rid"></div>
-            <form class="bin">
+            <div class="bin">
                 <div>
                     <img src="../img/like.png">
                     <h3>Login</h3>
@@ -21,14 +21,16 @@
                     <p>password</p>
                     <input id="password" name="password" v-model="password" type="password">
                 </div>
-                <button type="submit" class="submit" >Login</button>
-           </form>
+                <button type="submit" class="submit" @click="login()" >Login</button>
+            </div>
         </div>
         <section class="modal_section" v-if="modal" :class="status">
             <div class="modal_back"></div>
             <div class="modal_box">
-                <div v-if="status=='error'" v-html="error_msg"></div>
-                <div v-else-if="status=='success'" v-html="success_msg"></div>
+                <div v-if="status=='error'">
+                    <h2>!! ERROR !!</h2>
+                    <p v-for="(msg, index) in error_msg" :key="index">{{ msg }}</p>
+                </div>
                 <button @click="closeModal()">Close</button>
             </div>
         </section>
@@ -42,11 +44,81 @@ export default {
         return {
             email: '',
             password: '',
-            status: '',
             modal: false,
-            error_msg:  `<h2>!! ERROR !!</h2><p>エラーが発生いたしました。</p><p>申し訳ございませんが、<br/>再度トップページよりお進みください。</p>`,
-            success_msg: `<h2>Registered!</h2><p>ユーザー登録が完了しました！</p>`,
+            status: '',
+            error_msg: ['エラーが発生いたしました。', '申し訳ございませんが', '再度トップページよりお進みください'],
         }
+    },
+    methods: {
+        login(){
+console.log('login入った瞬間');
+            //アクセストークン取得
+            let body = {
+                'grant_type'   : 'password',
+                'client_id'    : '2',
+                'client_secret': 'lF5CSpUbRHYqqRw7InsLqDiMqsBw9xZPA6aLhZSJ',
+                'username'     : this.email,
+                'password'     : this.password,
+                'scope'        : '',
+            }
+
+            axios.post('/oauth/token', body)
+            .then((token)=>{
+console.log('あくせすとーくん鳥に行ってる');
+                //取得できたアクセストークンでログイン
+                console.log(token.data);
+
+                let access_token = token.data.access_token;
+                let header = { headers: {
+                    'Accept' : 'application/json',
+                    'Authorization' : `Bearer ${access_token}`,
+                }};
+
+                axios.get('/api/user', header)
+                .then((user_data) => {
+                    //ログイン出来たら、Top.vueを表示
+                    console.log(user_data.data);
+                    let user_id = user_data.data.id;
+
+                    this.$router.push({ 
+                        name: 'user_page',
+                        params: { 
+                        user_access_token: access_token, 
+                        login_status: true,
+                        register_or_logind: 2,
+                    }});
+                })
+                .catch((error)=>{
+                    //エラーキャッチしたら
+                    console.log(error.response)
+                    this.switchStatusError(error); 
+                    this.modal  = true;
+                });
+            })
+            .catch((error)=>{
+                //エラーキャッチしたら
+                console.log(error.response)
+                this.switchStatusError(error);
+            });
+
+        },
+        //axiosでエラーキャッチした時
+        switchStatusError(error){
+            //エラーメッセージを代入
+            let messages = error.response.data.errors.detail;
+            console.log(error);
+            console.log(error.response)
+            console.log(messages);
+
+            this.error_msg = [];  //既に入っているメッセージを削除
+            //入ってるメッセージをdata.error_msgに追加
+            messages.name     ? this.error_msg.push(messages.name[0])    : null;
+            messages.email    ? this.error_msg.push(messages.email[0])   : null;
+            messages.password ? this.error_msg.push(messages.password[0]): null;
+
+            this.status = 'error';
+            this.modal  = true;   
+        },
     },
 }
 </script>
@@ -167,10 +239,6 @@ export default {
     font-size: 16px;
     color: #fff;
     background: var(--md-green);
-}
-
-.success > .modal_box {
-    top: 0 !important;
 }
 
 </style>
