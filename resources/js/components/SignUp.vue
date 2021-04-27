@@ -94,30 +94,52 @@ export default {
                         //ログイン出来たら、Top.vueを表示
                         console.log(user_data.data);
                         let user_id = user_data.data.id;
-                        this.$router.push({ path: `/user/${user_id}` });  
+
+                        this.$router.push({ 
+                            name: 'user',
+                            params: { 
+                                user_access_token: access_token, 
+                                login_status: true,
+                                register_or_logind: 1,
+                        }});
+                        return;
+                    })
+                    .catch((error)=>{
+                        //エラーキャッチしたら
+                        this.switchStatusError(error);
+                        return;
                     });
                 })
-
-                
-
+                .catch((error)=>{
+                    //エラーキャッチしたら
+                    this.switchStatusError(error);
+                    return;
+                });
                 return;
             })
             .catch((error)=>{
-                //エラー発生したら
-                console.log(error);
-                let messages = error.response.data.errors.detail;
-                console.log(messages);
-
-                this.error_msg = [];  //既に入っているメッセージを削除
-                //入ってるメッセージをdata.error_msgに追加
-                messages.name     ? this.error_msg.push(messages.name[0])    : null;
-                messages.email    ? this.error_msg.push(messages.email[0])   : null;
-                messages.password ? this.error_msg.push(messages.password[0]): null;
-
-                this.status = 'error';
-                this.modal  = true;   
-            })
+                //エラーキャッチしたら
+                this.switchStatusError(error);
+                return;
+            });
         },
+        //axiosでエラーキャッチした時
+        switchStatusError(error){
+            //エラーメッセージを代入
+            let messages = error.response.data.errors.detail;
+            console.log(error);
+            console.log(messages);
+
+            this.error_msg = [];  //既に入っているメッセージを削除
+            //入ってるメッセージをdata.error_msgに追加
+            messages.name     ? this.error_msg.push(messages.name[0])    : null;
+            messages.email    ? this.error_msg.push(messages.email[0])   : null;
+            messages.password ? this.error_msg.push(messages.password[0]): null;
+
+            this.status = 'error';
+            this.modal  = true;   
+        },
+        //モーダル非表示にする
         closeModal(){
             this.modal ? this.modal=!this.modal : this.modal
         },

@@ -7,7 +7,7 @@
                 <nav>
                     <ul v-if="login_status==true">
                         <li class="logout"><router-link to="logout">Logout</router-link></li>
-                        <li><img src="../img/logind.png"><p class="user_name">ユーザー名{{ user_name }}</p></li>
+                        <li><img src="../img/logind.png"><p class="user_name">{{ user_name }}</p></li>
                     </ul>
                     <ul v-else>
                         <li><router-link to="login">Login</router-link></li>
@@ -78,39 +78,47 @@ import axios from 'axios'
 import Paginate from 'vue-paginate'
 import Vue from 'vue'
 
-import SignUp from './SignUp.vue'
-
 Vue.use(Paginate);
 
 export default {
     name: 'Top',
     data: function(){
         return{
-            text: '',
-            keyword: '',
-            access_token: '',
-            toggle: false,
-            modal: false,
-            albums_info: [],
-            tracks_info: [],
-            result_list: [],
-            paginate:['paginate-items'],
-            icon_img: require('../img/not_login.png'),
-            login_status: true,
-            user_name: '',
-            status: '',
+            keyword: '',     //入力された検索ワード
+            toggle: false,   //Resultの表示・非表示
+            modal: false,    //モーダルの表示・非表示
+            
+            icon_img: '',       //ヘッダーメニューのアイコン画像
+            user_name: '',      //ユーザー名
+            loggedIn: false,    //ログインできた時のモーダルか否か
+
+            albums_info: [], //検索結果：アルバムのリスト
+            tracks_info: [], //検索結果：トラックのリスト
+            result_list: [], //検索結果：表示用リスト(アルバム→トラック)
+
+            status: '',  //モーダルのスタイル・メッセージのステータス(error/no_result/duplicate/success)
+            //各ステータスメッセージ内容
             error_msg: `<h2>!! ERROR !!</h2><p>エラーが発生いたしました。</p><p>申し訳ございませんが、<br/>再度トップページよりお進みください。</p>`,
             no_result_msg: ``,
-            success_msg: ``,
-            //Recommendsに追加出来た時： success_msg: `<h2>Registered!</h2><p>Recommendsリストに登録されました！</p>`,
-            //ログイン出来た時：`<h2>HI!userさん！</h2><p>ログインできました！</p>`,
-            //ユーザー登録出来た時：<h2>Registered!</h2><p>ユーザー登録できました！</p>
             duplicate_msg: `<h2>!! ERROR !!</h2><p>選ばれたコンテンツは<br/>既に登録されています。<br/>他のコンテンツをお選びください。`,
-            loggedIn: false,
+            success_msg: ``,
+                    //↑↑↑
+                    //Recommendsに追加出来た時： success_msg: `<h2>Registered!</h2><p>Recommendsリストに登録されました！</p>`,
+                    //ログイン出来た時：`<h2>HI!userさん！</h2><p>ログインできました！</p>`,
+                    //ユーザー登録出来た時：<h2>Registered!</h2><p>ユーザー登録できました！</p>
+
+            paginate:['paginate-items'], //paginate用
         }
     },
+    props: {
+        user_access_token: String,   //ログイン時のアクセストークン
+        login_status: Boolean, //ログイン出来ているか
+        register_or_logind: Number, //ユーザ登録かログインから遷移してきているか
+    },
     mounted: function(){
-        //アクセストークン取得
+        console.log(this.user_access_token);
+
+        //Spotify/アクセストークン取得
         const grant_type = {'grant_type': 'client_credentials'};
         const body = new URLSearchParams(grant_type);
         const header = { headers: {
@@ -118,14 +126,54 @@ export default {
                             'Content-Type' : 'application/x-www-form-urlencoded',
                         }};
         var self = this;
+
         axios.post('https://accounts.spotify.com/api/token', body, header)
             .then(function(token_res){
-                //デバッグ用にconsoleに出力
+                //取得出来たSpotifyアクセストークン
                 console.log(token_res.data.access_token);
                 self.access_token = token_res.data.access_token;
+
+                //ログインしていたらユーザー情報取得
+                if(self.login_status){
+                    //アクセストークンでユーザ情報取得
+                    let header = { headers: {
+                        'Accept' : 'application/json',
+                        'Authorization' : `Bearer ${self.user_access_token}`,
+                    }};
+
+                    let inself = self;
+                    axios.get('/api/user', header)
+                    .then((user_data) => {
+                        //取得できたら
+                        //user_nameに代入してユーザー名表示
+                        console.log(user_data.data);
+                        inself.user_name = user_data.data.name;
+
+                        //SignUpかLoginから遷移してきていたら、モーダル表示
+                        if(inself.register_or_logind){
+                            if(inself.register_or_logind === 1){ //ユーザー登録できた後ならば
+                                inself.success_msg = `<h2>Registered!</h2><p>ようこそ${ inself.user_name }さん！</p><p>ユーザー登録できました！</p>`
+                            }else if(inself.register_or_logind === 2){　//ログインできた後ならば
+                                inself.success_msg = `<h2>HI!${ inself.user_name }さん！</h2><p>ログインできました！</p>`
+                            }
+                            inself.toggle   = false;
+                            inself.modal    = true;
+                            inself.loggedIn = true;
+                            inself.status   = 'success';
+                        }
+                    })
+                    .catch((error)=>{
+                        //エラーキャッチしたら
+                        console.log(error);
+                        inself.toggle = false;
+                        inself.modal  = true;
+                        inself.status = 'error';
+                        return;
+                    });
+                }
             })
             .catch(function(error){
-                //デバッグ用にconsoleに出力
+                //エラーキャッチしたら
                 console.log(error);
                 self.toggle = false;
                 self.modal = true;
@@ -296,7 +344,7 @@ export default {
             })
         },
         //ログインしているかジャッジする
-        switchStatusLogin(){
+        switchStatusRegister(){
             this.status = 'success';
             this.success_msg = `<h2>Registered!</h2><p>ユーザー登録できました！</p>`;
             this.modal = true;
