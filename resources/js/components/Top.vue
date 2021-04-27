@@ -6,13 +6,13 @@
             <div class="menu">
                 <nav>
                     <ul v-if="login_status==true">
-                        <li><router-link to="logout">Logout</router-link></li>
-                        <li><img :src="icon_img"><p>{{ user_name }}</p></li>
+                        <li class="logout"><router-link to="logout">Logout</router-link></li>
+                        <li><img src="../img/logind.png"><p class="user_name">ユーザー名{{ user_name }}</p></li>
                     </ul>
                     <ul v-else>
                         <li><router-link to="login">Login</router-link></li>
                         <li><router-link to="signup">Sign up</router-link></li>
-                        <li><img :src="icon_img"></li>
+                        <li><img src="../img/not_login.png"></li>
                     </ul>
                     
                 </nav>
@@ -96,7 +96,7 @@ export default {
             result_list: [],
             paginate:['paginate-items'],
             icon_img: require('../img/not_login.png'),
-            login_status: false,
+            login_status: true,
             user_name: '',
             status: '',
             error_msg: `<h2>!! ERROR !!</h2><p>エラーが発生いたしました。</p><p>申し訳ございませんが、<br/>再度トップページよりお進みください。</p>`,
@@ -432,6 +432,7 @@ export default {
 }
 
 .menu li > a {
+    font-size: 16px;
     color: #FFE669;
 }
 
@@ -440,8 +441,22 @@ export default {
     text-decoration: none;
 }
 
+.menu li:last-child {
+    text-align: end;
+}
+
 .menu li > img {
     width: 40px;
+}
+
+.menu .user_name {
+    margin: 0;
+    font-size: 11px;
+    color: #ff9100;
+}
+
+.menu .logout {
+    padding-bottom: 11px;
 }
 
 

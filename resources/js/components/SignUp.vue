@@ -94,9 +94,7 @@ export default {
                         //ログイン出来たら、Top.vueを表示
                         console.log(user_data.data);
                         let user_id = user_data.data.id;
-                        console.log(user_id);
-                        this.$router.push({ path: `/user/${user_id}` });
-                        
+                        this.$router.push({ path: `/user/${user_id}` });  
                     });
                 })
 
