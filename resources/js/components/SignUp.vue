@@ -66,7 +66,7 @@ export default {
             
             axios.post('./api/register_user', params)
             .then((response) => {
-                //登録できたら
+                //登録できたらアクセストークン取得
                 console.log(response.data);
 
                 let body = {
@@ -80,7 +80,20 @@ export default {
 
                 axios.post('/oauth/token', body)
                 .then((token)=>{
+                    //取得できたアクセストークンでログイン
                     console.log(token.data);
+
+                    let access_token = token.data.access_token;
+                    let header = { headers: {
+                        'Accept' : 'application/json',
+                        'Authorization' : `Bearer ${access_token}`,
+                    }};
+
+                    axios.get('/api/user', header)
+                    .then((res) => {
+                        //ログイン出来たら、Top.vueを表示
+                        console.log(res);
+                    });
                 })
 
                 

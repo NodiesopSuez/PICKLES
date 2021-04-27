@@ -103,7 +103,7 @@ export default {
         //アクセストークン取得
         const grant_type = {'grant_type': 'client_credentials'};
         const body = new URLSearchParams(grant_type);
-        const header = {headers: {
+        const header = { headers: {
                             'Authorization': 'Basic MjQ2M2FjMTIzYjU5NDcwOWE5OThhZDg5NWEyNzIxN2U6OTMyMGY3MWRmYTdmNDA0OGFkYzQzN2RkM2JmMDAyNTA=',
                             'Content-Type' : 'application/x-www-form-urlencoded',
                         }};
