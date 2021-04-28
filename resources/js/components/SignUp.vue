@@ -73,10 +73,7 @@ export default {
                 localStorage.setItem('user_name', this.name);
                 localStorage.setItem('register_or_logind', 1);
                 //Top.vueを表示
-                this.$router.push({
-                    name: 'user_page',
-                //    params: { register_or_logind: 1,}
-                });
+                this.$router.push({ path: '/' });
             })
             .catch((error)=>{
                 this.error_msg = [];  //既に入っているメッセージを削除
@@ -84,14 +81,19 @@ export default {
                 //エラーメッセージを代入
                 let messages = (error.response.data.errors.detail) 
                                 ? error.response.data.errors.detail 
-                                : ['エラーが発生いたしました。', '申し訳ございませんが', '再度トップページよりお進みください'];
+                                : null;
                 console.log(error);
                 console.log(messages);
-
-                //入ってるメッセージをdata.error_msgに追加
-                (messages.name)     ? this.error_msg.push(messages.name[0])    : null;
-                (messages.email)    ? this.error_msg.push(messages.email[0])   : null;
-                (messages.password) ? this.error_msg.push(messages.password[0]): null;
+                if(messages){
+                    //バリデーションエラーならば
+                    //入ってるメッセージをdata.error_msgに追加
+                    (messages.name)     ? this.error_msg.push(messages.name[0])    : null;
+                    (messages.email)    ? this.error_msg.push(messages.email[0])   : null;
+                    (messages.password) ? this.error_msg.push(messages.password[0]): null;
+                }else {
+                    //バリデーション以外のエラーならば
+                    this.error_msg = ['エラーが発生いたしました。', '申し訳ございませんが', '再度情報の入力よりお進みください'];
+                }
 
                 this.status = 'error';
                 this.modal  = true;   

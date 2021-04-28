@@ -2306,20 +2306,27 @@ __webpack_require__.r(__webpack_exports__);
         localStorage.setItem('register_or_logind', 1); //Top.vueを表示
 
         _this.$router.push({
-          name: 'user_page' //    params: { register_or_logind: 1,}
-
+          path: '/'
         });
       })["catch"](function (error) {
         _this.error_msg = []; //既に入っているメッセージを削除
         //エラーメッセージを代入
 
-        var messages = error.response.data.errors.detail ? error.response.data.errors.detail : ['エラーが発生いたしました。', '申し訳ございませんが', '再度トップページよりお進みください'];
+        var messages = error.response.data.errors.detail ? error.response.data.errors.detail : null;
         console.log(error);
-        console.log(messages); //入ってるメッセージをdata.error_msgに追加
+        console.log(messages);
 
-        messages.name ? _this.error_msg.push(messages.name[0]) : null;
-        messages.email ? _this.error_msg.push(messages.email[0]) : null;
-        messages.password ? _this.error_msg.push(messages.password[0]) : null;
+        if (messages) {
+          //バリデーションエラーならば
+          //入ってるメッセージをdata.error_msgに追加
+          messages.name ? _this.error_msg.push(messages.name[0]) : null;
+          messages.email ? _this.error_msg.push(messages.email[0]) : null;
+          messages.password ? _this.error_msg.push(messages.password[0]) : null;
+        } else {
+          //バリデーション以外のエラーならば
+          _this.error_msg = ['エラーが発生いたしました。', '申し訳ございませんが', '再度情報の入力よりお進みください'];
+        }
+
         _this.status = 'error';
         _this.modal = true;
       });
@@ -8034,7 +8041,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-2573bf63] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-2573bf63] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-2573bf63] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-2573bf63]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-2573bf63]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* 登録フォーム */\n.signup[data-v-2573bf63] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 560px;\n}\n.rid[data-v-2573bf63],\r\n.bin[data-v-2573bf63] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-2573bf63] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--icon-background);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-2573bf63] {\r\n    bottom: 0;\r\n    padding: 32px 48px;\r\n    width: 400px;\r\n    height: 496px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-2573bf63]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-2573bf63] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-2573bf63],\r\n.submit[data-v-2573bf63] {\r\n    color: #573100;\n}\n.form-group[data-v-2573bf63],\r\n.form-group *[data-v-2573bf63] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-2573bf63] {\r\n    margin: 0;\n}\n.form-group > input[data-v-2573bf63] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-2573bf63] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    background: var(--icon-background);\r\n    font-size: 16px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-2573bf63] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-2573bf63] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-2573bf63] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-2573bf63]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-2573bf63]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* 登録フォーム */\n.signup[data-v-2573bf63] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 560px;\n}\n.rid[data-v-2573bf63],\r\n.bin[data-v-2573bf63] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-2573bf63] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--icon-background);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-2573bf63] {\r\n    bottom: 0;\r\n    padding: 32px 48px;\r\n    width: 400px;\r\n    height: 496px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-2573bf63]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-2573bf63] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-2573bf63],\r\n.submit[data-v-2573bf63] {\r\n    color: #573100;\n}\n.form-group[data-v-2573bf63],\r\n.form-group *[data-v-2573bf63] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-2573bf63] {\r\n    margin: 0;\n}\n.form-group > input[data-v-2573bf63] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-2573bf63] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    background: var(--icon-background);\r\n    font-size: 16px;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -59206,11 +59213,6 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
   }, {
     path: '/login',
     component: _components_Login_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
-  }, {
-    path: "/user_page",
-    name: 'user_page',
-    component: _components_Top_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    props: true
   }]
 }));
 
