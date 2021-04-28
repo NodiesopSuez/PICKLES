@@ -2024,48 +2024,14 @@ __webpack_require__.r(__webpack_exports__);
     login: function login() {
       var _this = this;
 
-      console.log('login入った瞬間'); //アクセストークン取得
-
+      //入力情報
       var body = {
-        'grant_type': 'password',
-        'client_id': '2',
-        'client_secret': 'lF5CSpUbRHYqqRw7InsLqDiMqsBw9xZPA6aLhZSJ',
         'username': this.email,
-        'password': this.password,
-        'scope': ''
+        'password': this.password
       };
-      axios.post('/oauth/token', body).then(function (token) {
-        console.log('あくせすとーくん鳥に行ってる'); //取得できたアクセストークンでログイン
-
+      axios.post('/login', body).then(function (token) {
+        //取得できたアクセストークンでログイン
         console.log(token.data);
-        var access_token = token.data.access_token;
-        var header = {
-          headers: {
-            'Accept': 'application/json',
-            'Authorization': "Bearer ".concat(access_token)
-          }
-        };
-        axios.get('/api/user', header).then(function (user_data) {
-          //ログイン出来たら、Top.vueを表示
-          console.log(user_data.data);
-          var user_id = user_data.data.id;
-
-          _this.$router.push({
-            name: 'user_page',
-            params: {
-              user_access_token: access_token,
-              login_status: true,
-              register_or_logind: 2
-            }
-          });
-        })["catch"](function (error) {
-          //エラーキャッチしたら
-          console.log(error.response);
-
-          _this.switchStatusError(error);
-
-          _this.modal = true;
-        });
       })["catch"](function (error) {
         //エラーキャッチしたら
         console.log(error.response);
@@ -8003,7 +7969,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-6bdc8b8e] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-6bdc8b8e] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-6bdc8b8e] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-6bdc8b8e]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-6bdc8b8e]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* ログインフォーム */\n.login[data-v-6bdc8b8e] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 528px;\n}\n.rid[data-v-6bdc8b8e],\r\n.bin[data-v-6bdc8b8e] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-6bdc8b8e] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--md-green);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-6bdc8b8e] {\r\n    bottom: 0;\r\n    padding: 56px 48px;\r\n    width: 400px;\r\n    height: 464px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-6bdc8b8e]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-6bdc8b8e] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-6bdc8b8e] {\r\n    color: var(--md-green);\n}\n.form-group[data-v-6bdc8b8e],\r\n.form-group *[data-v-6bdc8b8e] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-6bdc8b8e] {\r\n    margin: 0;\n}\n.form-group > input[data-v-6bdc8b8e] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-6bdc8b8e] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    color: #fff;\r\n    background: var(--md-green);\n}\n.modal_box[data-v-6bdc8b8e] {\r\n    height: 176px !important;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-6bdc8b8e] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-6bdc8b8e] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-6bdc8b8e] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-6bdc8b8e]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-6bdc8b8e]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* ログインフォーム */\n.login[data-v-6bdc8b8e] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 528px;\n}\n.rid[data-v-6bdc8b8e],\r\n.bin[data-v-6bdc8b8e] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-6bdc8b8e] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--md-green);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-6bdc8b8e] {\r\n    bottom: 0;\r\n    padding: 56px 48px;\r\n    width: 400px;\r\n    height: 464px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-6bdc8b8e]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-6bdc8b8e] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-6bdc8b8e] {\r\n    color: var(--md-green);\n}\n.form-group[data-v-6bdc8b8e],\r\n.form-group *[data-v-6bdc8b8e] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-6bdc8b8e] {\r\n    margin: 0;\n}\n.form-group > input[data-v-6bdc8b8e] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-6bdc8b8e] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    color: #fff;\r\n    background: var(--md-green);\n}\n.modal_box[data-v-6bdc8b8e] {\r\n    height: 176px !important;\n}\r\n\r\n", ""]);
 
 // exports
 

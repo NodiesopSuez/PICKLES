@@ -51,49 +51,17 @@ export default {
     },
     methods: {
         login(){
-console.log('login入った瞬間');
-            //アクセストークン取得
+            //入力情報
             let body = {
-                'grant_type'   : 'password',
-                'client_id'    : '2',
-                'client_secret': 'lF5CSpUbRHYqqRw7InsLqDiMqsBw9xZPA6aLhZSJ',
                 'username'     : this.email,
                 'password'     : this.password,
-                'scope'        : '',
             }
 
-            axios.post('/oauth/token', body)
+            axios.post('/login', body)
             .then((token)=>{
-console.log('あくせすとーくん鳥に行ってる');
                 //取得できたアクセストークンでログイン
                 console.log(token.data);
 
-                let access_token = token.data.access_token;
-                let header = { headers: {
-                    'Accept' : 'application/json',
-                    'Authorization' : `Bearer ${access_token}`,
-                }};
-
-                axios.get('/api/user', header)
-                .then((user_data) => {
-                    //ログイン出来たら、Top.vueを表示
-                    console.log(user_data.data);
-                    let user_id = user_data.data.id;
-
-                    this.$router.push({ 
-                        name: 'user_page',
-                        params: { 
-                        user_access_token: access_token, 
-                        login_status: true,
-                        register_or_logind: 2,
-                    }});
-                })
-                .catch((error)=>{
-                    //エラーキャッチしたら
-                    console.log(error.response)
-                    this.switchStatusError(error); 
-                    this.modal  = true;
-                });
             })
             .catch((error)=>{
                 //エラーキャッチしたら
