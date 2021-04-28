@@ -105,19 +105,19 @@ console.log('あくせすとーくん鳥に行ってる');
         //axiosでエラーキャッチした時
         switchStatusError(error){
             //エラーメッセージを代入
-            let messages = error.response.data.errors.detail;
             console.log(error);
             console.log(error.response)
-            console.log(messages);
+
 
             this.error_msg = [];  //既に入っているメッセージを削除
-            //入ってるメッセージをdata.error_msgに追加
-            messages.name     ? this.error_msg.push(messages.name[0])    : null;
-            messages.email    ? this.error_msg.push(messages.email[0])   : null;
-            messages.password ? this.error_msg.push(messages.password[0]): null;
+            this.error_msg = ['emailもしくはpasswordに誤りがあります。'];
 
             this.status = 'error';
-            this.modal  = true;   
+            this.modal  = true;
+        },
+        //モーダル非表示にする
+        closeModal(){
+            this.modal ? this.modal=!this.modal : this.modal
         },
     },
 }
@@ -239,6 +239,10 @@ console.log('あくせすとーくん鳥に行ってる');
     font-size: 16px;
     color: #fff;
     background: var(--md-green);
+}
+
+.modal_box {
+    height: 176px !important;
 }
 
 </style>

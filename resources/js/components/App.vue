@@ -101,12 +101,13 @@ body {
   border-radius: 15px;
 }
 
-h2 {
-  margin: 8px auto;
+.modal_box h2 {
+  margin: 8px auto 16px auto !important;
   font-weight: bold;
 }
 
 .modal_box button {
+  margin: 16px auto auto !important;
   width: 80px;
   height: 35px;
   border-radius: 17.5px;
