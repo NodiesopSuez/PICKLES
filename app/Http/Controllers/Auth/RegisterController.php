@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Laravel\Passport\Token;
 
 use Illuminate\Http\JsonResponse;
 
@@ -89,9 +90,14 @@ class RegisterController extends Controller
                 ]
             ], 404);
         }else{
+            //DBに登録する
             $register = $this -> create($request->all());
-            return $register;
-        }
+            //アクセストークン取得してログイン
+            $user = User::find($register->id);
+            $access_token = $user->createToken($register->email)->accessToken;
+
+            return $access_token;
+         } 
     }
 
 }

@@ -62,13 +62,14 @@
             </paginate-links>
         </section>
         <!-- モーダル部分 -->
-        <section class="modal_section" v-if="modal" :class="[status, {logged_in: loggedIn}]">
+        <section class="modal_section" v-if="modal" :class="[status]">
             <div class="modal_back"></div>
             <div class="modal_box">
                 <div v-if="status=='error'" v-html="error_msg"></div>
                 <div v-else-if="status=='no_result'" v-html="no_result_msg"></div>
                 <div v-else-if="status=='duplicate'" v-html="duplicate_msg"></div>
                 <div v-else-if="status=='success'" v-html="success_msg"></div>
+                <div v-else-if="status=='success logged_in'" v-html="success_msg"></div>
                 <button @click="closeModal()">Close</button>
             </div>
         </section>
@@ -91,9 +92,9 @@ export default {
             toggle: false,   //Resultの表示・非表示
             modal: false,    //モーダルの表示・非表示
             
-            icon_img: '',       //ヘッダーメニューのアイコン画像
-            user_name: '',      //ユーザー名
-            loggedIn: false,    //ログインできた時のモーダルか否か
+            login_status: false, //ログインしているかどうか
+            icon_img: '',        //ヘッダーメニューのアイコン画像
+            user_name: '',       //ユーザー名
 
             albums_info: [], //検索結果：アルバムのリスト
             tracks_info: [], //検索結果：トラックのリスト
@@ -113,14 +114,7 @@ export default {
             paginate:['paginate-items'], //paginate用
         }
     },
-    props: {
-        user_access_token: String,   //ログイン時のアクセストークン
-        login_status: Boolean, //ログイン出来ているか
-        register_or_logind: Number, //ユーザ登録かログインから遷移してきているか
-    },
     mounted: function(){
-        console.log(this.user_access_token);
-
         //Spotify/アクセストークン取得
         const grant_type = {'grant_type': 'client_credentials'};
         const body = new URLSearchParams(grant_type);
@@ -137,42 +131,26 @@ export default {
                 self.access_token = token_res.data.access_token;
 
                 //ログインしていたらユーザー情報取得
-                if(self.login_status){
-                    //アクセストークンでユーザ情報取得
-                    let header = { headers: {
-                        'Accept' : 'application/json',
-                        'Authorization' : `Bearer ${self.user_access_token}`,
-                    }};
+                if(localStorage.user_access_token){
+                    console.log('localStorage');
+                    console.log(localStorage.user_access_token);
+                    console.log(localStorage.user_name);
+                    console.log(localStorage.register_or_logind);
 
-                    let inself = self;
-                    axios.get('/api/user', header)
-                    .then((user_data) => {
-                        //取得できたら
-                        //user_nameに代入してユーザー名表示
-                        console.log(user_data.data);
-                        inself.user_name = user_data.data.name;
+                    let user_access_token  = localStorage.user_access_token;
+                    self.login_status      = true;
+                    self.user_name         = localStorage.user_name;
 
-                        //SignUpかLoginから遷移してきていたら、モーダル表示
-                        if(inself.register_or_logind){
-                            if(inself.register_or_logind === 1){ //ユーザー登録できた後ならば
-                                inself.success_msg = `<h2>Registered!</h2><p>ようこそ${ inself.user_name }さん！</p><p>ユーザー登録できました！</p>`
-                            }else if(inself.register_or_logind === 2){　//ログインできた後ならば
-                                inself.success_msg = `<h2>HI!${ inself.user_name }さん！</h2><p>ログインできました！</p>`
-                            }
-                            inself.toggle   = false;
-                            inself.modal    = true;
-                            inself.loggedIn = true;
-                            inself.status   = 'success';
+                    //ユーザー登録後かログイン後の遷移ならばモーダル表示
+                    if(localStorage.register_or_logind){
+                        if(localStorage.register_or_logind == 1){        //ユーザー登録後
+                            self.success_msg = `<h2>Registered!</h2><p>ようこそ${ self.user_name }さん！</p><p>ユーザー登録できました！</p>`;
+                        }else if(localStorage.register_or_logind == 2){　//ログイン後
+                            self.success_msg = `<h2>HI!${ self.user_name }さん！</h2><p>ログインできました！</p>`;
                         }
-                    })
-                    .catch((error)=>{
-                        //エラーキャッチしたら
-                        console.log(error);
-                        inself.toggle = false;
-                        inself.modal  = true;
-                        inself.status = 'error';
-                        return;
-                    });
+                        self.status = 'success logged_in';
+                        self.modal  = true;  
+                    }
                 }
             })
             .catch(function(error){
@@ -347,13 +325,6 @@ export default {
                 return;
             })
         },
-        //ログインしているかジャッジする
-        switchStatusRegister(){
-            this.status = 'success';
-            this.success_msg = `<h2>Registered!</h2><p>ユーザー登録できました！</p>`;
-            this.modal = true;
-            this.login_status = true;
-        }
     },
 }
 </script>

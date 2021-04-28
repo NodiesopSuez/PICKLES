@@ -65,74 +65,37 @@ export default {
 
             
             axios.post('./api/register_user', params)
-            .then((response) => {
-                //登録できたらアクセストークン取得
-                console.log(response.data);
-
-                let body = {
-                    'grant_type'   : 'password',
-                    'client_id'    : '2',
-                    'client_secret': 'lF5CSpUbRHYqqRw7InsLqDiMqsBw9xZPA6aLhZSJ',
-                    'username'     : this.email,
-                    'password'     : this.password,
-                    'scope'        : '',
-                }
-
-                axios.post('/oauth/token', body)
-                .then((token)=>{
-                    //取得できたアクセストークンでログイン
-                    console.log(token.data);
-
-                    let access_token = token.data.access_token;
-                    let header = { headers: {
-                        'Accept' : 'application/json',
-                        'Authorization' : `Bearer ${access_token}`,
-                    }};
-
-                    axios.get('/api/user', header)
-                    .then((user_data) => {
-                        //ログイン出来たら、Top.vueを表示
-                        console.log(user_data.data);
-                        let user_id = user_data.data.id;
-
-                        this.$router.push({ 
-                            name: 'user_page',
-                            params: { 
-                                user_access_token: access_token, 
-                                login_status: true,
-                                register_or_logind: 1,
-                        }});
-                    })
-                    .catch((error)=>{
-                        //エラーキャッチしたら
-                        this.switchStatusError(error);
-                    });
-                })
-                .catch((error)=>{
-                    //エラーキャッチしたら
-                    this.switchStatusError(error);
+            .then((token) => {
+                //登録できたらアクセストークン取得 & ログイン完了
+                console.log(token.data);
+                //ローカルストレージに格納
+                localStorage.setItem('user_access_token', token.data);
+                localStorage.setItem('user_name', this.name);
+                localStorage.setItem('register_or_logind', 1);
+                //Top.vueを表示
+                this.$router.push({
+                    name: 'user_page',
+                //    params: { register_or_logind: 1,}
                 });
             })
             .catch((error)=>{
-                //エラーキャッチしたら
-                this.switchStatusError(error);
+                this.error_msg = [];  //既に入っているメッセージを削除
+
+                //エラーメッセージを代入
+                let messages = (error.response.data.errors.detail) 
+                                ? error.response.data.errors.detail 
+                                : ['エラーが発生いたしました。', '申し訳ございませんが', '再度トップページよりお進みください'];
+                console.log(error);
+                console.log(messages);
+
+                //入ってるメッセージをdata.error_msgに追加
+                (messages.name)     ? this.error_msg.push(messages.name[0])    : null;
+                (messages.email)    ? this.error_msg.push(messages.email[0])   : null;
+                (messages.password) ? this.error_msg.push(messages.password[0]): null;
+
+                this.status = 'error';
+                this.modal  = true;   
             });
-        },
-        //axiosでエラーキャッチした時
-        switchStatusError(error){
-            //エラーメッセージを代入
-            let messages = error.response.data.errors.detail;
-            console.log(error);
-            console.log(messages);
-
-            this.error_msg = [];  //既に入っているメッセージを削除
-            //入ってるメッセージをdata.error_msgに追加
-            messages.name     ? this.error_msg.push(messages.name[0])    : null;
-            messages.email    ? this.error_msg.push(messages.email[0])   : null;
-            messages.password ? this.error_msg.push(messages.password[0]): null;
-
-            this.status = 'error';
-            this.modal  = true;   
         },
         //モーダル非表示にする
         closeModal(){

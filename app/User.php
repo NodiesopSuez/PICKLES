@@ -43,4 +43,10 @@ class User extends Authenticatable
         $users_list = $this::all();
         return $users_list;
     }
+
+    public function getAccessToken($user_id){
+        $user = App\User::find(user_id);
+        $access_token = $user->createToken('Token Name')->accessToken;
+        return $access_token;
+    }
 }
