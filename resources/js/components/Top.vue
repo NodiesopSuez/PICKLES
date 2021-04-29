@@ -7,7 +7,7 @@
             <div class="menu">
                 <nav>
                     <ul v-if="login_status==true">
-                        <li class="logout"><router-link to="logout">Logout</router-link></li>
+                        <li class="logout" @click="logout()">Logout</li>
                         <li><img src="../img/logind.png"><p class="user_name">{{ user_name }}</p></li>
                     </ul>
                     <ul v-else>
@@ -325,6 +325,16 @@ export default {
                 return;
             })
         },
+        logout(){
+            //ローカルストレージからユーザー情報削除
+            localStorage.clear();
+            this.toggle = false;
+            this.success_msg = `<h2>Logouted!</h2><p>ログアウトできました</p>`;
+            this.modal  = true;
+            this.login_status = false,
+            this.status = 'success logged_in';
+            return;
+        }
     },
 }
 </script>
