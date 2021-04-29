@@ -58,10 +58,15 @@ export default {
             }
 
             axios.post('./api/user_login', params)
-            .then((token)=>{
-                //取得できたアクセストークンでログイン
-                console.log(token.data);
-
+            .then((response)=>{
+                //アクセストークン取得してログインできたら
+                console.log(response.data);
+                //ローカルストレージに格納
+                localStorage.setItem('user_access_token', response.data.access_token);
+                localStorage.setItem('user_name', response.data.user_name);
+                localStorage.setItem('register_or_logind', 2);
+                //Top.vueを表示
+                this.$router.push({ path: '/' });
             })
             .catch((error)=>{
                 //エラーキャッチしたら

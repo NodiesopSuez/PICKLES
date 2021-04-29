@@ -46,12 +46,12 @@ class LoginController extends Controller
         //アクセストークン取得してログイン
         $email    = $request->email;
         $password = $request->password;
-        $user = User::where('email',$email)->first();;
+        $user = User::where('email',$email)->first();; //該当アドレスでの登録があるかどうか
 
-        if($user){
+        if($user){ 
             if(Hash::check($password, $user->password)){
                 $access_token = $user->createToken($user->email)->accessToken;
-                return $access_token;
+                return ['access_token' => $access_token, 'user_name' => $user->name];
             }else{
                 return response()->json([
                     'errors' => [
