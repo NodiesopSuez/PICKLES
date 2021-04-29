@@ -51,13 +51,13 @@ export default {
     },
     methods: {
         login(){
-            //入力情報
-            let body = {
-                'username'     : this.email,
-                'password'     : this.password,
+            //入力されたデータ
+            let params = {
+                "email": this.email,
+                "password": this.password,
             }
 
-            axios.post('/login', body)
+            axios.post('./api/user_login', params)
             .then((token)=>{
                 //取得できたアクセストークンでログイン
                 console.log(token.data);
@@ -65,8 +65,9 @@ export default {
             })
             .catch((error)=>{
                 //エラーキャッチしたら
-                console.log(error.response)
-                this.switchStatusError(error);
+                console.log(error)
+                //console.log(error.response)
+                //this.switchStatusError(error);
             });
 
         },

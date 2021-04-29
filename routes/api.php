@@ -27,7 +27,7 @@ Route::get('/get_users_data', 'GetUserController@get');
 Route::post('/register_user', 'Auth\RegisterController@store');
 
 //ログイン
-Route::post('/login', '');
+Route::post('/user_login', 'Auth\LoginController@login');
 
 //favoritesテーブルの全レコード取得(デバック用)
 Route::get('/get_rec', 'FavoritesController@test');
