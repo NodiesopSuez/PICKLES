@@ -55,11 +55,18 @@ class LoginController extends Controller
             }else{
                 return response()->json([
                     'errors' => [
-                        'code'   => 404,
-                        'title'  => 'Vital Not Found',
+                        'code'   => 401,
+                        'title'  => 'Unauthorixed',
                     ]
-                ], 404);
+                ], 401);
             }
+        }else{
+            return response()->json([
+                'errors' => [
+                    'code'   => 404,
+                    'title'  => 'Vital Not Found',
+                ]
+            ], 404);
         }
     }
 }

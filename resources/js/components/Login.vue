@@ -65,9 +65,7 @@ export default {
             })
             .catch((error)=>{
                 //エラーキャッチしたら
-                console.log(error)
-                //console.log(error.response)
-                //this.switchStatusError(error);
+                this.switchStatusError(error);
             });
 
         },
@@ -75,11 +73,15 @@ export default {
         switchStatusError(error){
             //エラーメッセージを代入
             console.log(error);
-            console.log(error.response)
-
-
+            console.log(error.response);
+            
             this.error_msg = [];  //既に入っているメッセージを削除
-            this.error_msg = ['emailもしくはpasswordに誤りがあります。'];
+            let error_code = error.response.data.errors.code;
+            if(error_code == 404){
+                this.error_msg = ['まだ該当メールアドレスでの', '登録がされていません。'];
+            }else if(error_code == 401){
+                this.error_msg = ['emailもしくはpasswordに誤りがあります。'];
+            }
 
             this.status = 'error';
             this.modal  = true;
