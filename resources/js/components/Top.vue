@@ -148,6 +148,7 @@ export default {
                         }else if(localStorage.register_or_logind == 2){　//ログイン後
                             self.success_msg = `<h2>HI!${ self.user_name }さん！</h2><p>ログインできました！</p>`;
                         }
+                        localStorage.clear('register_or_logind');
                         self.status = 'success logged_in';
                         self.modal  = true;  
                     }
@@ -327,7 +328,9 @@ export default {
         },
         logout(){
             //ローカルストレージからユーザー情報削除
-            localStorage.clear();
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('user_name');
+            localStorage.removeItem('register_or_logind');
             this.toggle = false;
             this.success_msg = `<h2>Logouted!</h2><p>ログアウトできました</p>`;
             this.modal  = true;
@@ -464,12 +467,15 @@ export default {
     margin: auto 0  0 16px;
 }
 
-.menu li > a {
+.menu li > a,
+.menu li {
+    cursor: pointer;
     font-size: 16px;
     color: #FFE669;
 }
 
-.menu li > a:hover {
+.menu li > a:hover,
+.menu li:hover  {
     color: #573100;
     text-decoration: none;
 }
