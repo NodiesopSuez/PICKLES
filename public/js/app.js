@@ -2033,6 +2033,7 @@ __webpack_require__.r(__webpack_exports__);
         //アクセストークン取得してログインできたら
         console.log(response.data); //ローカルストレージに格納
 
+        localStorage.setItem('user_id', response.data.user_id);
         localStorage.setItem('user_access_token', response.data.access_token);
         localStorage.setItem('user_name', response.data.user_name);
         localStorage.setItem('register_or_logind', 2); //Top.vueを表示
@@ -2280,7 +2281,8 @@ __webpack_require__.r(__webpack_exports__);
         //登録できたらアクセストークン取得 & ログイン完了
         console.log(token.data); //ローカルストレージに格納
 
-        localStorage.setItem('user_access_token', token.data);
+        localStorage.setItem('user_id', token.data.user_id);
+        localStorage.setItem('user_access_token', token.data.access_token);
         localStorage.setItem('user_name', _this.name);
         localStorage.setItem('register_or_logind', 1); //Top.vueを表示
 
@@ -2429,6 +2431,8 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
       //モーダルの表示・非表示
       login_status: false,
       //ログインしているかどうか
+      user_access_token: '',
+      //ユーザーアクセストークン
       icon_img: '',
       //ヘッダーメニューのアイコン画像
       user_name: '',
@@ -2455,7 +2459,32 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
     };
   },
   mounted: function mounted() {
-    //Spotify/アクセストークン取得
+    var self = this; //ログインしているかどうか
+
+    if (localStorage.user_access_token) {
+      self.user_access_token = localStorage.getItem('user_access_token'); //ログイン用アクセストークン
+
+      self.login_status = true; //ログインしているかどうか
+
+      self.user_name = localStorage.getItem('user_name'); //ユーザー名
+      //ユーザー登録後かログイン後の遷移ならばモーダル表示
+
+      if (localStorage.register_or_logind) {
+        if (localStorage.register_or_logind == 1) {
+          //ユーザー登録後
+          self.success_msg = "<h2>Registered!</h2><p>\u3088\u3046\u3053\u305D".concat(self.user_name, "\u3055\u3093\uFF01</p><p>\u30E6\u30FC\u30B6\u30FC\u767B\u9332\u3067\u304D\u307E\u3057\u305F\uFF01</p>");
+        } else if (localStorage.register_or_logind == 2) {
+          //ログイン後
+          self.success_msg = "<h2>Hello!</h2><p>".concat(self.user_name, "\u3055\u3093\uFF01</p><p>\u30ED\u30B0\u30A4\u30F3\u3067\u304D\u307E\u3057\u305F\uFF01</p>");
+        }
+
+        localStorage.removeItem('register_or_logind');
+        self.status = 'success logged_in';
+        self.modal = true;
+      }
+    } //Spotify/アクセストークン取得
+
+
     var grant_type = {
       'grant_type': 'client_credentials'
     };
@@ -2466,60 +2495,11 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     };
-    var self = this;
-
-    if (localStorage.user_access_token) {
-      console.log('localStorage');
-      console.log(localStorage.user_access_token);
-      console.log(localStorage.user_name);
-      console.log(localStorage.register_or_logind);
-      var user_access_token = localStorage.getItem('user_access_token');
-      self.login_status = true;
-      self.user_name = localStorage.getItem('user_name'); //ユーザー登録後かログイン後の遷移ならばモーダル表示
-
-      if (localStorage.register_or_logind) {
-        if (localStorage.register_or_logind == 1) {
-          //ユーザー登録後
-          self.success_msg = "<h2>Registered!</h2><p>\u3088\u3046\u3053\u305D".concat(self.user_name, "\u3055\u3093\uFF01</p><p>\u30E6\u30FC\u30B6\u30FC\u767B\u9332\u3067\u304D\u307E\u3057\u305F\uFF01</p>");
-        } else if (localStorage.register_or_logind == 2) {
-          //ログイン後
-          self.success_msg = "<h2>HI!".concat(self.user_name, "\u3055\u3093\uFF01</h2><p>\u30ED\u30B0\u30A4\u30F3\u3067\u304D\u307E\u3057\u305F\uFF01</p>");
-        }
-
-        localStorage.removeItem('register_or_logind');
-        self.status = 'success logged_in';
-        self.modal = true;
-      }
-    }
-
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('https://accounts.spotify.com/api/token', body, header).then(function (token_res) {
       //取得出来たSpotifyアクセストークン
+      console.log('sportifyトークン');
       console.log(token_res.data.access_token);
       self.access_token = token_res.data.access_token;
-      /*                 //ログインしていたらユーザー情報取得
-                      if(localStorage.user_access_token){
-                          console.log('localStorage');
-                          console.log(localStorage.user_access_token);
-                          console.log(localStorage.user_name);
-                          console.log(localStorage.register_or_logind);
-      
-                          let user_access_token  = localStorage.getItem('user_access_token');
-                          self.login_status      = true;
-                          self.user_name         = localStorage.getItem('user_name');
-      
-      
-                          //ユーザー登録後かログイン後の遷移ならばモーダル表示
-                          if(localStorage.register_or_logind){
-                              if(localStorage.register_or_logind == 1){        //ユーザー登録後
-                                  self.success_msg = `<h2>Registered!</h2><p>ようこそ${ self.user_name }さん！</p><p>ユーザー登録できました！</p>`;
-                              }else if(localStorage.register_or_logind == 2){　//ログイン後
-                                  self.success_msg = `<h2>HI!${ self.user_name }さん！</h2><p>ログインできました！</p>`;
-                              }
-                              localStorage.removeItem('register_or_logind');
-                              self.status = 'success logged_in';
-                              self.modal  = true;  
-                          } 
-                      }*/
     })["catch"](function (error) {
       //エラーキャッチしたら
       console.log(error);
@@ -2591,12 +2571,9 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
           _this.albums_info.push(album_info);
 
           _this.result_list.push(album_info);
-        } //デバッグ用にconsoleに出力
-
-
-        console.log('albums');
-        console.log(_this.albums_info);
+        }
         /* トラック情報取得 */
+
 
         var tracks = search_res.data.tracks.items;
         var track, track_info;
@@ -2616,11 +2593,7 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
           _this.tracks_info.push(track_info);
 
           _this.result_list.push(track_info);
-        } //デバッグ用にconsoleに出力  
-
-
-        console.log('tracks');
-        console.log(_this.tracks_info);
+        }
       })["catch"](function (error) {
         _this.toggle = false;
         _this.modal = true;
@@ -2658,8 +2631,10 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
 
       this.loggedIn = false; //モーダルの位置変える
 
+      var user_id = this.login_status ? localStorage.getItem('user_id') : null;
       var track_title = music.type === "track" ? music.track_title : null;
       var post_data = {
+        'user_id': user_id,
         'type': music.type,
         'track_title': music.track_title,
         'album_title': music.album_title,
@@ -2697,9 +2672,7 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
     },
     logout: function logout() {
       //ローカルストレージからユーザー情報削除
-      localStorage.removeItem('user_access_token');
-      localStorage.removeItem('user_name');
-      localStorage.removeItem('register_or_logind');
+      localStorage.clear();
       this.toggle = false;
       this.success_msg = "<h2>Logouted!</h2><p>\u30ED\u30B0\u30A2\u30A6\u30C8\u3067\u304D\u307E\u3057\u305F</p>";
       this.modal = true;
@@ -8019,7 +7992,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-6bdc8b8e] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-6bdc8b8e] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-6bdc8b8e] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-6bdc8b8e]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-6bdc8b8e]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* ログインフォーム */\n.login[data-v-6bdc8b8e] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 528px;\n}\n.rid[data-v-6bdc8b8e],\r\n.bin[data-v-6bdc8b8e] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-6bdc8b8e] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--md-green);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-6bdc8b8e] {\r\n    bottom: 0;\r\n    padding: 56px 48px;\r\n    width: 400px;\r\n    height: 464px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-6bdc8b8e]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-6bdc8b8e] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-6bdc8b8e] {\r\n    color: var(--md-green);\n}\n.form-group[data-v-6bdc8b8e],\r\n.form-group *[data-v-6bdc8b8e] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-6bdc8b8e] {\r\n    margin: 0;\n}\n.form-group > input[data-v-6bdc8b8e] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-6bdc8b8e] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    color: #fff;\r\n    background: var(--md-green);\n}\n.modal_box[data-v-6bdc8b8e] {\r\n    height: 176px !important;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-6bdc8b8e] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-6bdc8b8e] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-6bdc8b8e] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-6bdc8b8e]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-6bdc8b8e]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* ログインフォーム */\n.login[data-v-6bdc8b8e] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 528px;\n}\n.rid[data-v-6bdc8b8e],\r\n.bin[data-v-6bdc8b8e] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-6bdc8b8e] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--md-green);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-6bdc8b8e] {\r\n    bottom: 0;\r\n    padding: 56px 48px;\r\n    width: 400px;\r\n    height: 464px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-6bdc8b8e]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-6bdc8b8e] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-6bdc8b8e] {\r\n    color: var(--md-green);\n}\n.form-group[data-v-6bdc8b8e],\r\n.form-group *[data-v-6bdc8b8e] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-6bdc8b8e] {\r\n    margin: 0;\n}\n.form-group > input[data-v-6bdc8b8e] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-6bdc8b8e] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    font-size: 16px;\r\n    color: #fff;\r\n    background: var(--md-green);\n}\n.modal_box[data-v-6bdc8b8e] {\r\n    height: 176px !important;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -8057,7 +8030,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-2573bf63] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-2573bf63] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-2573bf63] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-2573bf63]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-2573bf63]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* 登録フォーム */\n.signup[data-v-2573bf63] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 560px;\n}\n.rid[data-v-2573bf63],\r\n.bin[data-v-2573bf63] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-2573bf63] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--icon-background);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-2573bf63] {\r\n    bottom: 0;\r\n    padding: 32px 48px;\r\n    width: 400px;\r\n    height: 496px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-2573bf63]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-2573bf63] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-2573bf63],\r\n.submit[data-v-2573bf63] {\r\n    color: #573100;\n}\n.form-group[data-v-2573bf63],\r\n.form-group *[data-v-2573bf63] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-2573bf63] {\r\n    margin: 0;\n}\n.form-group > input[data-v-2573bf63] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-2573bf63] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    background: var(--icon-background);\r\n    font-size: 16px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* to_topボタン */\n.to_top[data-v-2573bf63] {\r\n    float: right;\r\n    margin: 16px;\n}\n.to_top button[data-v-2573bf63] {\r\n    position: relative;\r\n    width: 30px;\r\n    height: 30px;\r\n    box-shadow: none !important;\r\n    transition: unset !important;\r\n    background: transparent !important;\n}\n.to_top button > div[data-v-2573bf63] {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 25px;\r\n    height: 5px;\r\n    background: #303030;\n}\n.to_top button > div[data-v-2573bf63]:first-of-type {\r\n    transform: rotate(45deg) !important;\n}\n.to_top button > div[data-v-2573bf63]:last-of-type {\r\n    transform: rotate(-45deg) !important;\n}\r\n\r\n/* 登録フォーム */\n.signup[data-v-2573bf63] {\r\n    position: relative;\r\n    margin: auto auto 80px auto;\r\n    padding: 50px 0 0 0;\r\n    width: 450px;\r\n    height: 560px;\n}\n.rid[data-v-2573bf63],\r\n.bin[data-v-2573bf63] {\r\n    position: absolute;\r\n    left: 0;\r\n    right: 0;\r\n    margin: auto;\n}\r\n\r\n/* ふた部分 */\n.rid[data-v-2573bf63] {\r\n    z-index: 10;\r\n    top: 32px;\r\n    width: 392px;\r\n    height: 45px;\r\n    border-radius: 10px;\r\n    background: var(--icon-background);\n}\r\n\r\n/* びん部分 */\n.bin[data-v-2573bf63] {\r\n    bottom: 0;\r\n    padding: 32px 48px;\r\n    width: 400px;\r\n    height: 496px;\r\n    background: #EDFFF0;\r\n    border-radius: 30px;\r\n    border-style: solid;\r\n    border-width: 3px;\r\n    border-color: #fff;\n}\n.bin > div[data-v-2573bf63]:first-of-type {\r\n    margin: auto auto 24px auto;\n}\n.bin img[data-v-2573bf63] {\r\n    width: 106px;\r\n    margin: auto auto 8px auto;\n}\n.bin h3[data-v-2573bf63],\r\n.submit[data-v-2573bf63] {\r\n    color: #573100;\n}\n.form-group[data-v-2573bf63],\r\n.form-group *[data-v-2573bf63] {\r\n    text-align: start;\r\n    background: transparent;\n}\n.form-group > p[data-v-2573bf63] {\r\n    margin: 0;\n}\n.form-group > input[data-v-2573bf63] {\r\n    width: 280px;\r\n    font-size: 18px;\r\n    border-style: none none solid none;\r\n    border-width: 1px;\r\n    border-color: #b0c5da;\n}\n.submit[data-v-2573bf63] {\r\n    z-index: 10;\r\n    margin: 8px !important;\r\n    width: 80px;\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\r\n    background: var(--icon-background);\r\n    font-size: 16px;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -8076,7 +8049,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* likeボタン */\n.like,\r\n.delete {\r\n    margin-left: 5px !important;\r\n    padding: 0 0 4px 0;\r\n    width: 26px;\r\n    height: 26px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.like > img,\r\n.delete > img {\r\n    width: 18px;\r\n    margin: auto auto 6px auto;\n}\r\n\r\n/* Recommendsボタン */\n.to_recommends {\r\n    display: block;\r\n    position: relative;\r\n    width: 156px;\r\n    height: 40px;\r\n    border-radius: 20px;\n}\n.to_recommends div {\r\n    position: absolute;\r\n    top: 0;\r\n    color: #fff;\n}\n.to_recommends div:first-child {\r\n    left: -0.5px;\r\n    padding: 4px;\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    background: var(--icon-background);\n}\n.to_recommends div:first-child img {\r\n    height: 32px;\r\n    margin: auto;\n}\n.to_recommends div:nth-child(2) {\r\n    line-height: 40px;\r\n    right: 10px;\n}\r\n\r\n/* section */.top_section {\r\n    height: 600px;\r\n    background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ;\n}\n.top_section button {\r\n    font-size: 16px;\r\n    background: var(--md-green);\r\n    color: #fff;\n}\n.catch,\r\n.musical_notes {\r\n    position: relative;\r\n    margin: auto;\n}\n.catch *,\r\n.musical_notes > img {\r\n    position: absolute;\n}\n.catch {\r\n    width: 480px;\r\n    height: 286px;\n}\n.catch_img_hand {\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 240px;\n}\n.catch > h1,\r\n.catch > p {\r\n    color: var(--md-yellow);\n}\n.catch > h1 {\r\n    bottom: 108px;\r\n    font-size: 50px;\r\n    font-weight: bold;\n}\n.catch > p {\r\n    bottom: 80px;\r\n    font-size: 20px;\n}\n.musical_notes {\r\n    margin: auto;\r\n    width: 1000px;\n}\r\n\r\n/* menu部分---------------------------------------------------------- */\n.menu > nav {\r\n    padding: 16px 24px 0 0;\n}\n.menu ul {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    align-items: flex-end;\r\n    width: 264px;\r\n    margin: auto 0 auto auto;\n}\n.menu li {\r\n    margin: auto 0  0 16px;\n}\n.menu li > a,\r\n.menu li {\r\n    cursor: pointer;\r\n    font-size: 16px;\r\n    color: #FFE669;\n}\n.menu li > a:hover,\r\n.menu li:hover  {\r\n    color: #573100;\r\n    text-decoration: none;\n}\n.menu li:last-child {\r\n    text-align: end;\n}\n.menu li > img {\r\n    width: 40px;\n}\n.menu .user_name {\r\n    margin: 0;\r\n    font-size: 11px;\r\n    color: #ff9100;\n}\n.menu .logout {\r\n    padding-bottom: 11px;\n}\r\n\r\n\r\n/* Form部分 --------------------------------------------------------- */\n.search_form { \r\n    display: flex;\r\n    justify-content: space-between;\r\n    margin: 30px auto;\r\n    width: 480px;\n}\ninput {\r\n    border: none;\r\n    outline: none;\r\n    text-align: center;\n}\ninput[name=\"word\"],\r\n.submit {\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\n}\ninput[name=\"word\"] {\r\n    margin-top: 4px;\r\n    width: 370px;\r\n    color: var(--md-green);\r\n    font-size: 18px;\r\n    background: #fff;\n}\n::-moz-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n:-ms-input-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n::placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n.submit {\r\n    z-index: 10;\r\n    margin-bottom: 4px!important;\r\n    width: 80px;\n}\r\n\r\n/* Result部分 --------------------------------------------------------- */\r\n/* section */#result_section {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 50px;\r\n    padding-top: 16px;\r\n    background-color: var(--for-background);\n}\n.back_search button {\r\n    position: relative;\r\n    margin: auto 8px 4px auto !important;\r\n    width: 25px;\r\n    height: 25px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.back_search button::after {\r\n    position: absolute;\r\n    content: '';\r\n    top: -2px;\r\n    right: 8px;\r\n    left: 6px;\r\n    margin: auto;\r\n    border-style: solid;\r\n    border-width: 7px 7px 14px 7px;\r\n    border-color: transparent transparent var(--md-green) transparent;\n}\n.back_search h4 {\r\n    margin: 8px auto 16px auto;\r\n    color: var(--md-green);\n}\n.result > div,\r\n.result_li,\r\n.pagination {\r\n    display: flex;\r\n    align-items: center;\n}\n.result > div {\r\n    flex-wrap: wrap;\r\n    justify-content: space-between;\r\n    width: 800px;\r\n    margin: auto;\n}\n.result_li {\r\n    width: 370px;\r\n    justify-content: flex-start;\r\n    margin: 20px 20px 20px 0px ;\r\n    text-align: start;\n}\n.result_li a > img {\r\n    width: 130px;\r\n    height: 130px;\r\n    background: #ccc;\r\n    box-shadow: 5px 5px 2px var(--shadow);\n}\n.result_li li:first-child{\r\n    font-size: 16px !important;\r\n    margin-bottom: 4px;\r\n    font-weight: bold;\n}\n.result_li li:last-child{\r\n    line-height: 30px;\n}\n.result_li > ul {\r\n    font-size: 14px;\n}\n.pagination {\r\n    cursor: pointer;\r\n    margin: 20px auto 100px auto;\n}\n.pagination .number,\r\n.pagination .right-arrow,\r\n.pagination .left-arrow {\r\n    color: var(--md-green);\r\n    margin: auto 6px;\n}\n.pagination .disabled {\r\n    opacity: 0;\n}\n.pagination .active {\r\n    width: 25px;\r\n    height: 25px;\r\n    color: #fff!important;\r\n    background: var(--md-green);\r\n    padding-top: 2px;\r\n    border-radius: 50%;\n}\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* likeボタン */\n.like,\r\n.delete {\r\n    margin-left: 5px !important;\r\n    padding: 0 0 4px 0;\r\n    width: 26px;\r\n    height: 26px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.like > img,\r\n.delete > img {\r\n    width: 18px;\r\n    margin: auto auto 6px auto;\n}\r\n\r\n/* Recommendsボタン */\n.to_recommends {\r\n    display: block;\r\n    position: relative;\r\n    width: 156px;\r\n    height: 40px;\r\n    border-radius: 20px;\n}\n.to_recommends div {\r\n    position: absolute;\r\n    top: 0;\r\n    color: #fff;\n}\n.to_recommends div:first-child {\r\n    left: -0.5px;\r\n    padding: 4px;\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    background: var(--icon-background);\n}\n.to_recommends div:first-child img {\r\n    height: 32px;\r\n    margin: auto;\n}\n.to_recommends div:nth-child(2) {\r\n    line-height: 40px;\r\n    right: 10px;\n}\r\n\r\n/* section */.top_section {\r\n    height: 600px;\r\n    background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ;\n}\n.top_section button {\r\n    font-size: 16px;\r\n    background: var(--md-green);\r\n    color: #fff;\n}\n.catch,\r\n.musical_notes {\r\n    position: relative;\r\n    margin: auto;\n}\n.catch *,\r\n.musical_notes > img {\r\n    position: absolute;\n}\n.catch {\r\n    width: 480px;\r\n    height: 286px;\n}\n.catch_img_hand {\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 240px;\n}\n.catch > h1,\r\n.catch > p {\r\n    color: var(--md-yellow);\n}\n.catch > h1 {\r\n    bottom: 108px;\r\n    font-size: 50px;\r\n    font-weight: bold;\n}\n.catch > p {\r\n    bottom: 80px;\r\n    font-size: 20px;\n}\n.musical_notes {\r\n    margin: auto;\r\n    width: 1000px;\n}\r\n\r\n/* menu部分---------------------------------------------------------- */\n.menu > nav {\r\n    padding: 16px 24px 0 0;\n}\n.menu ul {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    align-items: flex-end;\r\n    width: 264px;\r\n    margin: auto 0 auto auto;\n}\n.menu li {\r\n    margin: auto 0  0 16px;\n}\n.menu li > a,\r\n.menu li {\r\n    cursor: pointer;\r\n    font-size: 16px;\r\n    color: #FFE669;\n}\n.menu li > a:hover,\r\n.menu li:hover  {\r\n    color: #573100;\r\n    text-decoration: none;\n}\n.menu li:last-child {\r\n    text-align: end;\n}\n.menu li > img {\r\n    width: 40px;\n}\n.menu .user_name {\r\n    margin: 0;\r\n    font-size: 11px;\r\n    color: #ff9100;\n}\n.menu .logout {\r\n    padding-bottom: 11px;\n}\r\n\r\n\r\n/* Form部分 --------------------------------------------------------- */\n.search_form { \r\n    display: flex;\r\n    justify-content: space-between;\r\n    margin: 30px auto;\r\n    width: 480px;\n}\ninput {\r\n    border: none;\r\n    outline: none;\r\n    text-align: center;\n}\ninput[name=\"word\"],\r\n.submit {\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\n}\ninput[name=\"word\"] {\r\n    margin-top: 4px;\r\n    width: 370px;\r\n    color: var(--md-green);\r\n    font-size: 18px;\r\n    background: #fff;\n}\n::-moz-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n:-ms-input-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n::placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n.submit {\r\n    z-index: 10;\r\n    margin-bottom: 4px!important;\r\n    width: 80px;\n}\r\n\r\n/* Result部分 --------------------------------------------------------- */\r\n/* section */#result_section {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 50px;\r\n    padding-top: 16px;\r\n    background-color: var(--for-background);\n}\n.back_search button {\r\n    position: relative;\r\n    margin: auto 8px 4px auto !important;\r\n    width: 25px;\r\n    height: 25px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.back_search button::after {\r\n    position: absolute;\r\n    content: '';\r\n    top: -2px;\r\n    right: 8px;\r\n    left: 6px;\r\n    margin: auto;\r\n    border-style: solid;\r\n    border-width: 7px 7px 14px 7px;\r\n    border-color: transparent transparent var(--md-green) transparent;\n}\n.back_search h4 {\r\n    margin: 8px auto 16px auto;\r\n    color: var(--md-green);\n}\n.result > div,\r\n.result_li,\r\n.pagination {\r\n    display: flex;\r\n    align-items: center;\n}\n.result > div {\r\n    flex-wrap: wrap;\r\n    justify-content: space-between;\r\n    width: 800px;\r\n    margin: auto;\n}\n.result_li {\r\n    width: 370px;\r\n    justify-content: flex-start;\r\n    margin: 20px 20px 20px 0px ;\r\n    text-align: start;\n}\n.result_li a > img {\r\n    width: 130px;\r\n    height: 130px;\r\n    background: #ccc;\r\n    box-shadow: 5px 5px 2px var(--shadow);\n}\n.result_li li:first-child{\r\n    font-size: 16px !important;\r\n    margin-bottom: 4px;\r\n    font-weight: bold;\n}\n.result_li li:last-child{\r\n    line-height: 30px;\n}\n.result_li > ul {\r\n    font-size: 14px;\n}\n.pagination {\r\n    cursor: pointer;\r\n    margin: 20px auto 100px auto;\n}\n.pagination .number,\r\n.pagination .right-arrow,\r\n.pagination .left-arrow {\r\n    color: var(--md-green);\r\n    margin: auto 6px;\n}\n.pagination .disabled {\r\n    opacity: 0;\n}\n.pagination .active {\r\n    width: 25px;\r\n    height: 25px;\r\n    color: #fff!important;\r\n    background: var(--md-green);\r\n    padding-top: 2px;\r\n    border-radius: 50%;\n}\r\n", ""]);
 
 // exports
 

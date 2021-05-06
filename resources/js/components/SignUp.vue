@@ -69,7 +69,8 @@ export default {
                 //登録できたらアクセストークン取得 & ログイン完了
                 console.log(token.data);
                 //ローカルストレージに格納
-                localStorage.setItem('user_access_token', token.data);
+                localStorage.setItem('user_id', token.data.user_id);
+                localStorage.setItem('user_access_token', token.data.access_token);
                 localStorage.setItem('user_name', this.name);
                 localStorage.setItem('register_or_logind', 1);
                 //Top.vueを表示

@@ -27,10 +27,10 @@ class Favorites extends Model {
     public function registerContentsWithFavorites($request){
         $favorites = $this;
 
-        $user_id     = $request -> get("user_id");
-        $type        = $request -> get("type"); //postされたコンテンツタイプ(album / track)    
+        $user_id     = $request -> get("user_id");     //null:ゲスト
+        $type        = $request -> get("type");        //postされたコンテンツタイプ(album / track)    
         $album_title = $request -> get("album_title"); //postされたアルバムタイトル
-        $artist      = $request -> get("artist"); //postされたアーティスト名
+        $artist      = $request -> get("artist");      //postされたアーティスト名
         $track_title = $request -> get("track_title"); //postされたトラックタイトル
 
         //コンテンツのtypeによって重複回避するカラムを分岐

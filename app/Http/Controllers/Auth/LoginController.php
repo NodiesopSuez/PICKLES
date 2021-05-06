@@ -51,7 +51,7 @@ class LoginController extends Controller
         if($user){ 
             if(Hash::check($password, $user->password)){
                 $access_token = $user->createToken($user->email)->accessToken;
-                return ['access_token' => $access_token, 'user_name' => $user->name];
+                return ['access_token' => $access_token, 'user_id' => $user->id, 'user_name' => $user->name];
             }else{
                 return response()->json([
                     'errors' => [

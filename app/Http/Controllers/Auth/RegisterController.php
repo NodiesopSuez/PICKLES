@@ -95,8 +95,9 @@ class RegisterController extends Controller
             //アクセストークン取得してログイン
             $user = User::find($register->id);
             $access_token = $user->createToken($register->email)->accessToken;
+            $response_data = ['access_token' => $access_token, 'user_id' => $register->id];
 
-            return $access_token;
+            return $response_data;
          } 
     }
 

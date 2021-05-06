@@ -92,9 +92,10 @@ export default {
             toggle: false,   //Resultの表示・非表示
             modal: false,    //モーダルの表示・非表示
             
-            login_status: false, //ログインしているかどうか
-            icon_img: '',        //ヘッダーメニューのアイコン画像
-            user_name: '',       //ユーザー名
+            login_status: false,    //ログインしているかどうか
+            user_access_token : '', //ユーザーアクセストークン
+            icon_img: '',           //ヘッダーメニューのアイコン画像
+            user_name: '',          //ユーザー名
 
             albums_info: [], //検索結果：アルバムのリスト
             tracks_info: [], //検索結果：トラックのリスト
@@ -115,9 +116,10 @@ export default {
         }
     },
     mounted: function(){
+        var self = this;
         //ログインしているかどうか
         if(localStorage.user_access_token){
-            let user_access_token  = localStorage.getItem('user_access_token'); //ログイン用アクセストークン
+            self.user_access_token  = localStorage.getItem('user_access_token'); //ログイン用アクセストークン
             self.login_status      = true;                                      //ログインしているかどうか
             self.user_name         = localStorage.getItem('user_name');         //ユーザー名
 
@@ -142,11 +144,11 @@ export default {
                             'Authorization': 'Basic MjQ2M2FjMTIzYjU5NDcwOWE5OThhZDg5NWEyNzIxN2U6OTMyMGY3MWRmYTdmNDA0OGFkYzQzN2RkM2JmMDAyNTA=',
                             'Content-Type' : 'application/x-www-form-urlencoded',
                         }};
-        var self = this;
 
         axios.post('https://accounts.spotify.com/api/token', body, header)
             .then(function(token_res){
                 //取得出来たSpotifyアクセストークン
+                console.log('sportifyトークン');
                 console.log(token_res.data.access_token);
                 self.access_token = token_res.data.access_token;
             })
@@ -171,7 +173,6 @@ export default {
                 this.status = 'no_result';
                 return;
             }
-
 
             self = this;
 
@@ -221,9 +222,6 @@ export default {
                         this.albums_info.push(album_info);
                         this.result_list.push(album_info);
                     }
-                //デバッグ用にconsoleに出力
-                console.log('albums');
-                console.log(this.albums_info);
 
                     /* トラック情報取得 */
                     let tracks = search_res.data.tracks.items;
@@ -243,9 +241,6 @@ export default {
                         this.tracks_info.push(track_info);
                         this.result_list.push(track_info);
                     }
-                //デバッグ用にconsoleに出力  
-                console.log('tracks');
-                console.log(this.tracks_info);
                 })
                 .catch((error)=>{
                     this.toggle = false;
@@ -282,9 +277,12 @@ export default {
         //クリックされたLikeボタンの楽曲をRecommendsリストに追加
         registerRecommends(music){
             this.loggedIn = false; //モーダルの位置変える
+            let user_id = (this.login_status) ?  localStorage.getItem('user_id') : null ;
+
             let track_title = (music.type === "track") ? music.track_title : null;
 
             let post_data = {
+                'user_id'      : user_id,
                 'type'         : music.type,
                 'track_title'  : music.track_title,
                 'album_title'  : music.album_title,
@@ -324,9 +322,7 @@ export default {
         },
         logout(){
             //ローカルストレージからユーザー情報削除
-            localStorage.removeItem('user_access_token');
-            localStorage.removeItem('user_name');
-            localStorage.removeItem('register_or_logind');
+            localStorage.clear();
             this.toggle = false;
             this.success_msg = `<h2>Logouted!</h2><p>ログアウトできました</p>`;
             this.modal  = true;
