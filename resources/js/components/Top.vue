@@ -127,7 +127,7 @@ export default {
                 if(localStorage.register_or_logind == 1){        //ユーザー登録後
                     self.success_msg = `<h2>Registered!</h2><p>ようこそ${ self.user_name }さん！</p><p>ユーザー登録できました！</p>`;
                 }else if(localStorage.register_or_logind == 2){　//ログイン後
-                    self.success_msg = `<h2>HI!${ self.user_name }さん！</h2><p>ログインできました！</p>`;
+                    self.success_msg = `<h2>Hello!</h2><p>${ self.user_name }さん！</p><p>ログインできました！</p>`;
                 }
                 localStorage.removeItem('register_or_logind');
                 self.status = 'success logged_in';
