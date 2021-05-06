@@ -128,7 +128,7 @@ body {
   height: 205px;
 }
 .success > .modal_box {
-  height: 168px;
+  height: 192px;
 }
 
 /* モーダルの位置 */

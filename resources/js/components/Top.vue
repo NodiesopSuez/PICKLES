@@ -123,36 +123,37 @@ export default {
                             'Content-Type' : 'application/x-www-form-urlencoded',
                         }};
         var self = this;
+        
+        //ログインしているかどうか
+        if(localStorage.user_access_token){
+            console.log('localStorage');
+            console.log(localStorage.user_access_token);
+            console.log(localStorage.user_name);
+            console.log(localStorage.register_or_logind);
+
+            let user_access_token  = localStorage.getItem('user_access_token');
+            self.login_status      = true;
+            self.user_name         = localStorage.getItem('user_name');
+
+
+            //ユーザー登録後かログイン後の遷移ならばモーダル表示
+            if(localStorage.register_or_logind){
+                if(localStorage.register_or_logind == 1){        //ユーザー登録後
+                    self.success_msg = `<h2>Registered!</h2><p>ようこそ${ self.user_name }さん！</p><p>ユーザー登録できました！</p>`;
+                }else if(localStorage.register_or_logind == 2){　//ログイン後
+                    self.success_msg = `<h2>HI!${ self.user_name }さん！</h2><p>ログインできました！</p>`;
+                }
+                localStorage.removeItem('register_or_logind');
+                self.status = 'success logged_in';
+                self.modal  = true;  
+            } 
+        }
 
         axios.post('https://accounts.spotify.com/api/token', body, header)
             .then(function(token_res){
                 //取得出来たSpotifyアクセストークン
                 console.log(token_res.data.access_token);
                 self.access_token = token_res.data.access_token;
-
-                //ログインしていたらユーザー情報取得
-                if(localStorage.user_access_token){
-                    console.log('localStorage');
-                    console.log(localStorage.user_access_token);
-                    console.log(localStorage.user_name);
-                    console.log(localStorage.register_or_logind);
-
-                    let user_access_token  = localStorage.user_access_token;
-                    self.login_status      = true;
-                    self.user_name         = localStorage.user_name;
-
-                    //ユーザー登録後かログイン後の遷移ならばモーダル表示
-                    if(localStorage.register_or_logind){
-                        if(localStorage.register_or_logind == 1){        //ユーザー登録後
-                            self.success_msg = `<h2>Registered!</h2><p>ようこそ${ self.user_name }さん！</p><p>ユーザー登録できました！</p>`;
-                        }else if(localStorage.register_or_logind == 2){　//ログイン後
-                            self.success_msg = `<h2>HI!${ self.user_name }さん！</h2><p>ログインできました！</p>`;
-                        }
-                        localStorage.clear('register_or_logind');
-                        self.status = 'success logged_in';
-                        self.modal  = true;  
-                    }
-                }
             })
             .catch(function(error){
                 //エラーキャッチしたら
@@ -328,7 +329,7 @@ export default {
         },
         logout(){
             //ローカルストレージからユーザー情報削除
-            localStorage.removeItem('access_token');
+            localStorage.removeItem('user_access_token');
             localStorage.removeItem('user_name');
             localStorage.removeItem('register_or_logind');
             this.toggle = false;
