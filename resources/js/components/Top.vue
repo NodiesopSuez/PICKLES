@@ -115,25 +115,11 @@ export default {
         }
     },
     mounted: function(){
-        //Spotify/アクセストークン取得
-        const grant_type = {'grant_type': 'client_credentials'};
-        const body = new URLSearchParams(grant_type);
-        const header = { headers: {
-                            'Authorization': 'Basic MjQ2M2FjMTIzYjU5NDcwOWE5OThhZDg5NWEyNzIxN2U6OTMyMGY3MWRmYTdmNDA0OGFkYzQzN2RkM2JmMDAyNTA=',
-                            'Content-Type' : 'application/x-www-form-urlencoded',
-                        }};
-        var self = this;
-        
         //ログインしているかどうか
         if(localStorage.user_access_token){
-            console.log('localStorage');
-            console.log(localStorage.user_access_token);
-            console.log(localStorage.user_name);
-            console.log(localStorage.register_or_logind);
-
-            let user_access_token  = localStorage.getItem('user_access_token');
-            self.login_status      = true;
-            self.user_name         = localStorage.getItem('user_name');
+            let user_access_token  = localStorage.getItem('user_access_token'); //ログイン用アクセストークン
+            self.login_status      = true;                                      //ログインしているかどうか
+            self.user_name         = localStorage.getItem('user_name');         //ユーザー名
 
 
             //ユーザー登録後かログイン後の遷移ならばモーダル表示
@@ -148,6 +134,15 @@ export default {
                 self.modal  = true;  
             } 
         }
+        
+        //Spotify/アクセストークン取得
+        const grant_type = {'grant_type': 'client_credentials'};
+        const body = new URLSearchParams(grant_type);
+        const header = { headers: {
+                            'Authorization': 'Basic MjQ2M2FjMTIzYjU5NDcwOWE5OThhZDg5NWEyNzIxN2U6OTMyMGY3MWRmYTdmNDA0OGFkYzQzN2RkM2JmMDAyNTA=',
+                            'Content-Type' : 'application/x-www-form-urlencoded',
+                        }};
+        var self = this;
 
         axios.post('https://accounts.spotify.com/api/token', body, header)
             .then(function(token_res){
