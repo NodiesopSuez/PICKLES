@@ -17,9 +17,9 @@ class FavoritesController extends Controller
     }
     
     //favoritesテーブルから特定user_idのリストを取得
-    public function index() {
+    public function index($user_id) {
         $favorites = new Favorites;
-        $favorites_list_by_userid = $favorites -> getFavoritesByUserid();
+        $favorites_list_by_userid = $favorites -> getFavoritesByUserId($user_id);
         
         return $favorites_list_by_userid;
     }

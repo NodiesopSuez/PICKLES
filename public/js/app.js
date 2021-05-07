@@ -2151,6 +2151,7 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
   name: 'Recommend',
   data: function data() {
     return {
+      user_id: '',
       modal: false,
       no_list: false,
       toggle: true,
@@ -2159,10 +2160,14 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
       error: 'エラーが発生しました。<br/>申し訳ございませんが、<br/>トップページへお戻りください。'
     };
   },
+  created: function created() {
+    console.log(localStorage.getItem('user_access_token1'));
+    this.user_id = localStorage.getItem('user_access_token') ? localStorage.getItem('user_id') : 0;
+  },
   mounted: function mounted() {
     var _this = this;
 
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('./api/get_recommends').then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("./api/get_recommends/".concat(this.user_id)).then(function (response) {
       _this.no_list = response.data.length === 0 ? true : false;
       _this.toggle = response.data.length === 0 ? false : true;
       _this.recommends_list = response.data; //デバック用に出力
@@ -2578,7 +2583,7 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
         var tracks = search_res.data.tracks.items;
         var track, track_info;
 
-        for (var _i = 0; _i < albums.length; _i++) {
+        for (var _i = 0; _i < tracks.length; _i++) {
           track = tracks[_i];
           track_info = {
             "type": 'track',

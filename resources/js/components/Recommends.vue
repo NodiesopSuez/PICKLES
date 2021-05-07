@@ -64,6 +64,7 @@ export default {
     name: 'Recommend',
     data: function(){
         return {
+            user_id : '',
             modal: false,
             no_list: false,
             toggle: true,
@@ -72,8 +73,12 @@ export default {
             error: 'エラーが発生しました。<br/>申し訳ございませんが、<br/>トップページへお戻りください。',
         };
     },
+    created:function(){
+        this.user_id = localStorage.getItem('user_access_token') ? localStorage.getItem('user_id'): 0;
+
+    },
     mounted: function(){
-        axios.get('./api/get_recommends')
+        axios.get(`./api/get_recommends/${this.user_id}`)
         .then((response) => {
             this.no_list = (response.data.length === 0) ? true : false ;
             this.toggle = (response.data.length === 0) ? false : true ;

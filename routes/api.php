@@ -33,7 +33,7 @@ Route::post('/user_login', 'Auth\LoginController@login');
 Route::get('/get_rec', 'FavoritesController@test');
 
 //favoritesテーブルからRecommends表示用のリスト取得(パブリック)
-Route::get('/get_recommends', 'FavoritesController@index'); 
+Route::get('/get_recommends/{user_id}', 'FavoritesController@index'); 
 
 //favoritesテーブルにlikeボタンクリックしたコンテンツを登録
 Route::post('/register_recommends', 'FavoritesController@store'); 

@@ -17,8 +17,9 @@ class Favorites extends Model {
     }
 
     //favoritesテーブルから特定user_idのレコード取得
-    public function getFavoritesByUserId(){
-        $favorites = $this::where("user_id", null) -> get();
+    public function getFavoritesByUserId($user_id){
+        $user_id = $user_id === 0 ? null : $user_id;
+        $favorites = $this::where("user_id", $user_id) -> get();
 
         return $favorites;
     }

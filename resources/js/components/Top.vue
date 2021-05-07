@@ -227,7 +227,7 @@ export default {
                     let tracks = search_res.data.tracks.items;
                     
                     let track, track_info;
-                    for(let i = 0; i < albums.length; i ++){
+                    for(let i = 0; i < tracks.length; i ++){
                         track = tracks[i];
                         track_info = {
                             "type": 'track',
