@@ -2143,6 +2143,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2161,7 +2162,6 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
     };
   },
   created: function created() {
-    console.log(localStorage.getItem('user_access_token1'));
     this.user_id = localStorage.getItem('user_access_token') ? localStorage.getItem('user_id') : 0;
   },
   mounted: function mounted() {
@@ -40406,7 +40406,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "recommends" }, [
     _c("div", { staticClass: "recommends_header" }, [
-      _c("h4", [_vm._v("Recommends")]),
+      _vm.user_id === 0
+        ? _c("h4", [_vm._v("Recommends")])
+        : _c("h4", [_vm._v("My Favorites")]),
       _vm._v(" "),
       _vm.toggle
         ? _c(
