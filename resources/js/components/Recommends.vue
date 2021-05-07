@@ -76,9 +76,12 @@ export default {
     },
     created:function(){
         this.user_id = localStorage.getItem('user_access_token') ? localStorage.getItem('user_id'): 0;
-
     },
     mounted: function(){
+        //ページトップでスクロール
+        window.scrollTo({ top: 0, behavior: 'smooth',});
+
+        //recommendsリスト取得
         axios.get(`./api/get_recommends/${this.user_id}`)
         .then((response) => {
             this.no_list = (response.data.length === 0) ? true : false ;
@@ -183,6 +186,7 @@ h4 {
 }
 
 .no_list {
+    margin-top: 48px;
     height: 400px; 
 }
 
