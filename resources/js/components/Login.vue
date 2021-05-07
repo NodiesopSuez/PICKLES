@@ -59,13 +59,15 @@ export default {
 
             axios.post('./api/user_login', params)
             .then((response)=>{
-                //アクセストークン取得してログインできたら
                 console.log(response.data);
+
+                //アクセストークン取得してログインできたら
                 //ローカルストレージに格納
                 localStorage.setItem('user_id', response.data.user_id);
                 localStorage.setItem('user_access_token', response.data.access_token);
                 localStorage.setItem('user_name', response.data.user_name);
                 localStorage.setItem('register_or_logind', 2);
+                localStorage.setItem('pickles_login', +new Date); //ログイン日時をタイムスタンプで格納
                 //Top.vueを表示
                 this.$router.push({ path: '/' });
             })

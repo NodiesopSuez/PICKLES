@@ -115,13 +115,26 @@ export default {
             paginate:['paginate-items'], //paginate用
         }
     },
+    created: function(){
+        //前回のログインから12時間経っていたらログアウト処理する
+        if(localStorage.user_access_token){
+            let now = Date.now();
+            let last_login   = localStorage.getItem('pickles_login');
+            let elapsed_time = now - last_login;
+            elapsed_time = Math.floor((elapsed_time / 1000 / 60 / 60) % 24); 
+
+            if(elapsed_time>=12){
+                localStorage.clear();
+            }
+        }
+    },
     mounted: function(){
         var self = this;
         //ログインしているかどうか
         if(localStorage.user_access_token){
             self.user_access_token  = localStorage.getItem('user_access_token'); //ログイン用アクセストークン
-            self.login_status      = true;                                      //ログインしているかどうか
-            self.user_name         = localStorage.getItem('user_name');         //ユーザー名
+            self.login_status       = true;                                      //ログインしているかどうか
+            self.user_name          = localStorage.getItem('user_name');         //ユーザー名
 
 
             //ユーザー登録後かログイン後の遷移ならばモーダル表示
@@ -537,6 +550,7 @@ input[name="word"] {
     flex-direction: column;
     margin-top: 50px;
     padding-top: 16px;
+    min-height: 600px;
     background-color: var(--for-background);
 }
 

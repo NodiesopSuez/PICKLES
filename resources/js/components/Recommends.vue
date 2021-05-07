@@ -141,7 +141,6 @@ h4 {
 .recommends_header {
     align-items: flex-end;
     height: 100px;
-    margin-bottom: 60px;
 }
 
 .recommends_header > h4 {
@@ -165,6 +164,10 @@ h4 {
     width: 159px;
     height: 47px;
     border: dashed 1px var(--md-green); 
+}
+
+#result_section {
+    margin-top: 0 !important;
 }
 
 .back_search {
