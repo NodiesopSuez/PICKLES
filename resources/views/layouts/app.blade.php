@@ -18,9 +18,9 @@
 </head>
 <body>
     <div id="app">
-        <div class="py-4">
+    <!--    <div class="py-4"> -->
             @yield('content')
-        </div>
+    <!--     </div> -->
     </div>
 </body>
 </html>
