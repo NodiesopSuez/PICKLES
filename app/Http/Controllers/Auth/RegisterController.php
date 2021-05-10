@@ -8,6 +8,11 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Laravel\Passport\Token;
+
+use Illuminate\Http\JsonResponse;
+
 
 class RegisterController extends Controller
 {
@@ -50,9 +55,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name'     => ['required', 'string', 'max:255'],
+            'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', /* 'confirmed' */],
         ]);
     }
 
@@ -65,9 +70,35 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'name'     => $data['name'],
+            'email'    => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
+
+
+    //バリデーションしてUsersテーブルにユーザ情報登録
+    public function store(Request $request){
+        $validate = $this -> validator($request->all());
+    
+        if($validate -> fails()){
+            return response()->json([
+                'errors' => [
+                    'code'   => 404,
+                    'title'  => 'Vital Not Found',
+                    'detail' => $validate -> errors(),
+                ]
+            ], 404);
+        }else{
+            //DBに登録する
+            $register = $this -> create($request->all());
+            //アクセストークン取得してログイン
+            $user = User::find($register->id);
+            $access_token = $user->createToken($register->email)->accessToken;
+            $response_data = ['access_token' => $access_token, 'user_id' => $register->id];
+
+            return $response_data;
+         } 
+    }
+
 }
