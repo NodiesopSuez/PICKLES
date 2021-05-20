@@ -1,11 +1,11 @@
 <template>
     <div class="recommends">
         <div class="recommends_header">
-            <h4 v-if="user_id===0">Recommends</h4>
-            <h4 v-else>My Favorites</h4>
+            <h4 v-if="user_id===0">Recommends　テスト</h4>
+            <h4 v-else>My Favorites　テスト</h4>
             <div class="back_search" v-if="toggle">
                 <router-link to="/"><button></button></router-link>
-                <h4>Back to search　テスト</h4>
+                <h4>Back to search</h4>
             </div>
         </div>
         <div class="no_list" v-if="no_list">
