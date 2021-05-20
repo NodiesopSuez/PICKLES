@@ -37,7 +37,8 @@
                     </div>
                 </paginate>
             </div>
-            <paginate-links for="paginate-items" 
+            <paginate-links v-if="toggle"
+                            for="paginate-items" 
                             class="pagination" 
                             :limit="5"
                             :show-step-links="true">
