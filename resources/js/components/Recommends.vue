@@ -79,6 +79,8 @@ export default {
         this.user_id = localStorage.getItem('user_access_token') ? localStorage.getItem('user_id'): 0;
     },
     mounted: function(){ 
+        this.
+
         //ページトップでスクロール
         window.scrollTo({ top: 0, behavior: 'smooth',});
 
@@ -89,6 +91,7 @@ export default {
             this.toggle   = (response.data.length == 0) ? false : true ;
             this.recommends_list = response.data;
             //デバック用に出力
+            consoel.log('このあと')
             console.log(this.recommends_list);
         })
         .catch((error)=>{
