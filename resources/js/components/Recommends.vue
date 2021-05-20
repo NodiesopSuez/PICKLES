@@ -71,7 +71,7 @@ export default {
             no_list: true,
             toggle: false,
             recommends_list: [],
-            paginate: '' /* ['paginate-items'] */,
+            paginate: ['paginate-items'],
             error: 'エラーが発生しました。<br/>申し訳ございませんが、<br/>トップページへお戻りください。',
         };
     },
@@ -87,7 +87,6 @@ export default {
         .then((response) => {
             this.no_list  = (response.data.length === 0) ? true : false ;
             this.toggle   = (response.data.length === 0) ? false : true ;
-            this.paginate = (response.data.length === 0) ? '' : ['paginate-items'];
             this.recommends_list = response.data;
             //デバック用に出力
             console.log(this.recommends_list);
