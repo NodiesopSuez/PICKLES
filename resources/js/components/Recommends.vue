@@ -17,7 +17,7 @@
                 <div class="back_search">
                     <router-link to="/"><button></button></router-link>
                     <h4>Let's search!!</h4>
-                </div>
+                </div> 
             </div>
             <div class="recommends_img">
                 <img src="../img/for_recommends.png">
