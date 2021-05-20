@@ -37,8 +37,7 @@
                     </div>
                 </paginate>
             </div>
-            <paginate-links v-if="toggle"
-                            for="paginate-items" 
+            <paginate-links for="paginate-items" 
                             class="pagination" 
                             :limit="5"
                             :show-step-links="true">
@@ -71,7 +70,7 @@ export default {
             no_list: false,
             toggle: false,
             recommends_list: [],
-            paginate:['paginate-items'],
+            paginate: '' /* ['paginate-items'] */,
             error: 'エラーが発生しました。<br/>申し訳ございませんが、<br/>トップページへお戻りください。',
         };
     },
@@ -87,8 +86,9 @@ export default {
         //recommendsリスト取得
         axios.get(`./api/get_recommends/${this.user_id}`)
         .then((response) => {
-            this.no_list = (response.data.length === 0) ? true : false ;
-            this.toggle = (response.data.length === 0) ? false : true ;
+            this.no_list  = (response.data.length === 0) ? true : false ;
+            this.toggle   = (response.data.length === 0) ? false : true ;
+            this.paginate = (response.data.length === 0) ? '' : ['paginate-items'];
             this.recommends_list = response.data;
             //デバック用に出力
             console.log(this.recommends_list);
