@@ -69,7 +69,7 @@ export default {
             user_id : '',
             modal: false,
             no_list: true,
-            toggle: false,
+            toggle: true,
             recommends_list: [],
             paginate: ['paginate-items'],
             error: 'エラーが発生しました。<br/>申し訳ございませんが、<br/>トップページへお戻りください。',
