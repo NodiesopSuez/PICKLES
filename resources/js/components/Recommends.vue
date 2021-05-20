@@ -68,7 +68,7 @@ export default {
         return {
             user_id : '',
             modal: false,
-            no_list: true,
+            no_list: false,
             toggle: false,
             recommends_list: [],
             paginate: ['paginate-items'],
@@ -85,8 +85,8 @@ export default {
         //recommendsリスト取得
         axios.get(`./api/get_recommends/${this.user_id}`)
         .then((response) => {
-            this.no_list  = (response.data.length === 0) ? true : false ;
-            this.toggle   = (response.data.length === 0) ? false : true ;
+            this.no_list  = (response.data.length == 0) ? true : false ;
+            this.toggle   = (response.data.length == 0) ? false : true ;
             this.recommends_list = response.data;
             //デバック用に出力
             console.log(this.recommends_list);
