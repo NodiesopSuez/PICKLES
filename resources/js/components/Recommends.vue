@@ -1,6 +1,6 @@
 <template>
     <div class="recommends">
-        <p>てすと</p>
+        <p>てすと</p> 
         <div class="recommends_header">
             <h4 v-if="user_id===0">Recommends</h4>
             <h4 v-else>My Favorites</h4>
