@@ -67,7 +67,7 @@ export default {
         return {
             user_id : '',
             modal: false,
-            no_list: false,
+            no_list: true,
             toggle: false,
             recommends_list: [],
             paginate: '' /* ['paginate-items'] */,
