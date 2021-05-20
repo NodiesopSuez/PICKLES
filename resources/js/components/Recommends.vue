@@ -75,12 +75,10 @@ export default {
             error: 'エラーが発生しました。<br/>申し訳ございませんが、<br/>トップページへお戻りください。',
         };
     },
-    /* beforeCreate:function(){   
+    created: function(){   
         this.user_id = localStorage.getItem('user_access_token') ? localStorage.getItem('user_id'): 0;
-    }, */
-    created: function(){ 
-        this.user_id = localStorage.getItem('user_access_token') ? localStorage.getItem('user_id'): 0;
-        
+    },
+    beforeMount: function(){ 
         //ページトップでスクロール
         window.scrollTo({ top: 0, behavior: 'smooth',});
 

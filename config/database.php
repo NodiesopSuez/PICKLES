@@ -77,7 +77,7 @@ return [
             'sslmode' => 'require',
         ],
 
-        /* 'pgsql' => [
+        /*  'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
@@ -90,7 +90,7 @@ return [
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ], */
+        ],  */
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
