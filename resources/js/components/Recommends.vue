@@ -77,7 +77,7 @@ export default {
     /* created:function(){
         this.user_id = localStorage.getItem('user_access_token') ? localStorage.getItem('user_id'): 0;
     }, */
-    created: function(){ 
+    created: function(){  
         this.user_id = localStorage.getItem('user_access_token') ? localStorage.getItem('user_id'): 0;
 
         //ページトップでスクロール
