@@ -2158,34 +2158,30 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
       user_id: '',
       modal: false,
       no_list: true,
-      toggle: false,
+      toggle: true,
       recommends_list: [],
-      paginate: ''
-      /* ['paginate-items'] */
-      ,
+      paginate: ['paginate-items'],
       error: 'エラーが発生しました。<br/>申し訳ございませんが、<br/>トップページへお戻りください。'
     };
   },
-
-  /* beforeCreate:function(){   
-      this.user_id = localStorage.getItem('user_access_token') ? localStorage.getItem('user_id'): 0;
-  }, */
   created: function created() {
+    this.user_id = localStorage.getItem('user_access_token') ? localStorage.getItem('user_id') : 0;
+  },
+  mounted: function mounted() {
     var _this = this;
 
-    this.user_id = localStorage.getItem('user_access_token') ? localStorage.getItem('user_id') : 0; //ページトップでスクロール
-
+    //ページトップでスクロール
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     }); //recommendsリスト取得
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("./api/get_recommends/".concat(this.user_id)).then(function (response) {
-      _this.no_list = response.data.length === 0 ? true : false;
-      _this.toggle = response.data.length === 0 ? false : true;
-      _this.paginate = response.data.length === 0 ? '' : ['paginate-items'];
+      _this.no_list = response.data.length == 0 ? true : false;
+      _this.toggle = response.data.length == 0 ? false : true;
       _this.recommends_list = response.data; //デバック用に出力
 
+      consoel.log('このあと');
       console.log(_this.recommends_list);
     })["catch"](function (error) {
       _this.modal = true;
@@ -40434,9 +40430,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "recommends" }, [
+    _c("p", [_vm._v("てすと3 ")]),
+    _vm._v(" "),
     _c("div", { staticClass: "recommends_header" }, [
-      _c("p", [_vm._v("テスト")]),
-      _vm._v(" "),
       _vm.user_id === 0
         ? _c("h4", [_vm._v("Recommends")])
         : _c("h4", [_vm._v("My Favorites")]),
