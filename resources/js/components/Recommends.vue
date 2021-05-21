@@ -92,10 +92,11 @@ export default {
             consoel.log('このあと')
             console.log(this.recommends_list);
         })
-        .catch((error)=>{
+        /* .catch((error)=>{
+            console.log(error);
             this.modal = true;
             return;
-        }); 
+        });  */
     },
     methods: {
         deleteRecommends(music){
@@ -116,10 +117,10 @@ export default {
                 //削除できたら/recommendsを表示し直し
                 window.location.href="/recommends";
             })
-            .catch((error)=>{
+            /* .catch((error)=>{
                 this.modal = true;
                 return;
-            });
+            }); */
 
         }
     },
