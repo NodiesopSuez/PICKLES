@@ -59,7 +59,7 @@ export default {
 
             axios.post('./api/user_login', params)
             .then((response)=>{
-                console.log(response.data);
+                //console.log(response.data);
 
                 //アクセストークン取得してログインできたら
                 //ローカルストレージに格納
@@ -80,8 +80,8 @@ export default {
         //axiosでエラーキャッチした時
         switchStatusError(error){
             //エラーメッセージを代入
-            console.log(error);
-            console.log(error.response);
+            //console.log(error);
+            //console.log(error.response);
             
             this.error_msg = [];  //既に入っているメッセージを削除
             let error_code = error.response.data.errors.code;

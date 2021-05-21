@@ -2030,9 +2030,9 @@ __webpack_require__.r(__webpack_exports__);
         "password": this.password
       };
       axios.post('./api/user_login', params).then(function (response) {
-        console.log(response.data); //アクセストークン取得してログインできたら
+        //console.log(response.data);
+        //アクセストークン取得してログインできたら
         //ローカルストレージに格納
-
         localStorage.setItem('user_id', response.data.user_id);
         localStorage.setItem('user_access_token', response.data.access_token);
         localStorage.setItem('user_name', response.data.user_name);
@@ -2051,8 +2051,8 @@ __webpack_require__.r(__webpack_exports__);
     //axiosでエラーキャッチした時
     switchStatusError: function switchStatusError(error) {
       //エラーメッセージを代入
-      console.log(error);
-      console.log(error.response);
+      //console.log(error);
+      //console.log(error.response);
       this.error_msg = []; //既に入っているメッセージを削除
 
       var error_code = error.response.data.errors.code;
@@ -2146,7 +2146,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -2180,19 +2179,19 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
       _this.no_list = response.data.length == 0 ? true : false;
       _this.toggle = response.data.length == 0 ? false : true;
       _this.recommends_list = response.data; //デバック用に出力
-
-      consoel.log('このあと');
-      console.log(_this.recommends_list);
+      //console.log('このあと')
+      //console.log(this.recommends_list);
+    })["catch"](function (error) {
+      //console.log(error);
+      _this.modal = true;
+      return;
     });
-    /* .catch((error)=>{
-        console.log(error);
-        this.modal = true;
-        return;
-    });  */
   },
   methods: {
     deleteRecommends: function deleteRecommends(music) {
-      console.log(music);
+      var _this2 = this;
+
+      // console.log(music);
       var id = music.id; //クリックされたコンテンツのid
       //クリックされたコンテンツの情報
 
@@ -2205,14 +2204,13 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
         data: params
       }).then(function (response) {
         //成功していたら'deleted'出力
-        console.log(response); //削除できたら/recommendsを表示し直し
-
+        // console.log(response);
+        //削除できたら/recommendsを表示し直し
         window.location.href = "/recommends";
+      })["catch"](function (error) {
+        _this2.modal = true;
+        return;
       });
-      /* .catch((error)=>{
-          this.modal = true;
-          return;
-      }); */
     }
   }
 });
@@ -2294,9 +2292,9 @@ __webpack_require__.r(__webpack_exports__);
         "password": this.password
       };
       axios.post('./api/register_user', params).then(function (token) {
-        console.log(token.data); //登録できたらアクセストークン取得 & ログイン完了
+        // console.log(token.data);
+        //登録できたらアクセストークン取得 & ログイン完了
         //ローカルストレージに格納
-
         localStorage.setItem('user_id', token.data.user_id);
         localStorage.setItem('user_access_token', token.data.access_token);
         localStorage.setItem('user_name', _this.name);
@@ -2311,9 +2309,8 @@ __webpack_require__.r(__webpack_exports__);
         _this.error_msg = []; //既に入っているメッセージを削除
         //エラーメッセージを代入
 
-        var messages = error.response.data.errors.detail ? error.response.data.errors.detail : null;
-        console.log(error);
-        console.log(messages);
+        var messages = error.response.data.errors.detail ? error.response.data.errors.detail : null; // console.log(error);
+        // console.log(messages);
 
         if (messages) {
           //バリデーションエラーならば
@@ -2528,12 +2525,12 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
     };
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('https://accounts.spotify.com/api/token', body, header).then(function (token_res) {
       //取得出来たSpotifyアクセストークン
-      console.log('sportifyトークン');
-      console.log(token_res.data.access_token);
+      // console.log('sportifyトークン');
+      // console.log(token_res.data.access_token);
       self.access_token = token_res.data.access_token;
     })["catch"](function (error) {
       //エラーキャッチしたら
-      console.log(error);
+      // console.log(error);
       self.toggle = false;
       self.modal = true;
       self.status = 'error';
@@ -2564,10 +2561,10 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
         }
       }).then(function (search_res) {
         _this.result_list = []; //デバッグ用にconsoleに出力
-
-        console.log('search_res');
-        console.log(search_res);
-        console.log(search_res.data); //検索結果が0ならば、エラーモーダル表示
+        // console.log('search_res');
+        // console.log(search_res);
+        // console.log(search_res.data);
+        //検索結果が0ならば、エラーモーダル表示
 
         var album_total = search_res.data.albums.total;
         var track_total = search_res.data.tracks.total;
@@ -2676,8 +2673,8 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_paginate__WEBPACK_IMPORTED_MO
       };
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("./api/register_recommends", post_data).then(function (response) {
         //デバッグ用にconsole出力
-        console.log(response); //登録できてたら'OK' / 重複したレコードあれば'duplicate'
-
+        // console.log(response);
+        //登録できてたら'OK' / 重複したレコードあれば'duplicate'
         if (response.data === 'OK') {
           _this2.status = 'success';
           _this2.success_msg = "<h2>Registered!</h2><p>Recommends\u30EA\u30B9\u30C8\u306B\u767B\u9332\u3055\u308C\u307E\u3057\u305F\uFF01</p>";
@@ -40431,8 +40428,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "recommends" }, [
-    _c("p", [_vm._v("てすと3 ")]),
-    _vm._v(" "),
     _c("div", { staticClass: "recommends_header" }, [
       _vm.user_id === 0
         ? _c("h4", [_vm._v("Recommends")])

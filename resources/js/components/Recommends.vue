@@ -1,6 +1,5 @@
 <template>
     <div class="recommends">
-        <p>てすと3 </p> 
         <div class="recommends_header">
             <h4 v-if="user_id===0">Recommends</h4>
             <h4 v-else>My Favorites</h4>
@@ -89,18 +88,18 @@ export default {
             this.toggle   = (response.data.length == 0) ? false : true ;
             this.recommends_list = response.data;
             //デバック用に出力
-            consoel.log('このあと')
-            console.log(this.recommends_list);
+            //console.log('このあと')
+            //console.log(this.recommends_list);
         })
-        /* .catch((error)=>{
-            console.log(error);
+        .catch((error)=>{
+            //console.log(error);
             this.modal = true;
             return;
-        });  */
+        });
     },
     methods: {
         deleteRecommends(music){
-            console.log(music);
+            // console.log(music);
             let id = music.id; //クリックされたコンテンツのid
             
             //クリックされたコンテンツの情報
@@ -113,14 +112,14 @@ export default {
             axios.delete(`./api/delete_recommends/${id}`, {data : params})
             .then((response)=>{
                 //成功していたら'deleted'出力
-                console.log(response);
+                // console.log(response);
                 //削除できたら/recommendsを表示し直し
                 window.location.href="/recommends";
             })
-            /* .catch((error)=>{
+            .catch((error)=>{
                 this.modal = true;
                 return;
-            }); */
+            });
 
         }
     },

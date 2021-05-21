@@ -66,7 +66,7 @@ export default {
             
             axios.post('./api/register_user', params)
             .then((token) => {
-                console.log(token.data);
+                // console.log(token.data);
                 //登録できたらアクセストークン取得 & ログイン完了
                 //ローカルストレージに格納
                 localStorage.setItem('user_id', token.data.user_id);
@@ -84,8 +84,8 @@ export default {
                 let messages = (error.response.data.errors.detail) 
                                 ? error.response.data.errors.detail 
                                 : null;
-                console.log(error);
-                console.log(messages);
+                // console.log(error);
+                // console.log(messages);
                 if(messages){
                     //バリデーションエラーならば
                     //入ってるメッセージをdata.error_msgに追加

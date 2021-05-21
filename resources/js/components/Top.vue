@@ -161,13 +161,13 @@ export default {
         axios.post('https://accounts.spotify.com/api/token', body, header)
             .then(function(token_res){
                 //取得出来たSpotifyアクセストークン
-                console.log('sportifyトークン');
-                console.log(token_res.data.access_token);
+                // console.log('sportifyトークン');
+                // console.log(token_res.data.access_token);
                 self.access_token = token_res.data.access_token;
             })
             .catch(function(error){
                 //エラーキャッチしたら
-                console.log(error);
+                // console.log(error);
                 self.toggle = false;
                 self.modal = true;
                 self.status = 'error';
@@ -200,9 +200,9 @@ export default {
                 .then((search_res)=>{ 
                     this.result_list = [];
                     //デバッグ用にconsoleに出力
-                    console.log('search_res');
-                    console.log(search_res);
-                    console.log(search_res.data);
+                    // console.log('search_res');
+                    // console.log(search_res);
+                    // console.log(search_res.data);
 
                     //検索結果が0ならば、エラーモーダル表示
                     let album_total = search_res.data.albums.total;
@@ -308,7 +308,7 @@ export default {
             axios.post(`./api/register_recommends`, post_data)
             .then((response) => {
                 //デバッグ用にconsole出力
-                console.log(response);
+                // console.log(response);
 
                 //登録できてたら'OK' / 重複したレコードあれば'duplicate'
                 if(response.data === 'OK'){
