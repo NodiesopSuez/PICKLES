@@ -79,8 +79,6 @@ export default {
         this.user_id = localStorage.getItem('user_access_token') ? localStorage.getItem('user_id'): 0;
     },
     mounted: function(){ 
-        this.
-
         //ページトップでスクロール
         window.scrollTo({ top: 0, behavior: 'smooth',});
 
