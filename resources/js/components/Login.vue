@@ -224,4 +224,28 @@ export default {
     height: 176px !important;
 }
 
+
+@media (max-width: 767px) {
+    .sign_up {
+        width: 90%;
+        height: 535px;
+        top: 70px;
+    }
+    .rid {
+        width: 90%;
+        top: 0;
+    }
+    .bin {
+        width: 95%;
+        padding: 30px;
+    }
+    .bin img {
+        width: 40%;
+    }
+    .form-group > input {
+        width: 100%;
+    }
+
+}
+
 </style>
