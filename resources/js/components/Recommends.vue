@@ -263,4 +263,44 @@ h4 {
     width: 120px;
     font-size: 15px;
 }
+
+@media (max-width: 480px) {
+    .recommends {
+        width: 90%;
+    }
+
+    .recommends_header > h4 {
+        width: 140px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 1.1rem;
+    }
+    .recommends_header > h4::after {
+        width: 120px;
+        height: 38px;
+    }
+
+    .back_search { 
+        width: 150px;
+    }
+    .back_search button { 
+        width: 20px;
+        height: 20px;
+    }
+    .back_search button::after {
+        border-width: 4px 6px 12px 6px;
+    }
+    .back_search h4 {
+        font-size: 1rem;
+    }
+
+    .result_section {
+        width: 90%;
+    }
+
+    .result > div {
+        width: 100%;
+    }
+}
+
 </style>

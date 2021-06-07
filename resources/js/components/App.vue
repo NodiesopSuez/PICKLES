@@ -173,4 +173,12 @@ body {
 .success h2 {
   color:#fff!important;
 }
+
+@media (max-width: 480px) {
+  #app {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }      
+}
 </style>

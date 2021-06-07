@@ -643,4 +643,70 @@ input[name="word"] {
     padding-top: 2px;
     border-radius: 50%;
 }
+
+@media (max-width: 480px) {
+    .top_section {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+        background:linear-gradient(to bottom, #fff 50%, var(--for-background) 50% 100%);
+    }
+    
+    .menu {
+        width: 100%;
+    }
+    
+    nav > ul > li:first-child,
+    nav > ul > li:nth-child(2) {
+        display: none;
+    }
+    nav > ul > li:nth-child(3):active nav > ul > li:first-child {
+        display: list-item;
+    }
+
+    .catch {
+        width: 90%;
+        height: 210px;
+    }
+
+    .catch > img {
+        top: 86px;
+        width: 65%;
+    }
+
+    .catch > h1 {
+        font-size: 2.2rem;
+        top: 142px;
+    }
+
+    .catch > p {
+        font-size: 1.3rem;
+        top: 178px;
+    }
+
+    .search_form { 
+        width: 90%;
+        flex-direction: column;
+        padding-top: 80px;
+        margin: auto;
+    }
+
+    .search_form > input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .musical_notes {
+        width: 200%;
+    }
+
+    .result > div {
+        width: 90%;
+    }
+    
+}
 </style>
