@@ -249,7 +249,7 @@ export default {
     .form-group > input {
         width: 100%;
     }
-
+ 
 }
 
 </style>

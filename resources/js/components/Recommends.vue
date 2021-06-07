@@ -301,6 +301,7 @@ h4 {
     .result > div {
         width: 100%;
     }
+    
 }
 
 </style>
