@@ -264,7 +264,7 @@ h4 {
     font-size: 15px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 480px) {
     .recommends {
         width: 90%;
     }

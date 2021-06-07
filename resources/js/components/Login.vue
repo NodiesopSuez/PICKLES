@@ -225,7 +225,7 @@ export default {
 }
 
 
-@media (max-width: 767px) {
+@media (max-width: 480px) {
     .sign_up {
         width: 90%;
         height: 535px;
