@@ -15,6 +15,8 @@
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
     <!-- Favicon -->
     <link rel="icon" href="./favicon.ico" />
+    <!-- メディアクエリ -->
+    <meta name="viewport" content="width=device-width">
 </head>
 <body>
     <div id="app">
