@@ -1,0 +1,102 @@
+2021-05-21T01:57:34.984820+00:00 app[web.1]: Shutdown complete.
+2021-05-21T01:57:35.052398+00:00 heroku[web.1]: Process exited with status 143
+2021-05-21T01:57:35.789198+00:00 heroku[web.1]: Starting process with command `vendor/bin/heroku-php-apache2 public/`
+2021-05-21T01:57:40.878901+00:00 app[web.1]: DOCUMENT_ROOT changed to 'public/'
+2021-05-21T01:57:41.082923+00:00 app[web.1]: Detected 536870912 Bytes of RAM
+2021-05-21T01:57:41.141926+00:00 app[web.1]: PHP memory_limit is 128M Bytes
+2021-05-21T01:57:41.187366+00:00 app[web.1]: Starting php-fpm with 4 workers...
+2021-05-21T01:57:41.476733+00:00 app[web.1]: Starting httpd...
+2021-05-21T01:57:41.870170+00:00 heroku[web.1]: State changed from starting to up        
+2021-05-21T01:57:48.855047+00:00 app[web.1]: 10.138.212.108 - - [21/May/2021:01:57:48 +0000] "GET / HTTP/1.1" 500 28964 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T01:57:48.861676+00:00 heroku[router]: at=info method=GET path="/" host=pickles-0205.herokuapp.com request_id=7711aa00-de64-4cb3-b9e7-fdbb993b0c8a fwd="180.44.74.98" dyno=web.1 connect=1ms service=401ms status=500 bytes=29218 protocol=https
+2021-05-21T01:58:57.340317+00:00 app[api]: Set APP_KEY config vars by user ddw.suez.nodiesop@gmail.com
+2021-05-21T01:58:57.340317+00:00 app[api]: Release v16 created by user ddw.suez.nodiesop@gmail.com
+2021-05-21T01:58:57.568357+00:00 heroku[web.1]: Restarting
+2021-05-21T01:58:57.594816+00:00 heroku[web.1]: State changed from up to starting        
+2021-05-21T01:58:59.011120+00:00 heroku[web.1]: Stopping all processes with SIGTERM      
+2021-05-21T01:58:59.110087+00:00 app[web.1]: Stopping php-fpm...
+2021-05-21T01:58:59.110838+00:00 app[web.1]: Stopping httpd...
+2021-05-21T01:58:59.113558+00:00 app[web.1]: SIGTERM received, attempting graceful shutdown...
+2021-05-21T01:58:59.139788+00:00 app[web.1]: Shutdown complete.
+2021-05-21T01:58:59.196288+00:00 heroku[web.1]: Process exited with status 143
+2021-05-21T01:58:59.513806+00:00 heroku[web.1]: Starting process with command `vendor/bin/heroku-php-apache2 public/`
+2021-05-21T01:59:02.285019+00:00 app[web.1]: DOCUMENT_ROOT changed to 'public/'
+2021-05-21T01:59:02.356037+00:00 app[web.1]: Detected 536870912 Bytes of RAM
+2021-05-21T01:59:02.387886+00:00 app[web.1]: PHP memory_limit is 128M Bytes
+2021-05-21T01:59:02.397383+00:00 app[web.1]: Starting php-fpm with 4 workers...
+2021-05-21T01:59:02.478222+00:00 app[web.1]: Starting httpd...
+2021-05-21T01:59:03.001314+00:00 heroku[web.1]: State changed from starting to up        
+2021-05-21T01:59:33.949090+00:00 app[web.1]: 10.63.243.86 - - [21/May/2021:01:59:33 +0000] "GET / HTTP/1.1" 200 1039 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T01:59:33.953697+00:00 heroku[router]: at=info method=GET path="/" host=pickles-0205.herokuapp.com request_id=20cb22ad-8a55-404e-a551-cc6d46028c8d fwd="180.44.74.98" dyno=web.1 connect=1ms service=168ms status=200 bytes=2095 protocol=https
+2021-05-21T01:59:34.285471+00:00 heroku[router]: at=info method=GET path="/css/app.css" host=pickles-0205.herokuapp.com request_id=702ca70a-f54d-42db-9a7a-422c29ebf4a9 fwd="180.44.74.98" dyno=web.1 connect=1ms service=13ms status=200 bytes=183663 protocol=https      
+2021-05-21T01:59:34.287926+00:00 app[web.1]: 10.41.166.250 - - [21/May/2021:01:59:34 +0000] "GET /css/app.css HTTP/1.1" 200 183427 "https://pickles-0205.herokuapp.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T01:59:34.327479+00:00 app[web.1]: 10.63.243.86 - - [21/May/2021:01:59:34 +0000] "GET /js/app.js HTTP/1.1" 200 1829650 "https://pickles-0205.herokuapp.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T01:59:34.357213+00:00 heroku[router]: at=info method=GET path="/js/app.js" host=pickles-0205.herokuapp.com request_id=7814aa3b-a3a0-406c-b82d-fa8f9cfb72a5 fwd="180.44.74.98" dyno=web.1 connect=1ms service=66ms status=200 bytes=1829902 protocol=https       
+2021-05-21T01:59:36.200178+00:00 heroku[router]: at=info method=GET path="/images/catch_img_hand.png?99ce6178813faf7dcc32c60995a2d664" host=pickles-0205.herokuapp.com request_id=c84c7b54-13c6-4c4a-9980-77d89e1a8839 fwd="180.44.74.98" dyno=web.1 connect=1ms service=2ms status=200 bytes=12176 protocol=https
+2021-05-21T01:59:36.213548+00:00 app[web.1]: 10.41.166.250 - - [21/May/2021:01:59:36 +0000] "GET /images/catch_img_hand.png?99ce6178813faf7dcc32c60995a2d664 HTTP/1.1" 200 11941 "https://pickles-0205.herokuapp.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T01:59:36.217785+00:00 app[web.1]: 10.63.243.86 - - [21/May/2021:01:59:36 +0000] "GET /images/not_login.png?43b011c2c0080f4552b6bb1cc98ef3dc HTTP/1.1" 200 4697 "https://pickles-0205.herokuapp.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T01:59:36.220496+00:00 heroku[router]: at=info method=GET path="/images/not_login.png?43b011c2c0080f4552b6bb1cc98ef3dc" host=pickles-0205.herokuapp.com request_id=34737c89-4b8e-451f-b559-e367b633106e fwd="180.44.74.98" dyno=web.1 connect=1ms service=2ms status=200 bytes=4931 protocol=https
+2021-05-21T01:59:36.397834+00:00 heroku[router]: at=info method=GET path="/images/musical_notes_fortop.png?36ad83cc122adae3a0e9e2ca037e388f" host=pickles-0205.herokuapp.com request_id=e3fc450b-3c6e-4e07-b0d2-b3869fff46d9 fwd="180.44.74.98" dyno=web.1 connect=1ms service=8ms status=200 bytes=109542 protocol=https
+2021-05-21T01:59:36.405258+00:00 app[web.1]: 10.41.166.250 - - [21/May/2021:01:59:36 +0000] "GET /images/musical_notes_fortop.png?36ad83cc122adae3a0e9e2ca037e388f HTTP/1.1" 200 109305 "https://pickles-0205.herokuapp.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T01:59:36.405837+00:00 app[web.1]: 10.63.243.86 - - [21/May/2021:01:59:36 +0000] "GET /images/recommend_default.png?d74c100bf81b1d803030a2502f13aa28 HTTP/1.1" 200 6538 
+"https://pickles-0205.herokuapp.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T01:59:36.407782+00:00 heroku[router]: at=info method=GET path="/images/recommend_default.png?d74c100bf81b1d803030a2502f13aa28" host=pickles-0205.herokuapp.com request_id=b9cd3bc2-c2c1-4839-9163-60f8cfd40abe fwd="180.44.74.98" dyno=web.1 connect=1ms service=2ms status=200 bytes=6772 protocol=https
+2021-05-21T01:59:43.446716+00:00 app[web.1]: 10.52.12.58 - - [21/May/2021:01:59:43 +0000] "GET /images/for_recommends.png?5ce372a81e43d9cbfc973838a9b0432c HTTP/1.1" 200 38715 "https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T01:59:43.449755+00:00 app[web.1]: 10.63.243.86 - - [21/May/2021:01:59:43 +0000] "GET /images/like.png?07712405c62412036052defcef27e38b HTTP/1.1" 200 1901 "https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T01:59:43.451716+00:00 heroku[router]: at=info method=GET path="/images/for_recommends.png?5ce372a81e43d9cbfc973838a9b0432c" host=pickles-0205.herokuapp.com request_id=f4db06c9-10c4-4622-a86c-cf3ea911ff7c fwd="180.44.74.98" dyno=web.1 connect=1ms service=4ms status=200 bytes=38950 protocol=https
+2021-05-21T01:59:43.451909+00:00 heroku[router]: at=info method=GET path="/images/like.png?07712405c62412036052defcef27e38b" host=pickles-0205.herokuapp.com request_id=b341af2a-2f5d-4a32-89b8-413e83737ecb fwd="180.44.74.98" dyno=web.1 connect=1ms service=2ms status=200 bytes=2134 protocol=https
+2021-05-21T01:59:43.496771+00:00 heroku[router]: at=info method=GET path="/api/get_recommends/0" host=pickles-0205.herokuapp.com request_id=419ab828-5929-4eb6-af48-7bf61cd8656e fwd="180.44.74.98" dyno=web.1 connect=1ms service=68ms status=200 bytes=247 protocol=https2021-05-21T01:59:43.509339+00:00 app[web.1]: 10.41.166.250 - - [21/May/2021:01:59:43 +0000] "GET /api/get_recommends/0 HTTP/1.1" 200 2 "https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:00:18.000000+00:00 app[api]: Build started by user ddw.suez.nodiesop@gmail.com
+2021-05-21T02:00:30.976118+00:00 app[api]: Release v17 created by user ddw.suez.nodiesop@gmail.com
+2021-05-21T02:00:30.976118+00:00 app[api]: Deploy 4c316625 by user ddw.suez.nodiesop@gmail.com
+2021-05-21T02:00:31.000000+00:00 app[api]: Build succeeded
+2021-05-21T02:00:31.205244+00:00 heroku[web.1]: Restarting
+2021-05-21T02:00:31.207942+00:00 heroku[web.1]: State changed from up to starting        
+2021-05-21T02:00:32.237317+00:00 heroku[web.1]: Stopping all processes with SIGTERM      
+2021-05-21T02:00:32.529850+00:00 app[web.1]: SIGTERM received, attempting graceful shutdown...
+2021-05-21T02:00:32.529859+00:00 app[web.1]: Stopping php-fpm...
+2021-05-21T02:00:32.530903+00:00 app[web.1]: Stopping httpd gracefully...
+2021-05-21T02:00:32.531487+00:00 app[web.1]: Stopping httpd...
+2021-05-21T02:00:32.612851+00:00 app[web.1]: Shutdown complete.
+2021-05-21T02:00:32.734383+00:00 heroku[web.1]: Process exited with status 143
+2021-05-21T02:00:36.756572+00:00 heroku[web.1]: Starting process with command `vendor/bin/heroku-php-apache2 public/`
+2021-05-21T02:00:46.439315+00:00 app[web.1]: DOCUMENT_ROOT changed to 'public/'
+2021-05-21T02:00:46.949314+00:00 app[web.1]: Detected 536870912 Bytes of RAM
+2021-05-21T02:00:47.069086+00:00 app[web.1]: PHP memory_limit is 128M Bytes
+2021-05-21T02:00:47.139755+00:00 app[web.1]: Starting php-fpm with 4 workers...
+2021-05-21T02:00:48.080227+00:00 app[web.1]: Starting httpd...
+2021-05-21T02:00:49.007964+00:00 heroku[web.1]: State changed from starting to up        
+2021-05-21T02:00:51.699870+00:00 heroku[router]: at=info method=GET path="/recommends" host=pickles-0205.herokuapp.com request_id=69109139-842d-42dc-a5bc-0d8a7b9a45a5 fwd="180.44.74.98" dyno=web.1 connect=1ms service=1121ms status=200 bytes=2101 protocol=https       
+2021-05-21T02:00:51.702231+00:00 app[web.1]: 10.52.12.58 - - [21/May/2021:02:00:50 +0000] "GET /recommends HTTP/1.1" 200 1039 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:00:51.938959+00:00 app[web.1]: 10.52.12.58 - - [21/May/2021:02:00:51 +0000] "GET /js/app.js HTTP/1.1" 200 1829650 "https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:00:51.969149+00:00 heroku[router]: at=info method=GET path="/js/app.js" host=pickles-0205.herokuapp.com request_id=8502a0bc-b440-403a-a6e6-82331261fea5 fwd="180.44.74.98" dyno=web.1 connect=1ms service=63ms status=200 bytes=1829902 protocol=https       
+2021-05-21T02:00:52.446780+00:00 app[web.1]: 10.109.133.239 - - [21/May/2021:02:00:52 +0000] "GET /css/app.css HTTP/1.1" 200 183427 "https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:00:52.451257+00:00 heroku[router]: at=info method=GET path="/css/app.css" host=pickles-0205.herokuapp.com request_id=2784c79e-ca76-4813-afcc-b76f00ecd5d3 fwd="180.44.74.98" dyno=web.1 connect=0ms service=10ms status=200 bytes=183663 protocol=https      
+2021-05-21T02:00:53.301513+00:00 heroku[router]: at=info method=GET path="/images/like.png?07712405c62412036052defcef27e38b" host=pickles-0205.herokuapp.com request_id=7fb2a404-2e84-4fd7-a0d5-50d5a52996aa fwd="180.44.74.98" dyno=web.1 connect=1ms service=3ms status=200 bytes=2134 protocol=https
+2021-05-21T02:00:53.302862+00:00 heroku[router]: at=info method=GET path="/images/for_recommends.png?5ce372a81e43d9cbfc973838a9b0432c" host=pickles-0205.herokuapp.com request_id=5c8fa2bf-ee9c-4a2f-8236-038ab03a2928 fwd="180.44.74.98" dyno=web.1 connect=0ms service=4ms status=200 bytes=38950 protocol=https
+2021-05-21T02:00:53.314583+00:00 app[web.1]: 10.52.12.58 - - [21/May/2021:02:00:53 +0000] "GET /images/like.png?07712405c62412036052defcef27e38b HTTP/1.1" 200 1901 "https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:00:53.322568+00:00 app[web.1]: 10.109.133.239 - - [21/May/2021:02:00:53 +0000] "GET /images/for_recommends.png?5ce372a81e43d9cbfc973838a9b0432c HTTP/1.1" 200 38715 
+"https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:00:53.536142+00:00 app[web.1]: 10.52.12.58 - - [21/May/2021:02:00:53 +0000] "GET /favicon.ico HTTP/1.1" 200 173222 "https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:00:53.548321+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=pickles-0205.herokuapp.com request_id=d58df137-81af-4a17-8cde-4e1020e84456 fwd="180.44.74.98" dyno=web.1 connect=2ms service=17ms status=200 bytes=173462 protocol=https      
+2021-05-21T02:00:53.788433+00:00 heroku[router]: at=info method=GET path="/api/get_recommends/0" host=pickles-0205.herokuapp.com request_id=42df6592-4c98-4553-be84-08171f3fe92f fwd="180.44.74.98" dyno=web.1 connect=0ms service=291ms status=200 bytes=247 protocol=https
+2021-05-21T02:00:53.790280+00:00 app[web.1]: 10.109.133.239 - - [21/May/2021:02:00:53 +0000] "GET /api/get_recommends/0 HTTP/1.1" 200 2 "https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:01:38.021641+00:00 app[web.1]: 10.61.172.160 - - [21/May/2021:02:01:37 +0000] "GET /recommends HTTP/1.1" 200 1039 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:01:38.022380+00:00 heroku[router]: at=info method=GET path="/recommends" host=pickles-0205.herokuapp.com request_id=57de9cbc-00b0-48fe-a349-00af363d71a9 fwd="180.44.74.98" dyno=web.1 connect=1ms service=46ms status=200 bytes=2095 protocol=https
+2021-05-21T02:01:38.256249+00:00 app[web.1]: 10.102.190.208 - - [21/May/2021:02:01:38 +0000] "GET /css/app.css HTTP/1.1" 200 183427 "https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:01:38.267810+00:00 heroku[router]: at=info method=GET path="/css/app.css" host=pickles-0205.herokuapp.com request_id=cfa695f4-bc5a-4c7a-bf20-f0042acf6912 fwd="180.44.74.98" dyno=web.1 connect=0ms service=17ms status=200 bytes=183663 protocol=https      
+2021-05-21T02:01:38.298727+00:00 app[web.1]: 10.61.172.160 - - [21/May/2021:02:01:38 +0000] "GET /js/app.js HTTP/1.1" 200 1829650 "https://pickles-0205.herokuapp.com/recommends" 
+"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:01:38.319957+00:00 heroku[router]: at=info method=GET path="/js/app.js" host=pickles-0205.herokuapp.com request_id=514c0a1a-0052-45a7-98c0-05d954d9b32c fwd="180.44.74.98" dyno=web.1 connect=1ms service=66ms status=200 bytes=1829902 protocol=https       
+2021-05-21T02:01:39.972799+00:00 heroku[router]: at=info method=GET path="/images/like.png?07712405c62412036052defcef27e38b" host=pickles-0205.herokuapp.com request_id=c6f78410-cf54-4b97-8b26-9ca0f5e89232 fwd="180.44.74.98" dyno=web.1 connect=0ms service=2ms status=200 bytes=2134 protocol=https
+2021-05-21T02:01:39.992093+00:00 app[web.1]: 10.102.190.208 - - [21/May/2021:02:01:39 +0000] "GET /images/like.png?07712405c62412036052defcef27e38b HTTP/1.1" 200 1901 "https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:01:40.054470+00:00 heroku[router]: at=info method=GET path="/api/get_recommends/0" host=pickles-0205.herokuapp.com request_id=31b11300-7659-415f-85a8-0884906df0cd fwd="180.44.74.98" dyno=web.1 connect=1ms service=82ms status=200 bytes=247 protocol=https2021-05-21T02:01:40.059694+00:00 app[web.1]: 10.61.172.160 - - [21/May/2021:02:01:39 +0000] "GET /api/get_recommends/0 HTTP/1.1" 200 2 "https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:01:40.156509+00:00 app[web.1]: 10.102.190.208 - - [21/May/2021:02:01:40 +0000] "GET /images/for_recommends.png?5ce372a81e43d9cbfc973838a9b0432c HTTP/1.1" 200 38715 
+"https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:01:40.160627+00:00 heroku[router]: at=info method=GET path="/images/for_recommends.png?5ce372a81e43d9cbfc973838a9b0432c" host=pickles-0205.herokuapp.com request_id=89f9fbbe-d4d6-429f-9f96-97ae3a91071d fwd="180.44.74.98" dyno=web.1 connect=1ms service=6ms status=200 bytes=38950 protocol=https
+2021-05-21T02:01:40.363440+00:00 app[web.1]: 10.102.190.208 - - [21/May/2021:02:01:40 +0000] "GET /favicon.ico HTTP/1.1" 200 173222 "https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:01:40.368905+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=pickles-0205.herokuapp.com request_id=51d457d5-19ba-446a-973a-624d3e774aa8 fwd="180.44.74.98" dyno=web.1 connect=0ms service=10ms status=200 bytes=173462 protocol=https      
+2021-05-21T02:05:01.888570+00:00 heroku[router]: at=info method=GET path="/css/app.css" host=pickles-0205.herokuapp.com request_id=cea7f74b-ba31-4f5b-bc91-a98a68395fab fwd="180.44.74.98" dyno=web.1 connect=1ms service=4ms status=304 bytes=130 protocol=https
+2021-05-21T02:05:01.891000+00:00 app[web.1]: 10.99.228.79 - - [21/May/2021:02:05:01 +0000] "GET /css/app.css HTTP/1.1" 304 - "https://pickles-0205.herokuapp.com/recommends" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
+2021-05-21T02:05:02.016117+00:00 heroku[router]: at=info method=GET path="/js/popper.js.map" host=pickles-0205.herokuapp.com request_id=99445692-afd5-47f5-9a4c-09c32fbd5e29 fwd="180.44.74.98" dyno=web.1 connect=0ms service=32ms status=200 bytes=2105 protocol=https   
+2021-05-21T02:05:02.017761+00:00 app[web.1]: 10.183.123.207 - - [21/May/2021:02:05:01 +0000] "GET /js/popper.js.map HTTP/1.1" 200 1039 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36
