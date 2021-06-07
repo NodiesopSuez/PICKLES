@@ -644,7 +644,7 @@ input[name="word"] {
     border-radius: 50%;
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .top_section {
         width: 100%;
         height: auto;

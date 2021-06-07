@@ -174,7 +174,7 @@ body {
   color:#fff!important;
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   #app {
     width: 100%;
     height: auto;
