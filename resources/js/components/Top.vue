@@ -349,9 +349,19 @@ export default {
 
 <style>
 
-@media screen and (min-width: 1000px){
-    
 
+.top_section {
+@media all and (max-width: 480px) {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+        background:linear-gradient(to bottom, #fff 50%, var(--for-background) 50% 100%);
+    }
+}
 /* likeボタン */
 .like,
 .delete {
@@ -646,8 +656,6 @@ input[name="word"] {
     background: var(--md-green);
     padding-top: 2px;
     border-radius: 50%;
-}
-
 }
 
 @media all and (max-width: 480px) {
