@@ -643,7 +643,7 @@ input[name="word"] {
     padding-top: 2px;
     border-radius: 50%;
 }
-
+ 
 @media screen and (max-width: 480px) {
     .top_section {
         width: 100%;
