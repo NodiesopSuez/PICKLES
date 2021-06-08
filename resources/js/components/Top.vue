@@ -646,14 +646,14 @@ input[name="word"] {
  
 @media screen and (max-width: 480px) {
     .top_section {
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        overflow: hidden;
-        background:linear-gradient(to bottom, #fff 50%, var(--for-background) 50% 100%);
+        width: 100% !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        overflow: hidden !important;
+        background:linear-gradient(to bottom, #fff 50%, var(--for-background) 50% 100%) !important;
     }
     
     .menu {
