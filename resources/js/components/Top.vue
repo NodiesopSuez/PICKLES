@@ -348,6 +348,10 @@ export default {
 </script>
 
 <style>
+
+@media screen and (min-width: 1000px){
+    
+
 /* likeボタン */
 .like,
 .delete {
@@ -642,6 +646,8 @@ input[name="word"] {
     background: var(--md-green);
     padding-top: 2px;
     border-radius: 50%;
+}
+
 }
 
 @media all and (max-width: 480px) {
