@@ -708,5 +708,5 @@ input[name="word"] {
         width: 90%;
     }
     
-} 
+}
 </style>
