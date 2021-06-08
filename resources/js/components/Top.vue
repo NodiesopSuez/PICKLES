@@ -348,20 +348,6 @@ export default {
 </script>
 
 <style>
-
-
-.top_section {
-@media all and (max-width: 480px) {
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        overflow: hidden;
-        background:linear-gradient(to bottom, #fff 50%, var(--for-background) 50% 100%);
-    }
-}
 /* likeボタン */
 .like,
 .delete {
