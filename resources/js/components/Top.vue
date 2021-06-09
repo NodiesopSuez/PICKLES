@@ -400,7 +400,9 @@ export default {
 }
 
 /* section */.top_section {
+    width: 100%;
     height: 600px;
+    overflow: hidden;
     background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ;
 }
 
@@ -644,15 +646,13 @@ input[name="word"] {
     border-radius: 50%;
 }
  
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
     .top_section {
-        width: 100%;
         height: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        overflow: hidden;
         background:linear-gradient(to bottom, #fff 50%, var(--for-background) 50% 100%);
     }
     
