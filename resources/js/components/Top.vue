@@ -653,7 +653,7 @@ input[name="word"] {
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        background:linear-gradient(to bottom, #fff 50%, var(--for-background) 50% 100%);
+        background:linear-gradient(to bottom, #ccc 50%, var(--for-background) 50% 100%);
     }
     
     .menu {
