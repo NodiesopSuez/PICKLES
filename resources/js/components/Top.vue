@@ -403,7 +403,7 @@ export default {
     width: 100%;
     height: 600px;
     overflow: hidden;
-    background: linear-gradient(to bottom, #ccc 53%, var(--for-background) 47% 100%) ;
+    background: linear-gradient(to bottom, rgb(131, 130, 130) 53%, var(--for-background) 47% 100%) ;
 }
 
 .top_section button {
