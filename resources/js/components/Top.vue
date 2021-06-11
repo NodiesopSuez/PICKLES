@@ -4,36 +4,40 @@
        <br/> -->
        <!-- トップ -->
         <section class="top_section">
-            <div class="menu">
-                <nav>
-                    <ul v-if="login_status==true">
-                        <li class="logout" @click="logout()">Logout</li>
-                        <li><img src="../img/logind.png"><p class="user_name">{{ user_name }}</p></li>
-                    </ul>
-                    <ul v-else>
-                        <li><router-link to="login">Login</router-link></li>
-                        <li><router-link to="signup">Sign up</router-link></li>
-                        <li><img src="../img/not_login.png"></li>
-                    </ul>
-                    
-                </nav>
+            <div class="upper">
+                <div class="menu">
+                    <nav>
+                        <ul v-if="login_status==true">
+                            <li class="logout" @click="logout()">Logout</li>
+                            <li><img src="../img/logind.png"><p class="user_name">{{ user_name }}</p></li>
+                        </ul>
+                        <ul v-else>
+                            <li><router-link to="login">Login</router-link></li>
+                            <li><router-link to="signup">Sign up</router-link></li>
+                            <li><img src="../img/not_login.png"></li>
+                        </ul>
+                        
+                    </nav>
+                </div>
+                <div class="catch">
+                    <img class="catch_img_hand" src="../img/catch_img_hand.png">
+                    <h1>PICKLES</h1>
+                    <p>pick up for listening</p>
+                </div>
             </div>
-            <div class="catch">
-                <img class="catch_img_hand" src="../img/catch_img_hand.png">
-                <h1>PICKLES</h1>
-                <p>pick up for listening</p>
+            <div class="lower">
+                <div class="search_form">
+                    <input type="text" name="word" v-model="keyword" placeholder="Enter the words">
+                    <button type="submit" class="submit" @click="searchInfo()">Pick up</button>
+                </div>
+                <button class="to_recommends">
+                    <router-link to="/recommends">
+                        <div><img src="../img/recommend_default.png"></div>
+                        <div>Recommends</div>
+                    </router-link>
+                </button>
+                <img class="musical_notes" src="../img/musical_notes_fortop.png">
             </div>
-            <div class="search_form">
-                <input type="text" name="word" v-model="keyword" placeholder="Enter the words">
-                <button type="submit" class="submit" @click="searchInfo()">Pick up</button>
-            </div>
-            <button class="to_recommends">
-                <router-link to="/recommends">
-                    <div><img src="../img/recommend_default.png"></div>
-                    <div>Recommends</div>
-                </router-link>
-            </button>
-            <img class="musical_notes" src="../img/musical_notes_fortop.png">
         </section>
         <!-- 検索結果リスト -->
         <section id="result_section" ref="result_section" v-if="toggle">
@@ -89,7 +93,7 @@ export default {
     data: function(){
         return{
             keyword: '',     //入力された検索ワード
-            toggle: false,   //Resultの表示・非表示
+            toggle: true,   //Resultの表示・非表示
             modal: false,    //モーダルの表示・非表示
             
             login_status: false,    //ログインしているかどうか
@@ -401,9 +405,14 @@ export default {
 
 /* section */.top_section {
     width: 100%;
-    height: 600px;
     overflow: hidden;
-    background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ;
+   /*  background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ; */
+}
+
+.lower {
+    width: 100%;
+    padding: 50px 0 150px 0; 
+    background: var(--for-background);
 }
 
 .top_section button {
@@ -425,11 +434,11 @@ export default {
 
 .catch {
     width: 480px;
-    height: 286px;
+    height: 264px;
 }
 
 .catch_img_hand {
-    bottom: 0;
+    bottom: -30px;
     right: 0;
     left: 0;
     margin: auto;
@@ -442,19 +451,22 @@ export default {
 }
 
 .catch > h1 {
-    bottom: 108px;
+    bottom: 54px;
     font-size: 50px;
     font-weight: bold;
 }
 
 .catch > p {
-    bottom: 80px;
+    bottom: 56px;
     font-size: 20px;
 }
 
 .musical_notes {
+    position: absolute;
+    right: 0;
+    left: 0;
     margin: auto;
-    width: 1000px;
+    width: 100%;
 }
 
 /* menu部分---------------------------------------------------------- */
@@ -550,8 +562,7 @@ input[name="word"] {
 /* section */#result_section {
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
-    padding-top: 16px;
+    padding-top: 72px;
     min-height: 600px;
     background-color: var(--for-background);
 }
@@ -671,6 +682,7 @@ input[name="word"] {
     .catch {
         width: 90%;
         height: 210px;
+        overflow: visible;
     }
 
     .catch > img {
