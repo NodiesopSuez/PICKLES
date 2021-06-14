@@ -8,15 +8,15 @@
                 <div class="menu">
                     <nav>
                         <ul v-if="login_status==true">
-                            <li class="logout" @click="logout()">Logout</li>
-                            <li><img src="../img/logind.png"><p class="user_name">{{ user_name }}</p></li>
+                            <li v-if="show_menu"> @click="logout()">Logout</li>
+                            <li v-if="screen_width>600"><img src="../img/logind.png"><p class="user_name">{{ user_name }}</p></li>
+                            <li v-else @click="showMenu()"><img src="../img/logind.png"><p class="user_name">{{ user_name }}</p></li>
                         </ul>
                         <ul v-else>
-                            <li><router-link to="login">Login</router-link></li>
-                            <li><router-link to="signup">Sign up</router-link></li>
-                            <li><img src="../img/not_login.png"></li>
+                            <li v-if="show_menu"><router-link to="login">Login</router-link></li>
+                            <li v-if="show_menu"><router-link to="signup">Sign up</router-link></li>
+                            <li @click="showMenu()"><img src="../img/not_login.png"></li>
                         </ul>
-                        
                     </nav>
                 </div>
                 <div class="catch">
@@ -94,6 +94,9 @@ export default {
     name: 'Top',
     data: function(){
         return{
+            show_menu: false,
+            screen_width: '',
+
             keyword: '',     //入力された検索ワード
             toggle: false,   //Resultの表示・非表示
             modal: false,    //モーダルの表示・非表示
@@ -122,6 +125,10 @@ export default {
         }
     },
     created: function(){
+        //ディスプレイ全体の横幅が600以上なら、ログインメニューは表示
+        this.screen_width = screen.width;
+        this.show_menu = this.screen_width > 600 ? true : false ;
+
         //前回のログインから12時間経っていたらログアウト処理する
         if(localStorage.user_access_token){
             let now = Date.now();
@@ -181,6 +188,9 @@ export default {
             })
     },
     methods: {
+        showMenu(){
+            this.show_menu = this.show_menu ? false : true ;
+        },
         searchInfo(){
             //検索結果0の時のメッセージ
             this.no_result_msg = `<h2>ERROR!!</h2><p class="keyword">キーワード：${this.keyword} </p><p>検索結果が見つかりませんでした。<br/>他のキーワードで検索してください。</p>`;
@@ -685,16 +695,17 @@ input[name="word"] {
         align-items: center;
         justify-content: space-between;
     }
-    
-    nav > ul > li:first-child,
-    nav > ul > li:nth-child(2) {
-        display: none;
-    }
-    nav > ul > li:nth-child(3):active nav > ul > li:first-child {
-        display: list-item;
+
+    .menu {
+        position: absolute;
     }
 
+    .menu ul {
+        flex-direction: column-reverse;
+    }
+    
     .catch {
+        margin: 4.25rem auto auto auto;
         width: 20rem;
         height: 15rem;
         overflow: visible;
