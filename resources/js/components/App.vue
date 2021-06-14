@@ -30,8 +30,7 @@ export default {
 }
 
 body { 
-  /* background: var(--for-background)!important; */
-  background: #fff;  
+  background: var(--for-background)!important;
 }
 
 #app {

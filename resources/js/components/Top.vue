@@ -21,8 +21,10 @@
                 </div>
                 <div class="catch">
                     <img class="catch_img_hand" src="../img/catch_img_hand.png">
-                    <h1>PICKLES</h1>
-                    <p>pick up for listening</p>
+                    <div>
+                        <h1>PICKLES</h1>
+                        <p>pick up for listening</p>
+                    </div>
                 </div>
             </div>
             <div class="lower">
@@ -93,7 +95,7 @@ export default {
     data: function(){
         return{
             keyword: '',     //入力された検索ワード
-            toggle: true,   //Resultの表示・非表示
+            toggle: false,   //Resultの表示・非表示
             modal: false,    //モーダルの表示・非表示
             
             login_status: false,    //ログインしているかどうか
@@ -409,6 +411,11 @@ export default {
    /*  background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ; */
 }
 
+.upper { 
+    width: 100%;
+    background: #fff;
+}
+
 .lower {
     width: 100%;
     padding: 50px 0 150px 0; 
@@ -434,7 +441,7 @@ export default {
 
 .catch {
     width: 480px;
-    height: 264px;
+    height: 300px;
 }
 
 .catch_img_hand {
@@ -442,22 +449,31 @@ export default {
     right: 0;
     left: 0;
     margin: auto;
-    width: 240px;
+    width: 260px;
 }
 
-.catch > h1,
-.catch > p {
+.catch > div {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 56px 0 0 0;
+    width: 220px;
+    height : 140px;
+}
+
+.catch h1,
+.catch p {
     color: var(--md-yellow);
 }
 
-.catch > h1 {
-    bottom: 54px;
+.catch h1 {
     font-size: 50px;
     font-weight: bold;
 }
 
-.catch > p {
-    bottom: 56px;
+.catch p {
+    bottom: 0;
+    margin: 0;
     font-size: 20px;
 }
 
@@ -470,6 +486,10 @@ export default {
 }
 
 /* menu部分---------------------------------------------------------- */
+.menu {
+    width: 100%;
+}
+
 .menu > nav {
     padding: 16px 24px 0 0;
 }
@@ -664,11 +684,6 @@ input[name="word"] {
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        background:linear-gradient(to bottom, #fff 50%, var(--for-background) 50% 100%);
-    }
-    
-    .menu {
-        width: 100%;
     }
     
     nav > ul > li:first-child,
@@ -680,30 +695,38 @@ input[name="word"] {
     }
 
     .catch {
-        width: 90%;
-        height: 210px;
+        width: 20rem;
+        height: 15rem;
         overflow: visible;
     }
 
     .catch > img {
-        top: 86px;
-        width: 65%;
+        top: 0;
+        width: 14rem;
     }
 
-    .catch > h1 {
-        font-size: 2.2rem;
-        top: 142px;
+    .catch > div {
+        width: 12rem;
+        height: 7.8rem;
     }
 
-    .catch > p {
+    .catch h1 {
+        font-size: 2.3rem;
+    }
+
+    .catch p {
         font-size: 1.3rem;
-        top: 178px;
+    }
+
+    .lower {
+        height: 21rem;
+        padding: 0;
     }
 
     .search_form { 
         width: 90%;
         flex-direction: column;
-        padding-top: 80px;
+        padding: 3rem 0 1rem 0;
         margin: auto;
     }
 
@@ -711,14 +734,29 @@ input[name="word"] {
         width: 100%;
         margin-bottom: 10px;
     }
-    
-    .musical_notes {
-        width: 200%;
-    }
 
     .result > div {
         width: 90%;
     }
+
+    .result_li a > img {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .result_li > ul {
+        padding-inline-start: 1.6rem;
+    }
+    
+    .like, .delete {
+        width: 1.5rem;
+        height: 1..5rem;
+    }
+
+    .like > img, .delete > img {
+        margin: auto auto 0.5rem auto;
+    }
+
     
 }
 </style>

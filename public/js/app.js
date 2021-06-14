@@ -2430,6 +2430,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -8077,7 +8083,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* likeボタン */\n.like,\r\n.delete {\r\n    margin-left: 5px !important;\r\n    padding: 0 0 4px 0;\r\n    width: 26px;\r\n    height: 26px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.like > img,\r\n.delete > img {\r\n    width: 18px;\r\n    margin: auto auto 6px auto;\n}\r\n\r\n/* Recommendsボタン */\n.to_recommends {\r\n    display: block;\r\n    position: relative;\r\n    width: 156px;\r\n    height: 40px;\r\n    border-radius: 20px;\n}\n.to_recommends div {\r\n    position: absolute;\r\n    top: 0;\r\n    color: #fff;\n}\n.to_recommends div:first-child {\r\n    left: -0.5px;\r\n    padding: 4px;\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    background: var(--icon-background);\n}\n.to_recommends div:first-child img {\r\n    height: 32px;\r\n    margin: auto;\n}\n.to_recommends div:nth-child(2) {\r\n    line-height: 40px;\r\n    right: 10px;\n}\r\n\r\n/* section */.top_section {\r\n    width: 100%;\r\n    height: 600px;\r\n    overflow: hidden;\r\n    background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ;\n}\n.top_section button {\r\n    font-size: 16px;\r\n    background: var(--md-green);\r\n    color: #fff;\n}\n.catch,\r\n.musical_notes {\r\n    position: relative;\r\n    margin: auto;\n}\n.catch *,\r\n.musical_notes > img {\r\n    position: absolute;\n}\n.catch {\r\n    width: 480px;\r\n    height: 286px;\n}\n.catch_img_hand {\r\n    bottom: 0;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 240px;\n}\n.catch > h1,\r\n.catch > p {\r\n    color: var(--md-yellow);\n}\n.catch > h1 {\r\n    bottom: 108px;\r\n    font-size: 50px;\r\n    font-weight: bold;\n}\n.catch > p {\r\n    bottom: 80px;\r\n    font-size: 20px;\n}\n.musical_notes {\r\n    margin: auto;\r\n    width: 1000px;\n}\r\n\r\n/* menu部分---------------------------------------------------------- */\n.menu > nav {\r\n    padding: 16px 24px 0 0;\n}\n.menu ul {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    align-items: flex-end;\r\n    width: 264px;\r\n    margin: auto 0 auto auto;\n}\n.menu li {\r\n    margin: auto 0  0 16px;\n}\n.menu li > a,\r\n.menu li {\r\n    cursor: pointer;\r\n    font-size: 16px;\r\n    color: #FFE669;\n}\n.menu li > a:hover,\r\n.menu li:hover  {\r\n    color: #573100;\r\n    text-decoration: none;\n}\n.menu li:last-child {\r\n    text-align: end;\n}\n.menu li > img {\r\n    width: 40px;\n}\n.menu .user_name {\r\n    margin: 0;\r\n    font-size: 11px;\r\n    color: #ff9100;\n}\n.menu .logout {\r\n    padding-bottom: 11px;\n}\r\n\r\n\r\n/* Form部分 --------------------------------------------------------- */\n.search_form { \r\n    display: flex;\r\n    justify-content: space-between;\r\n    margin: 30px auto;\r\n    width: 480px;\n}\ninput {\r\n    border: none;\r\n    outline: none;\r\n    text-align: center;\n}\ninput[name=\"word\"],\r\n.submit {\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\n}\ninput[name=\"word\"] {\r\n    margin-top: 4px;\r\n    width: 370px;\r\n    color: var(--md-green);\r\n    font-size: 18px;\r\n    background: #fff;\n}\n::-moz-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n:-ms-input-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n::placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n.submit {\r\n    z-index: 10;\r\n    margin-bottom: 4px!important;\r\n    width: 80px;\n}\r\n\r\n/* Result部分 --------------------------------------------------------- */\r\n/* section */#result_section {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 50px;\r\n    padding-top: 16px;\r\n    min-height: 600px;\r\n    background-color: var(--for-background);\n}\n.back_search button {\r\n    position: relative;\r\n    margin: auto 8px 4px auto !important;\r\n    width: 25px;\r\n    height: 25px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.back_search button::after {\r\n    position: absolute;\r\n    content: '';\r\n    top: -2px;\r\n    right: 8px;\r\n    left: 6px;\r\n    margin: auto;\r\n    border-style: solid;\r\n    border-width: 7px 7px 14px 7px;\r\n    border-color: transparent transparent var(--md-green) transparent;\n}\n.back_search h4 {\r\n    margin: 8px auto 16px auto;\r\n    color: var(--md-green);\n}\n.result > div,\r\n.result_li,\r\n.pagination {\r\n    display: flex;\r\n    align-items: center;\n}\n.result > div {\r\n    flex-wrap: wrap;\r\n    justify-content: space-between;\r\n    width: 800px;\r\n    margin: auto;\n}\n.result_li {\r\n    width: 370px;\r\n    justify-content: flex-start;\r\n    margin: 20px 20px 20px 0px ;\r\n    text-align: start;\n}\n.result_li a > img {\r\n    width: 130px;\r\n    height: 130px;\r\n    background: #ccc;\r\n    box-shadow: 5px 5px 2px var(--shadow);\n}\n.result_li li:first-child{\r\n    font-size: 16px !important;\r\n    margin-bottom: 4px;\r\n    font-weight: bold;\n}\n.result_li li:last-child{\r\n    line-height: 30px;\n}\n.result_li > ul {\r\n    font-size: 14px;\n}\n.pagination {\r\n    cursor: pointer;\r\n    margin: 20px auto 100px auto;\n}\n.pagination .number,\r\n.pagination .right-arrow,\r\n.pagination .left-arrow {\r\n    color: var(--md-green);\r\n    margin: auto 6px;\n}\n.pagination .disabled {\r\n    opacity: 0;\n}\n.pagination .active {\r\n    width: 25px;\r\n    height: 25px;\r\n    color: #fff!important;\r\n    background: var(--md-green);\r\n    padding-top: 2px;\r\n    border-radius: 50%;\n}\n@media screen and (max-width: 600px) {\n.top_section {\r\n        height: auto;\r\n        display: flex;\r\n        flex-direction: column;\r\n        align-items: center;\r\n        justify-content: space-between;\r\n        background:linear-gradient(to bottom, #fff 50%, var(--for-background) 50% 100%);\n}\n.menu {\r\n        width: 100%;\n}\nnav > ul > li:first-child,\r\n    nav > ul > li:nth-child(2) {\r\n        display: none;\n}\nnav > ul > li:nth-child(3):active nav > ul > li:first-child {\r\n        display: list-item;\n}\n.catch {\r\n        width: 90%;\r\n        height: 210px;\n}\n.catch > img {\r\n        top: 86px;\r\n        width: 65%;\n}\n.catch > h1 {\r\n        font-size: 2.2rem;\r\n        top: 142px;\n}\n.catch > p {\r\n        font-size: 1.3rem;\r\n        top: 178px;\n}\n.search_form { \r\n        width: 90%;\r\n        flex-direction: column;\r\n        padding-top: 80px;\r\n        margin: auto;\n}\n.search_form > input {\r\n        width: 100%;\r\n        margin-bottom: 10px;\n}\n.musical_notes {\r\n        width: 200%;\n}\n.result > div {\r\n        width: 90%;\n}\n}\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* likeボタン */\n.like,\r\n.delete {\r\n    margin-left: 5px !important;\r\n    padding: 0 0 4px 0;\r\n    width: 26px;\r\n    height: 26px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.like > img,\r\n.delete > img {\r\n    width: 18px;\r\n    margin: auto auto 6px auto;\n}\r\n\r\n/* Recommendsボタン */\n.to_recommends {\r\n    display: block;\r\n    position: relative;\r\n    width: 156px;\r\n    height: 40px;\r\n    border-radius: 20px;\n}\n.to_recommends div {\r\n    position: absolute;\r\n    top: 0;\r\n    color: #fff;\n}\n.to_recommends div:first-child {\r\n    left: -0.5px;\r\n    padding: 4px;\r\n    width: 40px;\r\n    height: 40px;\r\n    border-radius: 50%;\r\n    background: var(--icon-background);\n}\n.to_recommends div:first-child img {\r\n    height: 32px;\r\n    margin: auto;\n}\n.to_recommends div:nth-child(2) {\r\n    line-height: 40px;\r\n    right: 10px;\n}\r\n\r\n/* section */.top_section {\r\n    width: 100%;\r\n    overflow: hidden;\r\n   /*  background: linear-gradient(to bottom, #fff 53%, var(--for-background) 47% 100%) ; */\n}\n.upper { \r\n    width: 100%;\r\n    background: #fff;\n}\n.lower {\r\n    width: 100%;\r\n    padding: 50px 0 150px 0; \r\n    background: var(--for-background);\n}\n.top_section button {\r\n    font-size: 16px;\r\n    background: var(--md-green);\r\n    color: #fff;\n}\n.catch,\r\n.musical_notes {\r\n    position: relative;\r\n    margin: auto;\n}\n.catch *,\r\n.musical_notes > img {\r\n    position: absolute;\n}\n.catch {\r\n    width: 480px;\r\n    height: 300px;\n}\n.catch_img_hand {\r\n    bottom: -30px;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 260px;\n}\n.catch > div {\r\n    top: 0;\r\n    bottom: 0;\r\n    margin: auto;\r\n    padding: 56px 0 0 0;\r\n    width: 220px;\r\n    height : 140px;\n}\n.catch h1,\r\n.catch p {\r\n    color: var(--md-yellow);\n}\n.catch h1 {\r\n    font-size: 50px;\r\n    font-weight: bold;\n}\n.catch p {\r\n    bottom: 0;\r\n    margin: 0;\r\n    font-size: 20px;\n}\n.musical_notes {\r\n    position: absolute;\r\n    right: 0;\r\n    left: 0;\r\n    margin: auto;\r\n    width: 100%;\n}\r\n\r\n/* menu部分---------------------------------------------------------- */\n.menu {\r\n    width: 100%;\n}\n.menu > nav {\r\n    padding: 16px 24px 0 0;\n}\n.menu ul {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n    align-items: flex-end;\r\n    width: 264px;\r\n    margin: auto 0 auto auto;\n}\n.menu li {\r\n    margin: auto 0  0 16px;\n}\n.menu li > a,\r\n.menu li {\r\n    cursor: pointer;\r\n    font-size: 16px;\r\n    color: #FFE669;\n}\n.menu li > a:hover,\r\n.menu li:hover  {\r\n    color: #573100;\r\n    text-decoration: none;\n}\n.menu li:last-child {\r\n    text-align: end;\n}\n.menu li > img {\r\n    width: 40px;\n}\n.menu .user_name {\r\n    margin: 0;\r\n    font-size: 11px;\r\n    color: #ff9100;\n}\n.menu .logout {\r\n    padding-bottom: 11px;\n}\r\n\r\n\r\n/* Form部分 --------------------------------------------------------- */\n.search_form { \r\n    display: flex;\r\n    justify-content: space-between;\r\n    margin: 30px auto;\r\n    width: 480px;\n}\ninput {\r\n    border: none;\r\n    outline: none;\r\n    text-align: center;\n}\ninput[name=\"word\"],\r\n.submit {\r\n    height: 30px;\r\n    line-height: 30px;\r\n    border-radius: 15px;\n}\ninput[name=\"word\"] {\r\n    margin-top: 4px;\r\n    width: 370px;\r\n    color: var(--md-green);\r\n    font-size: 18px;\r\n    background: #fff;\n}\n::-moz-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n:-ms-input-placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n::placeholder {\r\n    color: #698966;\r\n    background: #fff;\n}\n.submit {\r\n    z-index: 10;\r\n    margin-bottom: 4px!important;\r\n    width: 80px;\n}\r\n\r\n/* Result部分 --------------------------------------------------------- */\r\n/* section */#result_section {\r\n    display: flex;\r\n    flex-direction: column;\r\n    padding-top: 72px;\r\n    min-height: 600px;\r\n    background-color: var(--for-background);\n}\n.back_search button {\r\n    position: relative;\r\n    margin: auto 8px 4px auto !important;\r\n    width: 25px;\r\n    height: 25px;\r\n    border-radius: 50%;\r\n    background: #fff;\n}\n.back_search button::after {\r\n    position: absolute;\r\n    content: '';\r\n    top: -2px;\r\n    right: 8px;\r\n    left: 6px;\r\n    margin: auto;\r\n    border-style: solid;\r\n    border-width: 7px 7px 14px 7px;\r\n    border-color: transparent transparent var(--md-green) transparent;\n}\n.back_search h4 {\r\n    margin: 8px auto 16px auto;\r\n    color: var(--md-green);\n}\n.result > div,\r\n.result_li,\r\n.pagination {\r\n    display: flex;\r\n    align-items: center;\n}\n.result > div {\r\n    flex-wrap: wrap;\r\n    justify-content: space-between;\r\n    width: 800px;\r\n    margin: auto;\n}\n.result_li {\r\n    width: 370px;\r\n    justify-content: flex-start;\r\n    margin: 20px 20px 20px 0px ;\r\n    text-align: start;\n}\n.result_li a > img {\r\n    width: 130px;\r\n    height: 130px;\r\n    background: #ccc;\r\n    box-shadow: 5px 5px 2px var(--shadow);\n}\n.result_li li:first-child{\r\n    font-size: 16px !important;\r\n    margin-bottom: 4px;\r\n    font-weight: bold;\n}\n.result_li li:last-child{\r\n    line-height: 30px;\n}\n.result_li > ul {\r\n    font-size: 14px;\n}\n.pagination {\r\n    cursor: pointer;\r\n    margin: 20px auto 100px auto;\n}\n.pagination .number,\r\n.pagination .right-arrow,\r\n.pagination .left-arrow {\r\n    color: var(--md-green);\r\n    margin: auto 6px;\n}\n.pagination .disabled {\r\n    opacity: 0;\n}\n.pagination .active {\r\n    width: 25px;\r\n    height: 25px;\r\n    color: #fff!important;\r\n    background: var(--md-green);\r\n    padding-top: 2px;\r\n    border-radius: 50%;\n}\n@media screen and (max-width: 600px) {\n.top_section {\r\n        height: auto;\r\n        display: flex;\r\n        flex-direction: column;\r\n        align-items: center;\r\n        justify-content: space-between;\n}\nnav > ul > li:first-child,\r\n    nav > ul > li:nth-child(2) {\r\n        display: none;\n}\nnav > ul > li:nth-child(3):active nav > ul > li:first-child {\r\n        display: list-item;\n}\n.catch {\r\n        width: 20rem;\r\n        height: 15rem;\r\n        overflow: visible;\n}\n.catch > img {\r\n        top: 0;\r\n        width: 14rem;\n}\n.catch > div {\r\n        width: 12rem;\r\n        height: 7.8rem;\n}\n.catch h1 {\r\n        font-size: 2.3rem;\n}\n.catch p {\r\n        font-size: 1.3rem;\n}\n.lower {\r\n        height: 21rem;\r\n        padding: 0;\n}\n.search_form { \r\n        width: 90%;\r\n        flex-direction: column;\r\n        padding: 3rem 0 1rem 0;\r\n        margin: auto;\n}\n.search_form > input {\r\n        width: 100%;\r\n        margin-bottom: 10px;\n}\n.result > div {\r\n        width: 90%;\n}\n.result_li a > img {\r\n        width: 8rem;\r\n        height: 8rem;\n}\n.result_li > ul {\r\n        -webkit-padding-start: 1.6rem;\r\n                padding-inline-start: 1.6rem;\n}\n.like, .delete {\r\n        width: 1.5rem;\r\n        height: 1..5rem;\n}\n.like > img, .delete > img {\r\n        margin: auto auto 0.5rem auto;\n}\n}\r\n", ""]);
 
 // exports
 
@@ -40803,116 +40809,124 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("section", { staticClass: "top_section" }, [
-      _c("div", { staticClass: "menu" }, [
-        _c("nav", [
-          _vm.login_status == true
-            ? _c("ul", [
-                _c(
-                  "li",
-                  {
-                    staticClass: "logout",
-                    on: {
-                      click: function($event) {
-                        return _vm.logout()
+      _c("div", { staticClass: "upper" }, [
+        _c("div", { staticClass: "menu" }, [
+          _c("nav", [
+            _vm.login_status == true
+              ? _c("ul", [
+                  _c(
+                    "li",
+                    {
+                      staticClass: "logout",
+                      on: {
+                        click: function($event) {
+                          return _vm.logout()
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("Logout")]
-                ),
-                _vm._v(" "),
-                _c("li", [
-                  _c("img", { attrs: { src: __webpack_require__(/*! ../img/logind.png */ "./resources/js/img/logind.png") } }),
-                  _c("p", { staticClass: "user_name" }, [
-                    _vm._v(_vm._s(_vm.user_name))
+                    },
+                    [_vm._v("Logout")]
+                  ),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c("img", { attrs: { src: __webpack_require__(/*! ../img/logind.png */ "./resources/js/img/logind.png") } }),
+                    _c("p", { staticClass: "user_name" }, [
+                      _vm._v(_vm._s(_vm.user_name))
+                    ])
                   ])
                 ])
-              ])
-            : _c("ul", [
-                _c(
-                  "li",
-                  [
-                    _c("router-link", { attrs: { to: "login" } }, [
-                      _vm._v("Login")
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  [
-                    _c("router-link", { attrs: { to: "signup" } }, [
-                      _vm._v("Sign up")
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm._m(0)
-              ])
-        ])
+              : _c("ul", [
+                  _c(
+                    "li",
+                    [
+                      _c("router-link", { attrs: { to: "login" } }, [
+                        _vm._v("Login")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    [
+                      _c("router-link", { attrs: { to: "signup" } }, [
+                        _vm._v("Sign up")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
       ]),
       _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _c("div", { staticClass: "search_form" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.keyword,
-              expression: "keyword"
-            }
-          ],
-          attrs: { type: "text", name: "word", placeholder: "Enter the words" },
-          domProps: { value: _vm.keyword },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+      _c("div", { staticClass: "lower" }, [
+        _c("div", { staticClass: "search_form" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.keyword,
+                expression: "keyword"
               }
-              _vm.keyword = $event.target.value
+            ],
+            attrs: {
+              type: "text",
+              name: "word",
+              placeholder: "Enter the words"
+            },
+            domProps: { value: _vm.keyword },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.keyword = $event.target.value
+              }
             }
-          }
-        }),
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "submit",
+              attrs: { type: "submit" },
+              on: {
+                click: function($event) {
+                  return _vm.searchInfo()
+                }
+              }
+            },
+            [_vm._v("Pick up")]
+          )
+        ]),
         _vm._v(" "),
         _c(
           "button",
-          {
-            staticClass: "submit",
-            attrs: { type: "submit" },
-            on: {
-              click: function($event) {
-                return _vm.searchInfo()
-              }
-            }
-          },
-          [_vm._v("Pick up")]
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "to_recommends" },
-        [
-          _c("router-link", { attrs: { to: "/recommends" } }, [
-            _c("div", [
-              _c("img", {
-                attrs: { src: __webpack_require__(/*! ../img/recommend_default.png */ "./resources/js/img/recommend_default.png") }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", [_vm._v("Recommends")])
-          ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "musical_notes",
-        attrs: { src: __webpack_require__(/*! ../img/musical_notes_fortop.png */ "./resources/js/img/musical_notes_fortop.png") }
-      })
+          { staticClass: "to_recommends" },
+          [
+            _c("router-link", { attrs: { to: "/recommends" } }, [
+              _c("div", [
+                _c("img", {
+                  attrs: { src: __webpack_require__(/*! ../img/recommend_default.png */ "./resources/js/img/recommend_default.png") }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Recommends")])
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "musical_notes",
+          attrs: { src: __webpack_require__(/*! ../img/musical_notes_fortop.png */ "./resources/js/img/musical_notes_fortop.png") }
+        })
+      ])
     ]),
     _vm._v(" "),
     _vm.toggle
@@ -41071,9 +41085,11 @@ var staticRenderFns = [
         attrs: { src: __webpack_require__(/*! ../img/catch_img_hand.png */ "./resources/js/img/catch_img_hand.png") }
       }),
       _vm._v(" "),
-      _c("h1", [_vm._v("PICKLES")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("pick up for listening")])
+      _c("div", [
+        _c("h1", [_vm._v("PICKLES")]),
+        _vm._v(" "),
+        _c("p", [_vm._v("pick up for listening")])
+      ])
     ])
   }
 ]
