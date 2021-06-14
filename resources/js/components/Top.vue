@@ -8,9 +8,8 @@
                 <div class="menu">
                     <nav>
                         <ul v-if="login_status==true">
-                            <li v-if="show_menu"> @click="logout()">Logout</li>
-                            <li v-if="screen_width>600"><img src="../img/logind.png"><p class="user_name">{{ user_name }}</p></li>
-                            <li v-else @click="showMenu()"><img src="../img/logind.png"><p class="user_name">{{ user_name }}</p></li>
+                            <li v-if="show_menu" @click="logout()">Logout</li>
+                            <li @click="showMenu()"><img src="../img/logind.png"><p class="user_name">{{ user_name }}</p></li>
                         </ul>
                         <ul v-else>
                             <li v-if="show_menu"><router-link to="login">Login</router-link></li>
