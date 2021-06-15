@@ -152,7 +152,7 @@ export default {
     top: 0;
     bottom: 0;
     width: 450px;
-    height: 560px;
+    height: 538px;
 }
 
 .signup,
@@ -176,8 +176,7 @@ export default {
 /* びん部分 */
 .bin {
     bottom: 0;
-  /*   padding: 32px 48px; */
-    padding: 56px 48px;
+    padding: 32px 48px;
     width: 380px;
     height: 496px;
     background: #EDFFF0;
