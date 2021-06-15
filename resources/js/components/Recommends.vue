@@ -295,6 +295,7 @@ h4 {
     }
 
     .result_section {
+        padding: 1rem 0 0 0;
         width: 90%;
     }
 
