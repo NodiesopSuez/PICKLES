@@ -105,8 +105,9 @@ export default {
 <style scoped>
 /* to_topボタン */
 .to_top {
+    position: relative;
     float: right;
-    margin: 16px;
+    margin: 1rem;
 }
 .to_top button {
     position: relative;
@@ -139,13 +140,14 @@ export default {
 
 /* ログインフォーム */
 .login {
-    position: relative;
-    margin: auto auto 80px auto;
-    padding: 50px 0 0 0;
-    width: 450px;
-    height: 528px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 380px;
+    height: 506px;
 }
 
+.login,
 .rid,
 .bin {
     position: absolute;
@@ -157,8 +159,7 @@ export default {
 /* ふた部分 */
 .rid {
     z-index: 10;
-    top: 32px;
-    width: 392px;
+    width: 360px;
     height: 45px;
     border-radius: 10px;
     background: var(--md-green);
@@ -168,10 +169,10 @@ export default {
 .bin {
     bottom: 0;
     padding: 56px 48px;
-    width: 400px;
+    width: 380px;
     height: 464px;
     background: #EDFFF0;
-    border-radius: 30px;
+    border-radius: 40px;
     border-style: solid;
     border-width: 3px;
     border-color: #fff;
@@ -226,24 +227,35 @@ export default {
 
 
 @media screen and (max-width: 480px) {
-    .sign_up {
-        width: 90%;
-        height: 535px;
-        top: 70px;
+    .to_top {
+        margin: 0.5rem;
+    }
+
+    .login {
+        width: 20rem;;
+        height: 28rem;
     }
     .rid {
         width: 90%;
         top: 0;
     }
     .bin {
-        width: 95%;
-        padding: 30px;
+        width: 19rem;
+        height: 26rem;
+        padding: 2.5rem 1rem 1rem 1rem;
+    }
+    .bin > div:first-of-type {
+        margin: auto auto 2.5rem auto;
+        width: 11rem;
     }
     .bin img {
-        width: 40%;
+        width: 4.5rem;
     }
     .form-group > input {
         width: 100%;
+    }
+    .bin .submit { 
+        margin: 1rem auto auto auto !important;
     }
 
 } 
