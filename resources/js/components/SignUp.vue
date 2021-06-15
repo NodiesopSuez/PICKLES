@@ -237,7 +237,7 @@ export default {
 
     .signup {
         width: 20rem;;
-        height: 33rem;
+        height: 32rem;
     }
     .rid {
         width: 90%;
