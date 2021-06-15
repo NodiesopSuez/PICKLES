@@ -34,7 +34,7 @@
                 <button class="to_recommends">
                     <router-link to="/recommends">
                         <div><img src="../img/recommend_default.png"></div>
-                        <div v-if="login_status==true">Favorites</div>
+                        <div v-if="login_status==true" class="to_favorites">Favorites</div>
                         <div v-else>Recommends</div>
                     </router-link>
                 </button>
@@ -413,6 +413,10 @@ export default {
 .to_recommends div:nth-child(2) {
     line-height: 40px;
     right: 10px;
+}
+
+.to_favorites {
+    right: 30px !important;
 }
 
 /* section */.top_section {
