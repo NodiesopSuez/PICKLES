@@ -294,9 +294,8 @@ h4 {
         font-size: 1rem;
     }
 
-    .result_section {
+    #result_section {
         padding: 1rem 0 0 0;
-        width: 90%;
     }
 
     .result > div {
