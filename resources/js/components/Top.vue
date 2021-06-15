@@ -34,7 +34,8 @@
                 <button class="to_recommends">
                     <router-link to="/recommends">
                         <div><img src="../img/recommend_default.png"></div>
-                        <div>Recommends</div>
+                        <div v-if="login_status==true">Favorites</div>
+                        <div v-else>Recommends</div>
                     </router-link>
                 </button>
                 <img class="musical_notes" src="../img/musical_notes_fortop.png">
