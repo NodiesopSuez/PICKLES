@@ -495,6 +495,7 @@ export default {
     position: absolute;
     right: 0;
     left: 0;
+    bottom: 0;
     margin: auto;
     width: 100%;
 }
@@ -597,7 +598,7 @@ input[name="word"] {
 /* section */#result_section {
     display: flex;
     flex-direction: column;
-    padding-top: 72px;
+    margin: 72px auto;
     min-height: 600px;
     background-color: var(--for-background);
 }
