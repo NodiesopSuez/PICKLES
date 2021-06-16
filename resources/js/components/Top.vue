@@ -495,9 +495,8 @@ export default {
     position: absolute;
     right: 0;
     left: 0;
-    bottom: 0;
     margin: auto;
-    width: 100%;
+    width: 1000px;
 }
 
 /* menu部分---------------------------------------------------------- */
