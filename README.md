@@ -1,7 +1,7 @@
 # pickles
 Spotfy APIを用いた音楽検索システム
 ## FEATURES
-1.コンテンツ検索
+**コンテンツ検索**
 フォームに入力されたキーワードと一致する
 アルバムタイトル・トラックタイトル・アーティスト名を検索します。
 検索結果一覧には各アイテムの下記が表示されます。
@@ -16,18 +16,24 @@ Spotfy APIを用いた音楽検索システム
     - アーティスト名
     - リリース日
     - 収録アルバムのアートワーク(クリックするとSpotifyの該当コンテンツのページを表示します。)
-2.ユーザー登録機能
+
+**ユーザー登録機能**
 次の内容をもってユーザー登録することができます。
 - ユーザー名
 - メールアドレス
 - パスワード
-3.Recommendsリスト
+
+**Recommendsリスト**
 ユーザー未登録状態で、お気に入りの楽曲をRecommendsにて登録・削除することができます。
 全エンドユーザーが閲覧できます。
-4.Favoritesリスト
+
+**Favoritesリスト**
 登録済みユーザーはログイン後、お気に入りの楽曲をFavoritesにて登録・削除することができます。
 このリストはログインした該当ユーザーのみ閲覧可能です。
+
 ## REQUIREMENT
+- laravel : 6.2
+- passport
 - axios : 0.21.1
 - core-js : 3.6.5
 - vue : 2.6.11
@@ -35,6 +41,7 @@ Spotfy APIを用いた音楽検索システム
 - vue-paginate : 3.6.0
 - [Spotify API (Search API)](https://developer.spotify.com/documentation/web-api/reference/#category-search)
 ## INSTALLATION
+passport : `php artisan passport:install`
 axios : `npm install axios@0.21.1`
 vue/cli : `npm install -g @vue/cli`
 vue-paginate : `npm install vuejs-paginate`
