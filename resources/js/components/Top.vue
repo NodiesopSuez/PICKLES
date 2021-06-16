@@ -751,6 +751,10 @@ input[name="word"] {
         margin-bottom: 10px;
     }
 
+    .musical_notes {
+        width: 100%;
+    }
+
     .result > div {
         width: 90%;
     }
