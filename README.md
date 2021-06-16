@@ -1,4 +1,4 @@
-# pickles
+# PICKLES
 Spotfy APIを用いた音楽検索システム
 ## FEATURES
 **コンテンツ検索**  
