@@ -41,14 +41,13 @@ Spotfy APIを用いた音楽検索システム
 - vue-paginate : 3.6.0
 - [Spotify API (Search API)](https://developer.spotify.com/documentation/web-api/reference/#category-search)
 ## INSTALLATION
-passport : `php artisan passport:install`
-axios : `npm install axios@0.21.1`
-vue/cli : `npm install -g @vue/cli`
-vue-paginate : `npm install vuejs-paginate`
+passport : `php artisan passport:install`  
+axios : `npm install axios@0.21.1`  
+vue/cli : `npm install -g @vue/cli`  
+vue-paginate : `npm install vuejs-paginate`  
 ## AUTHOR
 * A.AKASHI
-* belong to B-FORME
-* e-mail
+* belong to B-FORME  
 ## LICENSE
 PICKLESで使用されている画像について、著作権は下記のように帰属します。
 - Top
