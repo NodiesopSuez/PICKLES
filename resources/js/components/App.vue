@@ -23,7 +23,7 @@ export default {
   --lt-yellow: #FFE959;
   --md-yellow: #FFCD03;
   --hv-yellow: #ff8000;
-  --for-background: #C8FFD3;
+  --for-background: #f0ffff;
   --icon-background: #FDD441;
   --md-green: #00502E;
   --shadow: #B4CF8F;
