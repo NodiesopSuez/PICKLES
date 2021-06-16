@@ -598,7 +598,7 @@ input[name="word"] {
 /* section */#result_section {
     display: flex;
     flex-direction: column;
-    margin: 72px auto;
+    margin: 72px auto; 
     min-height: 600px;
     background-color: var(--for-background);
 }
