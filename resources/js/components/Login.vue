@@ -171,7 +171,7 @@ export default {
     padding: 56px 48px;
     width: 380px;
     height: 464px;
-    background: #EDFFF0;
+    background: #fffafa;
     border-radius: 40px;
     border-style: solid;
     border-width: 3px;

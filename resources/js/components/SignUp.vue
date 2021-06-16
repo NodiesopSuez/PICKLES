@@ -179,7 +179,7 @@ export default {
     padding: 32px 48px;
     width: 380px;
     height: 496px;
-    background: #EDFFF0;
+    background: #fffafa;
     border-radius: 40px;
     border-style: solid;
     border-width: 3px;
