@@ -1,5 +1,8 @@
 # PICKLES
 Spotfy APIを用いた音楽検索システム
+ユーザー登録機能、お気に入り機能を利用できます。
+<img width="1280" alt="スクリーンショット 2021-08-05 12 13 27" src="https://user-images.githubusercontent.com/76401237/128285761-e54d9241-42e2-435b-af6c-86f790f208ad.png">
+
 ## FEATURES
 **コンテンツ検索**  
 フォームに入力されたキーワードと一致する
